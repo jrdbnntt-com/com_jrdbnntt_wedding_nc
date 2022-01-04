@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Language" content="en">
+
+    <!-- Social -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:image" content="{{base_site_domain}}/static/link_preview.jpg">
+    <meta property="og:url" content="{{base_site_domain}}">
+
+    <!-- Title -->
+    {% if page_title %}
+        <meta property="og:title" content="{{page_title_prefix}} - {{page_title}}">
+        <title>{{page_title_prefix}} - {{page_title}}</title>
+    {% else %}
+        <meta property="og:title" content="{{page_title_prefix}}">
+        <title>{{page_title_prefix}}</title>
+    {% endif %}
+
+</head>
+<body>
+    {% block content %}{% endblock %}
+</body>
+</html>
