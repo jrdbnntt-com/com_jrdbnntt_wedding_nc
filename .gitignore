@@ -1,7 +1,7 @@
 ### Custom
-com_jrdbnntt_wedding/settings/development.cfg
-com_jrdbnntt_wedding/settings/production.cfg
-com_jrdbnntt_wedding/settings/test.cfg
+com_jrdbnntt_wedding/config/development.cfg
+com_jrdbnntt_wedding/config/production.cfg
+com_jrdbnntt_wedding/config/test.cfg
 
 ### JetBrains template
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio, WebStorm and Rider
