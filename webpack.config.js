@@ -2,12 +2,13 @@ const path = require('path');
 const webpack = require('webpack');
 const BundleTracker = require('webpack-bundle-tracker');
 const glob = require('glob');
-
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
 const dirs = {
     project: __dirname,
     src: path.resolve(__dirname, './website/src/'),
-    output: path.resolve(__dirname, './website/static/build/js/')
+    output: path.resolve(__dirname, './website/static/build/')
 }
 
 module.exports = {
@@ -19,13 +20,13 @@ module.exports = {
         path: dirs.output,
         filename: "[name]-[hash].js"
     },
-    // optimization: {
-    //     splitChunks: {
-    //         cacheGroups: {
-    //             "css"
-    //         }
-    //     }
-    // },
+    optimization: {
+        minimize: true,
+        minimizer: [
+            '...',
+            new CssMinimizerPlugin(),
+        ]
+    },
     module: {
         rules: [
             {
@@ -48,8 +49,11 @@ module.exports = {
             {
                 test: /\.s[ac]ss$/i,
                 use: [
-                    // Creates `style` nodes from JS strings
-                    "style-loader",
+                    // // Creates `style` nodes from JS strings
+                    // "style-loader",
+
+                    // Minify CSS
+                    MiniCssExtractPlugin.loader,
 
                     // Translates CSS into CommonJS
                     "css-loader",
@@ -93,7 +97,8 @@ module.exports = {
             filename: './webpack-stats.json',
             relativePath: true,
             indent: 2
-        })
+        }),
+        new MiniCssExtractPlugin()
     ]
 }
 
@@ -107,10 +112,12 @@ function collectViewEntries() {
     entryFiles.sort();
     entryFiles.forEach((filePath) => {
         filePath = filePath.substring(dirs.src.length + 1);
-        let entryKey = "entry_" + filePath.substring(0, filePath.lastIndexOf("/index.js"))
-            .split("/")
-            .join("_");
-        entryMap[entryKey] = "./" + filePath;
+        if (!filePath.startsWith("_templates/")) {
+            let entryKey = "entry_" + filePath.substring(0, filePath.lastIndexOf("/index.js"))
+                .split("/")
+                .join("_");
+            entryMap[entryKey] = "./" + filePath;
+        }
     })
     return entryMap;
 }

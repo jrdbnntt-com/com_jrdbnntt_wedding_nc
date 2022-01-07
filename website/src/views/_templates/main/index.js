@@ -1,2 +1,4 @@
+import "bootstrap"
 import "../../../js/test_module"
-console.log("_templates/main")
+
+console.log("_templates/main");
