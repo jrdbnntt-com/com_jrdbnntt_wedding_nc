@@ -2,12 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1412e4fd-cd2f-4404-8033-678bb8678153" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/website/src/views/home/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/com_jrdbnntt_wedding.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/com_jrdbnntt_wedding.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com_jrdbnntt_wedding/config/base.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/com_jrdbnntt_wedding/config/base.cfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com_jrdbnntt_wedding/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/com_jrdbnntt_wedding/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/templates/website/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/views/_templates/main/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/templates/website/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -27,6 +41,9 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectId" id="22VaBL8dPvHB6Qy02455etCTf0m" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -39,43 +56,35 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="add_unversioned_files" value="$PROJECT_DIR$/venv/lib/python3.7/site-packages/django/template/context.py" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/com_jrdbnntt_wedding" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="add_unversioned_files" value="$PROJECT_DIR$/venv/lib/python3.7/site-packages/django/template/context.py&#10;/home/jbennett/dev/com_jrdbnntt_wedding/com_jrdbnntt_wedding/config/production.cfg" />
+    <property name="javascript.nodejs.core.library.configured.version" value="16.13.1" />
+    <property name="javascript.nodejs.core.library.typings.version" value="16.11.19" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/website/src/views/home" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="preferences.externalResources" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/website/src/views/home" />
+      <recent name="$PROJECT_DIR$/website/src" />
       <recent name="$PROJECT_DIR$/com_jrdbnntt_wedding" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/com_jrdbnntt_wedding/site" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/com_jrdbnntt_wedding" />
-      <recent name="$PROJECT_DIR$/com_jrdbnntt_wedding/settings" />
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/com_jrdbnntt_wedding/site" />
+      <recent name="$PROJECT_DIR$/com_jrdbnntt_wedding/middleware/html" />
+      <recent name="$PROJECT_DIR$/website/src/views/_templates/main" />
+      <recent name="$PROJECT_DIR$/website/src/views/main" />
+      <recent name="$PROJECT_DIR$/website/src/views" />
+      <recent name="$PROJECT_DIR$/website/src/home" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.settings">
-    <configuration name="settings" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="com_jrdbnntt_wedding" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/com_jrdbnntt_wedding" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/com_jrdbnntt_wedding/settings.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
+  <component name="RunManager" selected="npm.build-dev">
+    <configuration name="webpack.config.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/webpack.config.js" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
     <configuration name="server_start.sh" type="ShConfigurationType" temporary="true">
@@ -93,26 +102,43 @@
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="start_server.sh" type="ShConfigurationType" temporary="true">
-      <option name="SCRIPT_TEXT" value="" />
-      <option name="INDEPENDENT_SCRIPT_PATH" value="true" />
-      <option name="SCRIPT_PATH" value="$PROJECT_DIR$/server_install.sh" />
-      <option name="SCRIPT_OPTIONS" value="" />
-      <option name="INDEPENDENT_SCRIPT_WORKING_DIRECTORY" value="true" />
-      <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="INDEPENDENT_INTERPRETER_PATH" value="true" />
-      <option name="INTERPRETER_PATH" value="/bin/bash" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="EXECUTE_IN_TERMINAL" value="true" />
-      <option name="EXECUTE_SCRIPT_FILE" value="true" />
+    <configuration name="build-dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build-dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="clean" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="clean" />
+      </scripts>
+      <node-interpreter value="project" />
       <envs />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.settings" />
+        <item itemvalue="npm.build-dev" />
+        <item itemvalue="npm.build" />
+        <item itemvalue="npm.clean" />
+        <item itemvalue="Node.js.webpack.config.js" />
         <item itemvalue="Shell Script.server_start.sh" />
-        <item itemvalue="Shell Script.start_server.sh" />
       </list>
     </recent_temporary>
   </component>
@@ -124,8 +150,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1639925071359</updated>
+      <workItem from="1641264401543" duration="13943000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.js" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -137,6 +170,21 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/webpack.config.js</url>
+          <line>114</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

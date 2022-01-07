@@ -57,6 +57,22 @@ DEBUG = config.getboolean(CONFIG_SECTION_DJANGO, 'DEBUG')
 
 ALLOWED_HOSTS = []
 
+# Front-end file management with webpack
+STATICFILES_DIRS = (
+    BASE_DIR / 'website/static/build',
+    BASE_DIR / 'website/static/cloud',
+)
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'CACHE': not DEBUG,
+        'BUNDLE_DIR_NAME': 'js/',  # must end with slash
+        'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json'),
+        'POLL_INTERVAL': 0.1,
+        'TIMEOUT': None,
+        'IGNORE': [r'.+\.hot-update.js', r'.+\.map'],
+        'LOADER_CLASS': 'webpack_loader.loader.WebpackLoader',
+    }
+}
 
 # Application definition
 
@@ -67,6 +83,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'webpack_loader'
 ]
 
 MIDDLEWARE = [
@@ -76,7 +93,7 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware'
 ]
 
 ROOT_URLCONF = 'com_jrdbnntt_wedding.urls'
@@ -85,7 +102,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            'website/templates'
+            'website/src/views'
         ],
         'APP_DIRS': True,
         'OPTIONS': {
