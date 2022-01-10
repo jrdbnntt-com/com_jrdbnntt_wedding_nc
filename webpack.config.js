@@ -25,7 +25,35 @@ module.exports = {
         minimizer: [
             '...',
             new CssMinimizerPlugin(),
-        ]
+        ],
+        splitChunks: {
+            chunks: 'async',
+            minSize: 20000,
+            minRemainingSize: 0,
+            minChunks: 1,
+            maxAsyncRequests: 30,
+            maxInitialRequests: 30,
+            enforceSizeThreshold: 50000,
+            cacheGroups: {
+                node_modules: {
+                    test: /[\\/]node_modules[\\/]/,
+                    priority: -10,
+                    reuseExistingChunk: true,
+                    name(module, chunks, cacheGroupKey) {
+                        const localNodeModulesDir = 'com_jrdbnntt_wedding/node_modules/'
+                        const moduleFilePath = module.identifier();
+                        const localNodePath = moduleFilePath.substring(moduleFilePath.lastIndexOf(localNodeModulesDir) + localNodeModulesDir.length);
+                        return `${cacheGroupKey}/${localNodePath}`;
+                    },
+                    chunks: 'all',
+                },
+                default: {
+                    minChunks: 2,
+                    priority: -20,
+                    reuseExistingChunk: true,
+                },
+            }
+        },
     },
     module: {
         rules: [

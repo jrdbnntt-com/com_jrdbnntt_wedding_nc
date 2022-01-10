@@ -3,13 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="1412e4fd-cd2f-4404-8033-678bb8678153" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/com_jrdbnntt_wedding/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/com_jrdbnntt_wedding/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/views/_templates/main/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/views/_templates/main/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/views/_templates/main/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/views/_templates/main/index.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/views/home/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/views/home/index.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +74,7 @@
       <recent name="$PROJECT_DIR$/website/src/home" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.Django Dev Server">
+  <component name="RunManager" selected="npm.build-dev">
     <configuration name="webpack.config.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/webpack.config.js" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
@@ -176,7 +171,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1639925071359</updated>
-      <workItem from="1641264401543" duration="16161000" />
+      <workItem from="1641264401543" duration="18952000" />
     </task>
     <servers />
   </component>
@@ -196,18 +191,6 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/webpack.config.js</url>
-          <line>121</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
