@@ -39,9 +39,8 @@
         <option value="$MODULE_DIR$/venv/lib/python3.7/site-packages/django/contrib/postgres/templates/postgres/widgets" />
         <option value="$MODULE_DIR$/venv/lib/python3.7/site-packages/django/contrib/admindocs/templates/admin_doc" />
         <option value="$MODULE_DIR$/venv/lib/python3.7/site-packages/twisted/python/_pydoctortemplates" />
-        <option value="$MODULE_DIR$/website/src/views/home" />
-        <option value="$MODULE_DIR$/website/src/views/_main" />
         <option value="$MODULE_DIR$/node_modules/terser/tools" />
+        <option value="$MODULE_DIR$/website/src/views" />
       </list>
     </option>
   </component>
