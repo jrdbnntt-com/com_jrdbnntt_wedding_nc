@@ -23,17 +23,31 @@
     {% block head_code %}{% endblock %}
 </head>
 <body>
-    {% block nav %}
-        <ul>
-            <li><a href="{% url 'home' %}">/home</a></li>
-            <li><a href="{% url 'event' %}">/event</a></li>
-            <li><a href="{% url 'user/sign_in' %}">/user/sign_in</a></li>
-            <li><a href="{% url 'user/register' %}">/user/register</a></li>
-            <li><a href="{% url 'user/profile' %}">/user/profile</a></li>
-        </ul>
-    {% endblock %}
-
-    {% block content %}{% endblock %}
+    <div class="main-body-container d-flex flex-column align-items-stretch">
+        <div class="main-header">
+            <div class="container main-header-container">
+                {% block header %}
+                    <ul>
+                        <li><a href="{% url 'home' %}">/home</a></li>
+                        <li><a href="{% url 'event' %}">/event</a></li>
+                        <li><a href="{% url 'user/sign_in' %}">/user/sign_in</a></li>
+                        <li><a href="{% url 'user/register' %}">/user/register</a></li>
+                        <li><a href="{% url 'user/profile' %}">/user/profile</a></li>
+                    </ul>
+                {% endblock %}
+            </div>
+        </div>
+        <div class="main-content flex-grow-1">
+            <div class="container main-content-container h-100">
+                {% block content %}TODO CONTENT{% endblock %}
+            </div>
+        </div>
+        <div class="main-footer">
+            <div class="container main-footer-container">
+                {% block footer %}TODO FOOTER{% endblock %}
+            </div>
+        </div>
+    </div>
     {% block body_code %}{% endblock %}
 </body>
 </html>

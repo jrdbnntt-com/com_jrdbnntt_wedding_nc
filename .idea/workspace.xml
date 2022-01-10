@@ -2,14 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1412e4fd-cd2f-4404-8033-678bb8678153" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/com_jrdbnntt_wedding.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/com_jrdbnntt_wedding.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/src/views/_templates/main/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/views/_templates/main/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/views/home/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/views/home/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/views/home/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/views/home/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/views/home/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/views/home/index.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/src/views/_templates/main/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/views/_templates/main/index.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +74,7 @@
       <recent name="$PROJECT_DIR$/website/src/home" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.build-dev">
+  <component name="RunManager" selected="npm.watch-dev">
     <configuration name="webpack.config.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/webpack.config.js" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
@@ -140,11 +135,11 @@
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="clean" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+    <configuration name="watch-dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
       <scripts>
-        <script value="clean" />
+        <script value="watch-dev" />
       </scripts>
       <node-interpreter value="project" />
       <envs />
@@ -154,17 +149,17 @@
       <item itemvalue="Node.js.webpack.config.js" />
       <item itemvalue="npm.build" />
       <item itemvalue="npm.build-dev" />
-      <item itemvalue="npm.clean" />
       <item itemvalue="Python.Django Dev Server" />
       <item itemvalue="Shell Script.server_start.sh" />
+      <item itemvalue="npm.watch-dev" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.watch-dev" />
         <item itemvalue="npm.build-dev" />
         <item itemvalue="Shell Script.server_start.sh" />
         <item itemvalue="Node.js.webpack.config.js" />
         <item itemvalue="npm.build" />
-        <item itemvalue="npm.clean" />
       </list>
     </recent_temporary>
   </component>
@@ -176,7 +171,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1639925071359</updated>
-      <workItem from="1641264401543" duration="21556000" />
+      <workItem from="1641264401543" duration="24843000" />
     </task>
     <servers />
   </component>
