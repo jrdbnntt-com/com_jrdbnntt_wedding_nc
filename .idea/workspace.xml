@@ -3,14 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="1412e4fd-cd2f-4404-8033-678bb8678153" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/com_jrdbnntt_wedding/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/com_jrdbnntt_wedding/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/context_processors.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/context_processors.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/views/_templates/main/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/views/_templates/main/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/views/_templates/main/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/views/_templates/main/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/views/_templates/main/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/views/_templates/main/index.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/models.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +47,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="add_unversioned_files" value="$PROJECT_DIR$/venv/lib/python3.7/site-packages/django/template/context.py&#10;/home/jbennett/dev/com_jrdbnntt_wedding/com_jrdbnntt_wedding/config/production.cfg" />
+    <property name="add_unversioned_files" value="$PROJECT_DIR$/venv/lib/python3.7/site-packages/django/template/context.py&#10;/home/jbennett/dev/com_jrdbnntt_wedding/com_jrdbnntt_wedding/config/production.cfg&#10;/home/jbennett/dev/com_jrdbnntt_wedding/venv/lib/python3.7/site-packages/django/db/models/fields/related.py" />
     <property name="javascript.nodejs.core.library.configured.version" value="16.13.1" />
     <property name="javascript.nodejs.core.library.typings.version" value="16.11.19" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/website/src/views/user/sign_in" />
@@ -155,9 +148,9 @@
       <item itemvalue="Node.js.webpack.config.js" />
       <item itemvalue="npm.build" />
       <item itemvalue="npm.build-dev" />
+      <item itemvalue="npm.watch-dev" />
       <item itemvalue="Python.Django Dev Server" />
       <item itemvalue="Shell Script.server_start.sh" />
-      <item itemvalue="npm.watch-dev" />
     </list>
     <recent_temporary>
       <list>
@@ -177,7 +170,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1639925071359</updated>
-      <workItem from="1641264401543" duration="37266000" />
+      <workItem from="1641264401543" duration="38260000" />
+      <workItem from="1641873553540" duration="7122000" />
     </task>
     <servers />
   </component>
