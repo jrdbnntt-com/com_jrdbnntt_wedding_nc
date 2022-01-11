@@ -20,7 +20,7 @@ def set_navigation_options(request):
         if option.view == request.resolver_match.view_name:
             option.active = True
         if request.user.is_authenticated:
-            if not option.require_auth:
+            if not option.require_auth and option.require_auth is not None:
                 option.show = False
         else:
             if option.require_auth:

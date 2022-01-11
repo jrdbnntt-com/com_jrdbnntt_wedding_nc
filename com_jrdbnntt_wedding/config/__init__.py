@@ -19,13 +19,13 @@ CONFIG_FILES = {
     'DEVELOPMENT': Path(CONFIG_FILE_DIR, 'development.cfg')
 }
 config_file = CONFIG_FILES[RUNTIME_ENVIRONMENT]
-print("Loading base config file: ", CONFIG_FILES['base'])
+print("CONFIG: Loading base config file: ", CONFIG_FILES['base'])
 if not config_file.exists():
     raise EnvironmentError("Missing config file: ", config_file.absolute())
 config.read(CONFIG_FILES['base'])
 if RUNTIME_ENVIRONMENT in CONFIG_FILES.keys():
     config_file = CONFIG_FILES[RUNTIME_ENVIRONMENT]
-    print("Loading {} environment config file: {}".format(RUNTIME_ENVIRONMENT, config_file.absolute()))
+    print("CONFIG: Loading {} environment config file: {}".format(RUNTIME_ENVIRONMENT, config_file.absolute()))
     if not config_file.exists():
         raise EnvironmentError("Missing config file: ", config_file.absolute())
     config.read(config_file)
