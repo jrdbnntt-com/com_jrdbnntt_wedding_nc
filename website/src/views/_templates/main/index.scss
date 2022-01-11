@@ -1,31 +1,4 @@
+@import "../../../css/variables";
 @import "~bootstrap/scss/bootstrap";
-
-.main-body-container {
-    background: white;
-    min-height: 100vh;
-}
-
-.main-header {
-    background: lightgray;
-}
-
-.main-header-container {
-
-}
-
-.main-footer {
-    background: lightgray;
-}
-
-.main-footer-container {
-
-}
-
-.main-content {
-    background: white;
-}
-
-.main-content-container {
-    padding-top: 50px;
-    padding-bottom: 50px;
-}
+@import "page_layout";
+@import "nav";

@@ -1,4 +1,4 @@
 import "bootstrap"
+import "bootstrap-icons/font/bootstrap-icons.css"
 import "../../../js/test_module"
-
-console.log("_templates/main");
+import "./nav.js"

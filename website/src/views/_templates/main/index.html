@@ -27,21 +27,30 @@
         <div class="main-header">
             <div class="container main-header-container">
                 {% block header %}
-                    <ul>
-                        <li><a href="{% url 'home' %}">/home</a></li>
-                        <li><a href="{% url 'event' %}">/event</a></li>
-                        <li><a href="{% url 'user/sign_in' %}">/user/sign_in</a></li>
-                        <li><a href="{% url 'user/register' %}">/user/register</a></li>
-                        <li><a href="{% url 'user/profile' %}">/user/profile</a></li>
-                    </ul>
+                    <nav class="navbar navbar-expand-lg">
+                        <a class="navbar-brand" href="{% url 'home' %}">Hannah & Jared</a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+                            <i class="bi bi-list"></i>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <div class="navbar-nav w-100 justify-content-end">
+                                {# Navagation options #}
+                                {% for option in nav_options %}
+                                    <a class="nav-link{% if option.active %} active{% endif %}" href="{{option.href}}">{{option.title}}</a>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </nav>
                 {% endblock %}
             </div>
         </div>
+
         <div class="main-content flex-grow-1">
             <div class="container main-content-container h-100">
                 {% block content %}TODO CONTENT{% endblock %}
             </div>
         </div>
+
         <div class="main-footer">
             <div class="container main-footer-container">
                 {% block footer %}TODO FOOTER{% endblock %}

@@ -8,7 +8,8 @@ const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const dirs = {
     project: __dirname,
     src: path.resolve(__dirname, './website/src/'),
-    output: path.resolve(__dirname, './website/static/build/')
+    output: path.resolve(__dirname, './website/static/build/'),
+    node_modules: path.resolve(__dirname, './node_modules/')
 }
 
 module.exports = {
@@ -18,7 +19,7 @@ module.exports = {
     entry: collectViewEntries(),
     output: {
         path: dirs.output,
-        filename: "[name]-[hash].js"
+        filename: "[name].[contenthash].js",
     },
     optimization: {
         minimize: true,
@@ -42,7 +43,19 @@ module.exports = {
                     name(module, chunks, cacheGroupKey) {
                         const localNodeModulesDir = 'com_jrdbnntt_wedding/node_modules/'
                         const moduleFilePath = module.identifier();
-                        const localNodePath = moduleFilePath.substring(moduleFilePath.lastIndexOf(localNodeModulesDir) + localNodeModulesDir.length);
+                        let localNodePath = moduleFilePath.substring(moduleFilePath.lastIndexOf(localNodeModulesDir) + localNodeModulesDir.length);
+                        if (localNodePath.includes('|')) {
+                            localNodePath = localNodePath
+                                .split('/')
+                                .map((pathPart) => {
+                                    if (pathPart.includes('|')) {
+                                        return pathPart.substring(0, pathPart.indexOf('|'));
+                                    } else {
+                                        return pathPart;
+                                    }
+                                })
+                                .join('/');
+                        }
                         return `${cacheGroupKey}/${localNodePath}`;
                     },
                     chunks: 'all',
@@ -50,13 +63,15 @@ module.exports = {
                 default: {
                     minChunks: 2,
                     priority: -20,
-                    reuseExistingChunk: true,
+                    reuseExistingChunk: true
                 },
             }
         },
     },
     module: {
         rules: [
+
+            // JS
             {
                 test: /\.m?jsx?$/,
                 exclude: /(node_modules)/,
@@ -74,12 +89,11 @@ module.exports = {
                     }
                 ]
             },
+
+            // Sass -> CSS
             {
                 test: /\.s[ac]ss$/i,
                 use: [
-                    // // Creates `style` nodes from JS strings
-                    // "style-loader",
-
                     // Minify CSS
                     MiniCssExtractPlugin.loader,
 
@@ -87,7 +101,6 @@ module.exports = {
                     "css-loader",
 
                     // Resolves local url() calls to output paths
-                    "resolve-url-loader",
                     {
                         loader: "resolve-url-loader",
                         options: {
@@ -116,6 +129,27 @@ module.exports = {
                         }
                     }
                 ],
+            },
+
+            // CSS
+            {
+                test: /\.css$/i,
+                use: [
+                    // Minify CSS
+                    MiniCssExtractPlugin.loader,
+
+                    // Translates CSS into CommonJS
+                    "css-loader",
+                ],
+            },
+
+            // Load fonts
+            {
+                test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/i,
+                type: 'asset/resource',
+                generator: {
+                    filename: 'fonts/[name].[contenthash][ext]'
+                }
             }
         ]
     },
@@ -126,7 +160,9 @@ module.exports = {
             relativePath: true,
             indent: 2
         }),
-        new MiniCssExtractPlugin()
+        new MiniCssExtractPlugin({
+            filename: '[name].[contenthash].css'
+        })
     ]
 }
 

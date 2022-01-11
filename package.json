@@ -7,7 +7,7 @@
     "clean": "rm -rf website/static/build",
     "build": "webpack build --mode production",
     "build-dev": "webpack build --mode development",
-    "watch-dev": "webpack watch --mode development"
+    "watch-dev": "rm -rf website/static/build; webpack watch --mode development"
   },
   "author": "jrdbnntt@gmail.com",
   "license": "MIT",
@@ -17,6 +17,7 @@
     "autoprefixer": "^10.4.1",
     "babel-loader": "^8.2.3",
     "bootstrap": "^5.1.3",
+    "bootstrap-icons": "^1.7.2",
     "css-loader": "^6.5.1",
     "glob": "^7.2.0",
     "mini-css-extract-plugin": "^2.4.6",

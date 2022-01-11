@@ -1,0 +1,26 @@
+@import "../../../css/variables";
+
+/**
+ * Page Navigation
+ */
+nav {
+  .nav-link {
+    color: inherit;
+
+    &.active {
+      font-weight: bold;
+    }
+
+    &:hover {
+      color: inherit;
+    }
+  }
+
+  a {
+    color: inherit;
+
+    &:hover {
+      color: inherit;
+    }
+  }
+}
