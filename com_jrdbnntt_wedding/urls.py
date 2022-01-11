@@ -15,8 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from .config import config, CONFIG_SECTION_DJANGO
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('website.urls')),
+    path('', include('website.urls'))
 ]
+
+if config.getboolean(CONFIG_SECTION_DJANGO, "ADMIN_SITE_ENABLED"):
+    urlpatterns.append(path('admin/', admin.site.urls))
+
