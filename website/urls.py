@@ -5,8 +5,12 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('event/', views.event, name='event'),
     path('user/', include([
-        path('sign_in/', views.user_sign_in, name='user/sign_in'),
-        path('register/', views.user_register, name='user/register'),
-        path('profile/', views.user_profile, name='user/profile'),
+        path('sign_in/', include([
+            path('', views.user.sign_in.index, name='user/sign_in'),
+            path('reservation/', views.user.sign_in.reservation, name='user/sign_in/reservation'),
+            path('user/', views.user.sign_in.user, name='user/sign_in/user'),
+        ])),
+        path('register/', views.user.register, name='user/register'),
+        path('profile/', views.user.profile, name='user/profile'),
     ]))
 ]

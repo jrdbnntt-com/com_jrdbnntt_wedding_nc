@@ -6,7 +6,7 @@
 # Ensure the process working directory is the directory of this file.
 #
 # Dependencies:
-# - python3 (3.7+), venv, source
+# - python3 (3.10+), venv, source
 # - node, nvm
 ########################################################################################################################
 set -e # Stop script if any command fails
@@ -19,7 +19,7 @@ echo "Installing Python runtime"
 # Initialize virtual environment
 if [ ! -d "./venv" ]; then
   echo "Initializing new venv..."
-  python3 -m venv "./venv"
+  python3.10 -m venv "./venv"
   source ./venv/bin/activate
 else
   echo "Existing venv found"

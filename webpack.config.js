@@ -12,175 +12,192 @@ const dirs = {
     node_modules: path.resolve(__dirname, './node_modules/')
 }
 
-module.exports = {
-    devtool: "source-map",
-    target: "web",
-    context: dirs.src,
-    entry: collectViewEntries(),
-    output: {
-        path: dirs.output,
-        filename: "[name].[contenthash].js",
-    },
-    optimization: {
-        minimize: true,
-        minimizer: [
-            '...',
-            new CssMinimizerPlugin(),
-        ],
-        splitChunks: {
-            chunks: 'async',
-            minSize: 20000,
-            minRemainingSize: 0,
-            minChunks: 1,
-            maxAsyncRequests: 30,
-            maxInitialRequests: 30,
-            enforceSizeThreshold: 50000,
-            cacheGroups: {
-                node_modules: {
-                    test: /[\\/]node_modules[\\/]/,
-                    priority: -10,
-                    reuseExistingChunk: true,
-                    name(module, chunks, cacheGroupKey) {
-                        const localNodeModulesDir = 'com_jrdbnntt_wedding/node_modules/'
-                        const moduleFilePath = module.identifier();
-                        let localNodePath = moduleFilePath.substring(moduleFilePath.lastIndexOf(localNodeModulesDir) + localNodeModulesDir.length);
-                        if (localNodePath.includes('|')) {
-                            localNodePath = localNodePath
-                                .split('/')
-                                .map((pathPart) => {
-                                    if (pathPart.includes('|')) {
-                                        return pathPart.substring(0, pathPart.indexOf('|'));
-                                    } else {
-                                        return pathPart;
-                                    }
-                                })
-                                .join('/');
-                        }
-                        return `${cacheGroupKey}/${localNodePath}`;
-                    },
-                    chunks: 'all',
-                },
-                default: {
-                    minChunks: 2,
-                    priority: -20,
-                    reuseExistingChunk: true
-                },
-            }
-        },
-    },
-    module: {
-        rules: [
-
-            // JS
+module.exports = (env, argv) => {
+    return {
+        devtool: "source-map",
+        target: "web",
+        context: dirs.src,
+        entry: Object.assign(
             {
-                test: /\.m?jsx?$/,
-                exclude: /(node_modules)/,
-                use: [
-                    // Uses Babel to convert future ES6 features to ES5 code so that it can be used in current browsers
-                    {
-                        loader: 'babel-loader',
-                        options: {
-                            presets: [
-                                '@babel/preset-env'
-                            ],
-                            sourceMaps: true,
-                            minified: true
-                        }
-                    }
-                ]
+                style_bootstrap: path.resolve(dirs.src, 'css/bootstrap.scss'),
+                style_templates_main: path.resolve(dirs.src, 'views/_templates/main/index.scss')
             },
-
-            // Sass -> CSS
-            {
-                test: /\.s[ac]ss$/i,
-                use: [
-                    // Minify CSS
-                    MiniCssExtractPlugin.loader,
-
-                    // Translates CSS into CommonJS
-                    "css-loader",
-
-                    // Resolves local url() calls to output paths
-                    {
-                        loader: "resolve-url-loader",
-                        options: {
-                            sourceMap: true
-                        }
+            collectViewEntries({
+                dependOn: [
+                    'style_bootstrap',
+                    'style_templates_main'
+                ]
+            })
+        ),
+        output: {
+            path: dirs.output,
+            filename: "js/[name].[contenthash].js",
+            publicPath: "/static/"
+        },
+        optimization: {
+            minimize: argv.mode !== 'development',
+            minimizer: [
+                '...',
+                new CssMinimizerPlugin(),
+            ],
+            splitChunks: {
+                chunks: 'async',
+                minSize: 20000,
+                minRemainingSize: 0,
+                minChunks: 1,
+                maxAsyncRequests: 30,
+                maxInitialRequests: 30,
+                enforceSizeThreshold: 50000,
+                cacheGroups: {
+                    node_modules: {
+                        test: /[\\/]node_modules[\\/]/,
+                        priority: -10,
+                        reuseExistingChunk: true,
+                        name(module, chunks, cacheGroupKey) {
+                            const localNodeModulesDir = 'com_jrdbnntt_wedding/node_modules/'
+                            const moduleFilePath = module.identifier();
+                            let localNodePath = moduleFilePath.substring(moduleFilePath.lastIndexOf(localNodeModulesDir) + localNodeModulesDir.length);
+                            if (localNodePath.includes('|')) {
+                                localNodePath = localNodePath
+                                    .split('/')
+                                    .map((pathPart) => {
+                                        if (pathPart.includes('|')) {
+                                            return pathPart.substring(0, pathPart.indexOf('|'));
+                                        } else {
+                                            return pathPart;
+                                        }
+                                    })
+                                    .join('/');
+                            }
+                            return `${cacheGroupKey}/${localNodePath}`;
+                        },
+                        chunks: 'all',
                     },
+                    default: {
+                        minChunks: 2,
+                        priority: -20,
+                        reuseExistingChunk: true
+                    },
+                }
+            },
+        },
+        module: {
+            rules: [
 
-                    // Processes CSS with PostCSS
-                    {
-                        loader: "postcss-loader",
-                        options: {
-                            postcssOptions: {
-                                plugins: [
-                                    // Automatically adds vendor prefixes based on Can I Use
-                                    "autoprefixer"
-                                ]
+                // JS
+                {
+                    test: /\.m?jsx?$/,
+                    exclude: /(node_modules)/,
+                    use: [
+                        // Uses Babel to convert future ES6 features to ES5 code so that it can be used in current browsers
+                        {
+                            loader: 'babel-loader',
+                            options: {
+                                presets: [
+                                    '@babel/preset-env'
+                                ],
+                                sourceMaps: true,
+                                minified: true
                             }
                         }
-                    },
+                    ]
+                },
 
-                    // Compiles Sass to CSS
-                    {
-                        loader: 'sass-loader',
-                        options: {
-                            sourceMap: true
+                // Sass -> CSS
+                {
+                    test: /\.s[ac]ss$/i,
+                    use: [
+                        // Load CSS
+                        (argv.mode === 'production' ? MiniCssExtractPlugin.loader : "style-loader"),
+
+                        // Translates CSS into CommonJS
+                        "css-loader",
+
+
+                        // Resolves local url() calls to output paths
+                        {
+                            loader: "resolve-url-loader",
+                            options: {
+                                sourceMap: true
+                            }
+                        },
+
+                        // Processes CSS with PostCSS
+                        {
+                            loader: "postcss-loader",
+                            options: {
+                                postcssOptions: {
+                                    plugins: [
+                                        // Automatically adds vendor prefixes based on Can I Use
+                                        "autoprefixer"
+                                    ]
+                                }
+                            }
+                        },
+
+                        // Compiles Sass to CSS
+                        {
+                            loader: 'sass-loader',
+                            options: {
+                                sourceMap: true
+                            }
                         }
+                    ],
+                },
+
+                // CSS
+                {
+                    test: /\.css$/i,
+                    use: [
+                        // Load CSS
+                        (argv.mode === 'production' ? MiniCssExtractPlugin.loader : "style-loader"),
+
+                        // Translates CSS into CommonJS
+                        "css-loader",
+                    ],
+                },
+
+                // Load fonts
+                {
+                    test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/i,
+                    type: 'asset/resource',
+                    generator: {
+                        filename: 'fonts/[name].[contenthash][ext]'
                     }
-                ],
-            },
-
-            // CSS
-            {
-                test: /\.css$/i,
-                use: [
-                    // Minify CSS
-                    MiniCssExtractPlugin.loader,
-
-                    // Translates CSS into CommonJS
-                    "css-loader",
-                ],
-            },
-
-            // Load fonts
-            {
-                test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/i,
-                type: 'asset/resource',
-                generator: {
-                    filename: 'fonts/[name].[contenthash][ext]'
                 }
-            }
+            ]
+        },
+        plugins: [
+            new BundleTracker({
+                path: dirs.output,
+                filename: './webpack-stats.json',
+                relativePath: true,
+                indent: 2
+            }),
+            new MiniCssExtractPlugin({
+                filename: 'css/[name].[contenthash].css'
+            })
         ]
-    },
-    plugins: [
-        new BundleTracker({
-            path: dirs.output,
-            filename: './webpack-stats.json',
-            relativePath: true,
-            indent: 2
-        }),
-        new MiniCssExtractPlugin({
-            filename: '[name].[contenthash].css'
-        })
-    ]
+    }
 }
 
 /**
  * Collect all view indexes and name them based on path
  * Entry names are the path from the src folder, with slashes replaced with underscores
  */
-function collectViewEntries() {
+function collectViewEntries(entryObjDefaults) {
     let entryMap = {};
     let entryFiles = glob.sync(dirs.src + "/views/**/index.js")
     entryFiles.sort();
     entryFiles.forEach((filePath) => {
         filePath = filePath.substring(dirs.src.length + 1);
-        if (!filePath.startsWith("_templates/")) {
+        if (!filePath.startsWith("views/_templates/")) {
             let entryKey = "entry_" + filePath.substring(0, filePath.lastIndexOf("/index.js"))
                 .split("/")
                 .join("_");
-            entryMap[entryKey] = "./" + filePath;
+            entryMap[entryKey] = Object.assign({
+                import: "./" + filePath
+            }, entryObjDefaults);
         }
     })
     return entryMap;

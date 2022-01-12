@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "clean": "rm -rf website/static/build",
-    "build": "webpack build --mode production",
-    "build-dev": "webpack build --mode development",
+    "build": "rm -rf website/static/build; webpack build --mode production",
+    "build-dev": "rm -rf website/static/build; webpack build --mode development",
     "watch-dev": "rm -rf website/static/build; webpack watch --mode development"
   },
   "author": "jrdbnntt@gmail.com",
@@ -26,6 +26,7 @@
     "resolve-url-loader": "^5.0.0-beta.1",
     "sass": "^1.46.0",
     "sass-loader": "^12.4.0",
+    "style-loader": "^3.3.1",
     "webpack": "^5.65.0",
     "webpack-bundle-tracker": "^1.4.0"
   },
