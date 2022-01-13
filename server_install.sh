@@ -6,7 +6,7 @@
 # Ensure the process working directory is the directory of this file.
 #
 # Dependencies:
-# - python3 (3.10+), venv, source
+# - python3.10 or python3.9 or python3.8, venv, source
 # - node, nvm
 ########################################################################################################################
 set -e # Stop script if any command fails
@@ -19,7 +19,16 @@ echo "Installing Python runtime"
 # Initialize virtual environment
 if [ ! -d "./venv" ]; then
   echo "Initializing new venv..."
-  python3.10 -m venv "./venv"
+  if command -v python3.10 &> /dev/null; then
+      python3.10 -m venv "./venv"
+  elif command -v python3.9 &> /dev/null; then
+      python3.9 -m venv "./venv"
+  elif command -v python3.8 &> /dev/null; then
+      python3.9 -m venv "./venv"
+  else
+    echo "Error! Python 3.8+ required"
+    exit 1
+  fi
   source ./venv/bin/activate
 else
   echo "Existing venv found"

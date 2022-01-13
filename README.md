@@ -5,9 +5,9 @@ Wedding website for Jared & Hannah!
 
 ## Project setup
 ### Dependencies
-* `python3` - Python 3.7+
-* `python3 -m venv`
-* `nvm`
+* `python3` - Python 3.8+
+* `python3 -m venv` - Shipped with Python 3
+* `nvm` - See https://github.com/nvm-sh/nvm
 
 ### Installation
 Run `./server_install.sh` to configure the Python and Node.js environments.

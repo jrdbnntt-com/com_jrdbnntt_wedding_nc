@@ -26,7 +26,7 @@ SECRET_KEY = config.get(CONFIG_SECTION_DJANGO, 'SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config.getboolean(CONFIG_SECTION_DJANGO, 'DEBUG')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = config.get(CONFIG_SECTION_DJANGO, 'ALLOWED_HOSTS').split(',')
 
 # Front-end file management with webpack
 STATICFILES_DIRS = (
@@ -143,3 +143,11 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Security
+SECURE_SSL_REDIRECT = config.getboolean(CONFIG_SECTION_DJANGO, 'SECURE_SSL_REDIRECT')
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_SECONDS = config.getint(CONFIG_SECTION_DJANGO, 'SECURE_HSTS_SECONDS')
+SECURE_HSTS_PRELOAD = config.getboolean(CONFIG_SECTION_DJANGO, 'SECURE_HSTS_PRELOAD')
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
