@@ -14,7 +14,8 @@ def set_navigation_options(request):
         NavOption('event', 'Event'),
         NavOption('user/sign_in', 'Sign in', require_auth=False),
         NavOption('user/register', 'Register', require_auth=False),
-        NavOption('user/profile', 'Profile', require_auth=True)
+        NavOption('user/profile', 'Profile', require_auth=True),
+        NavOption('user/sign_out', 'Sign Out', require_auth=True)
     ]
     for option in nav_options:
         if option.view == request.resolver_match.view_name:

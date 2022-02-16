@@ -10,6 +10,7 @@ urlpatterns = [
             path('reservation/', views.user.sign_in.reservation, name='user/sign_in/reservation'),
             path('user/', views.user.sign_in.user, name='user/sign_in/user'),
         ])),
+        path('sign_out', views.user.sign_out, name="user/sign_out"),
         path('register/', views.user.register, name='user/register'),
         path('profile/', views.user.profile, name='user/profile'),
     ]))

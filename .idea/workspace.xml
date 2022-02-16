@@ -5,14 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1412e4fd-cd2f-4404-8033-678bb8678153" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/com_jrdbnntt_wedding.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/com_jrdbnntt_wedding.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/com_jrdbnntt_wedding/config/base.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/com_jrdbnntt_wedding/config/base.cfg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/com_jrdbnntt_wedding/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/com_jrdbnntt_wedding/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/manage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server_install.sh" beforeDir="false" afterPath="$PROJECT_DIR$/server_install.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/context_processors.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/context_processors.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/forms/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/forms/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/forms/user/sign_in.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/forms/user/sign_in.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/src/views/_templates/forms/layout/standard.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/views/_templates/forms/layout/standard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/src/views/user/sign_in/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/views/user/sign_in/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/src/views/user/sign_in/user/form_username_password.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/src/views/user/sign_in/user/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/views/user/sign_in/user/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/views/user/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/views/user/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/views/user/sign_in.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/views/user/sign_in.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +64,7 @@
     <property name="add_unversioned_files" value="$PROJECT_DIR$/venv/lib/python3.7/site-packages/django/template/context.py&#10;/home/jbennett/dev/com_jrdbnntt_wedding/com_jrdbnntt_wedding/config/production.cfg&#10;/home/jbennett/dev/com_jrdbnntt_wedding/venv/lib/python3.7/site-packages/django/db/models/fields/related.py" />
     <property name="javascript.nodejs.core.library.configured.version" value="16.13.2" />
     <property name="javascript.nodejs.core.library.typings.version" value="16.11.19" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/com_jrdbnntt_wedding/config" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/website/src/views/_templates/forms/widgets" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -73,18 +77,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/website/src/views/_templates/forms/widgets" />
       <recent name="$PROJECT_DIR$/com_jrdbnntt_wedding/config" />
       <recent name="$PROJECT_DIR$/website/src/local_modules/bootstrap_custom" />
       <recent name="$PROJECT_DIR$/website/src/views/user/sign_in/user" />
       <recent name="$PROJECT_DIR$/website/src/views/user/sign_in/reservation" />
-      <recent name="$PROJECT_DIR$/website/src/views/user/sign_in" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/website" />
+      <recent name="$PROJECT_DIR$/website/core" />
+      <recent name="$PROJECT_DIR$/website/src/views/_templates/forms/widgets" />
       <recent name="$PROJECT_DIR$/website/src/js" />
       <recent name="$PROJECT_DIR$/website/src/local_modules" />
-      <recent name="$PROJECT_DIR$/website/src/css" />
-      <recent name="$PROJECT_DIR$/website/src/css/main" />
-      <recent name="$PROJECT_DIR$/website/src/views/_templates/forms/layout" />
     </key>
   </component>
   <component name="RunManager" selected="Python.Django Dev Server">
@@ -201,7 +205,7 @@
       <workItem from="1641873553540" duration="31223000" />
       <workItem from="1642028479294" duration="357000" />
       <workItem from="1642029144911" duration="1289000" />
-      <workItem from="1642030990132" duration="3066000" />
+      <workItem from="1642030990132" duration="20199000" />
     </task>
     <servers />
   </component>
@@ -227,7 +231,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/com_jrdbnntt_wedding/settings.py</url>
-          <line>147</line>
+          <line>149</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
@@ -239,6 +243,6 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/com_jrdbnntt_wedding$Run_Django_Dev_Server.coverage" NAME="Django Dev Server Coverage Results" MODIFIED="1641866721955" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/com_jrdbnntt_wedding$Django_Dev_Server.coverage" NAME="Django Dev Server Coverage Results" MODIFIED="1642034022178" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/com_jrdbnntt_wedding$Django_Dev_Server.coverage" NAME="Django Dev Server Coverage Results" MODIFIED="1644989392550" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

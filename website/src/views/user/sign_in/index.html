@@ -7,8 +7,8 @@
 
     <h1>TODO: {{page_title}}</h1>
     <ul>
-        <li><a href="{% url 'user/sign_in/reservation' %}">Sign in using reservation code</a></li>
-        <li><a href="{% url 'user/sign_in/user' %}">Sign in using user credentials</a></li>
+        <li><a href="{% url 'user/sign_in/reservation' %}{% if redirect %}?redirect=true{% endif %}">Sign in using reservation code</a></li>
+        <li><a href="{% url 'user/sign_in/user' %}{% if redirect %}?redirect=true{% endif %}">Sign in using user credentials</a></li>
     </ul>
 
 {% endblock %}

@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.forms',
     'webpack_loader',
     'website.apps.WebsiteConfig'
 ]
@@ -70,6 +71,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'com_jrdbnntt_wedding.urls'
 
+FORM_RENDERER = 'django.forms.renderers.TemplatesSetting'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',

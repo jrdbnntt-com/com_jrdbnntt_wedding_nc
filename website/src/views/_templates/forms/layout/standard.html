@@ -1,40 +1,35 @@
-{% csrf_token %}
+{% block header %}{% endblock %}
 
-<div class="form">
-    {% block header %}
+{% block error_summary %}
+    {% if form.subject.errors %}
+        <ol>
+            {% for error in form.subject.errors %}
+                <li><strong>{{ error|escape }}</strong></li>
+            {% endfor %}
+        </ol>
+    {% endif %}
+{% endblock %}
 
-    {% endblock %}
+{# Include the hidden fields #}
+{% for hidden in form.hidden_fields %}
+    {{ hidden }}
+{% endfor %}
 
-    {% block error_summary %}
-        {% if form.subject.errors %}
-            <ol>
-                {% for error in form.subject.errors %}
-                    <li><strong>{{ error|escape }}</strong></li>
-                {% endfor %}
-            </ol>
-        {% endif %}
-    {% endblock %}
-
-    {# Include the hidden fields #}
-    {% for hidden in form.hidden_fields %}
-        {{ hidden }}
+{# Include the visible fields #}
+{% block fields %}
+    {% for field in form %}
+        <div class="form-group">
+            {{ field.errors }}
+            {{ field.label_tag }} {{ field }}
+        </div>
     {% endfor %}
+{% endblock %}
 
-    {# Include the visible fields #}
-    {% block fields %}
-        {% for field in form %}
-            <div class="form-group">
-                {{ field.errors }}
-                {{ field.label_tag }} {{ field }}
-            </div>
-        {% endfor %}
-    {% endblock %}
+{% block submit %}
+    {% include '_templates/forms/buttons/submit.html' with button_text=btn_submit_text|default:"Submit" %}
+{% endblock %}
 
-    {% block submit %}
-        {% include '_templates/forms/buttons/submit.html' %}
-    {% endblock %}
+{% block footer %}
 
-    {% block footer %}
+{% endblock %}
 
-    {% endblock %}
-</div>
