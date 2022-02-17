@@ -10,6 +10,7 @@ print("Configuring for runtime: ", RUNTIME_ENVIRONMENT)
 # Read config for environment
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 CONFIG_SECTION_DJANGO = 'django'
+CONFIG_SECTION_RECAPTCHA = 'recaptcha'
 config = ConfigParser()
 CONFIG_FILE_DIR = Path(BASE_DIR, 'com_jrdbnntt_wedding/config')
 CONFIG_FILES = {

@@ -21,8 +21,8 @@
 
     {# Code #}
     {% load render_bundle from webpack_loader %}
-    {% render_bundle 'style_bootstrap' 'css' %}
-    {% render_bundle 'style_templates_main' 'css' %}
+    {% render_bundle 'style_bootstrap' %}
+    {% render_bundle 'style_templates_main' %}
     {% block head_code %}{% endblock %}
 </head>
 <body>

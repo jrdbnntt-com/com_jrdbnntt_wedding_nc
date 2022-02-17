@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 import os
 from pathlib import Path
-from .config import config, CONFIG_SECTION_DJANGO
+from .config import config, CONFIG_SECTION_DJANGO, CONFIG_SECTION_RECAPTCHA
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -153,3 +153,9 @@ SECURE_HSTS_SECONDS = config.getint(CONFIG_SECTION_DJANGO, 'SECURE_HSTS_SECONDS'
 SECURE_HSTS_PRELOAD = config.getboolean(CONFIG_SECTION_DJANGO, 'SECURE_HSTS_PRELOAD')
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
+
+# reCAPTCHA
+RECAPTCHA_SITE_KEY = config.get(CONFIG_SECTION_RECAPTCHA, 'SITE_KEY')
+RECAPTCHA_SECRET_KEY = config.get(CONFIG_SECTION_RECAPTCHA, 'SECRET_KEY')
+if RECAPTCHA_SECRET_KEY is None or RECAPTCHA_SECRET_KEY == "":
+    raise AssertionError("Invalid configuration: Missing {}.{}".format(CONFIG_SECTION_RECAPTCHA, 'SECRET_KEY'))

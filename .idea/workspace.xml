@@ -6,16 +6,20 @@
   <component name="ChangeListManager">
     <list default="true" id="1412e4fd-cd2f-4404-8033-678bb8678153" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com_jrdbnntt_wedding/config/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/com_jrdbnntt_wedding/config/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com_jrdbnntt_wedding/config/base.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/com_jrdbnntt_wedding/config/base.cfg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/com_jrdbnntt_wedding/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/com_jrdbnntt_wedding/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/auth/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/auth/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/context_processors.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/context_processors.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/forms/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/forms/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/forms/user/sign_in.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/forms/user/sign_in.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/src/views/_templates/forms/layout/standard.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/views/_templates/forms/layout/standard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/views/user/sign_in/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/views/user/sign_in/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/views/user/sign_in/user/form_username_password.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/src/views/_templates/main/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/views/_templates/main/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/src/views/user/sign_in/user/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/views/user/sign_in/user/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/views/user/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/views/user/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/src/views/user/sign_in/user/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/views/user/sign_in/user/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/views/decorators/auth/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/views/decorators/auth/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/views/user/sign_in.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/views/user/sign_in.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -64,7 +68,7 @@
     <property name="add_unversioned_files" value="$PROJECT_DIR$/venv/lib/python3.7/site-packages/django/template/context.py&#10;/home/jbennett/dev/com_jrdbnntt_wedding/com_jrdbnntt_wedding/config/production.cfg&#10;/home/jbennett/dev/com_jrdbnntt_wedding/venv/lib/python3.7/site-packages/django/db/models/fields/related.py" />
     <property name="javascript.nodejs.core.library.configured.version" value="16.13.2" />
     <property name="javascript.nodejs.core.library.typings.version" value="16.11.19" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/website/src/views/_templates/forms/widgets" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/website/src/views/_templates/forms/buttons" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -77,11 +81,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/website/src/views/_templates/forms/buttons" />
       <recent name="$PROJECT_DIR$/website/src/views/_templates/forms/widgets" />
       <recent name="$PROJECT_DIR$/com_jrdbnntt_wedding/config" />
       <recent name="$PROJECT_DIR$/website/src/local_modules/bootstrap_custom" />
       <recent name="$PROJECT_DIR$/website/src/views/user/sign_in/user" />
-      <recent name="$PROJECT_DIR$/website/src/views/user/sign_in/reservation" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/website" />
@@ -91,7 +95,7 @@
       <recent name="$PROJECT_DIR$/website/src/local_modules" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.Django Dev Server">
+  <component name="RunManager" selected="npm.build">
     <configuration name="Django Dev Server" type="PythonConfigurationType" factoryName="Python">
       <module name="com_jrdbnntt_wedding" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -185,11 +189,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.build" />
+        <item itemvalue="npm.watch-dev" />
         <item itemvalue="Shell Script.server_start.sh" />
         <item itemvalue="Shell Script.server_install.sh" />
         <item itemvalue="npm.clean" />
-        <item itemvalue="npm.watch-dev" />
-        <item itemvalue="npm.build" />
       </list>
     </recent_temporary>
   </component>
@@ -205,7 +209,7 @@
       <workItem from="1641873553540" duration="31223000" />
       <workItem from="1642028479294" duration="357000" />
       <workItem from="1642029144911" duration="1289000" />
-      <workItem from="1642030990132" duration="20199000" />
+      <workItem from="1642030990132" duration="38651000" />
     </task>
     <servers />
   </component>
@@ -243,6 +247,6 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/com_jrdbnntt_wedding$Run_Django_Dev_Server.coverage" NAME="Django Dev Server Coverage Results" MODIFIED="1641866721955" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/com_jrdbnntt_wedding$Django_Dev_Server.coverage" NAME="Django Dev Server Coverage Results" MODIFIED="1644989392550" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/com_jrdbnntt_wedding$Django_Dev_Server.coverage" NAME="Django Dev Server Coverage Results" MODIFIED="1645086629345" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
