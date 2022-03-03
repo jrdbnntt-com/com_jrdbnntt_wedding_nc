@@ -1,0 +1,14 @@
+{% load reservation %}
+<p>Reservation Access Code: {{ reservation.access_code }}</p>
+<table class="table table-responsive">
+    <tr>
+        <th>Name</th>
+        <th>RSVP Status</th>
+    </tr>
+    {% for guest in guests %}
+        <tr>
+            <td>{% guest_full_name guest %}</td>
+            <td>{% guest_rsvp_summary guest %}</td>
+        </tr>
+    {% endfor %}
+</table>

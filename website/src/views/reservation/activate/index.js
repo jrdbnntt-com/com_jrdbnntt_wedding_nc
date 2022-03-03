@@ -1,11 +1,11 @@
-import "../../../../views/_templates/main/index"
+import "../../../views/_templates/main/index"
 import "./index.scss"
 import * as $ from "jquery";
-import {attach} from "../../../../js/recaptcha";
+import {attach} from "../../../js/recaptcha";
 
 // Attach recaptcha to submit button
 $(document).ready(() => {
-    let $form = $('#form_sign_in');
+    let $form = $('#form_activate');
     let $hiddenRecaptchaTokenInput = $form.find('input[name="recaptcha_token"]');
     try {
         attach($form, $hiddenRecaptchaTokenInput);

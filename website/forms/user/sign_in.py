@@ -1,4 +1,5 @@
 from django import forms
+
 from .. import StandardForm, widgets
 
 
@@ -10,5 +11,17 @@ class UsernamePasswordForm(StandardForm):
     def clear_sensitive_form_data(self):
         if 'password' in self.cleaned_data:
             del self.cleaned_data['password']
+        if 'recaptcha_token' in self.cleaned_data:
+            del self.cleaned_data['recaptcha_token']
+
+
+class ReservationCodeForm(StandardForm):
+    recaptcha_token = forms.CharField(widget=forms.HiddenInput())
+    reservation_code = forms.CharField(label="Reservation Code", max_length=10, required=True,
+                                       widget=widgets.TextInput())
+
+    def clear_sensitive_form_data(self):
+        if 'reservation_code' in self.cleaned_data:
+            del self.cleaned_data['reservation_code']
         if 'recaptcha_token' in self.cleaned_data:
             del self.cleaned_data['recaptcha_token']

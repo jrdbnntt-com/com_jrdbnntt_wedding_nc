@@ -1,5 +1,5 @@
-from django.urls import reverse
 from django.conf import settings
+from django.urls import reverse
 
 
 def add_global_vars(request):
@@ -42,4 +42,3 @@ class NavOption:
         self.active = False
         self.show = True
         self.href = reverse(self.view)
-

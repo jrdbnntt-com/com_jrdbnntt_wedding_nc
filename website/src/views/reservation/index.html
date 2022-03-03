@@ -1,0 +1,11 @@
+{% extends "_templates/main/index.html" %}
+{% load render_bundle from webpack_loader %}
+{% block head_code %}
+    {% render_bundle 'entry_views_user_reservation' %}
+{% endblock %}
+{% block content %}
+
+    <h1>TODO: {{page_title}}</h1>
+    {% include '_templates/reservation/reservation_summary.html' with reservation=reservation guests=guests %}
+
+{% endblock %}

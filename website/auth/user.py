@@ -1,6 +1,8 @@
-from django.shortcuts import reverse
 from urllib.parse import urlencode
+
 from django.http import HttpResponseRedirect
+from django.shortcuts import reverse
+
 from ..session import SESSION_KEY_POST_SIGN_IN_REDIRECT
 
 
@@ -16,4 +18,3 @@ def redirect_for_signin_with_return(request, post_sign_in_redirect_view, *url_pa
 
     # Redirect to the sign in index page with ?redirect=true
     return HttpResponseRedirect(reverse("user/sign_in") + "?redirect=true")
-

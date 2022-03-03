@@ -24,7 +24,17 @@ class Guest(models.Model):
     updated_at = models.DateTimeField(default=datetime.now, editable=False)
 
     def __str__(self):
-        return "{} {}".format(self.first_name, self.last_name, self.rsvp_answer)
+        return "{} ({})".format(self.full_name(), self.rsvp_answer_display())
+
+    def full_name(self):
+        return "{} {}".format(self.first_name, self.last_name)
+
+    def rsvp_answer_display(self):
+        if self.rsvp_answer is None:
+            return "TBD"
+        if self.rsvp_answer:
+            return "Going"
+        return "Not Going"
 
 
 @admin.register(Guest)

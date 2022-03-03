@@ -1,8 +1,9 @@
+import logging
+
+import requests
+from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.http import HttpRequest
-import requests
-import logging
-from django.conf import settings
 
 logger = logging.getLogger(__name__)
 
@@ -11,6 +12,7 @@ MIN_RECAPTCHA_SCORE = 0.1 if settings.DEBUG else 0.5
 # reCAPTCHA actions to use
 RECAPTCHA_ACTION_SIGN_IN_USER = "sign_in_user"
 RECAPTCHA_ACTION_SIGN_IN_RESERVATION = "sign_in_reservation"
+RECAPTCHA_ACTION_RESERVATION_ACTIVATE = "reservation_activate"
 
 
 class RecaptchaCheckError(Exception):
@@ -50,7 +52,8 @@ def validate_recaptcha_token(request: HttpRequest, token: str, action: str):
         try:
             verify_response = RecaptchaCheckResponse(resp.json())
         except Exception as e:
-            raise RecaptchaCheckError("failed to read recaptcha verify response as json (response='{}')".format(resp.raw)) from e
+            raise RecaptchaCheckError(
+                "failed to read recaptcha verify response as json (response='{}')".format(resp.raw)) from e
 
         # Validate the attempt based on Google's verify response
         if len(verify_response.error_codes) != 0:
@@ -58,15 +61,21 @@ def validate_recaptcha_token(request: HttpRequest, token: str, action: str):
         if not verify_response.success:
             raise ValidationError('invalid recaptcha token')
         if verify_response.score < MIN_RECAPTCHA_SCORE:
-            raise ValidationError('reCAPTCHA verify score ({}) lower than the minimum required score ({})'.format(verify_response.score, MIN_RECAPTCHA_SCORE))
+            raise ValidationError(
+                'reCAPTCHA verify score ({}) lower than the minimum required score ({})'.format(verify_response.score,
+                                                                                                MIN_RECAPTCHA_SCORE))
         if verify_response.action != action:
-            raise ValidationError("reCAPTCHA token expected for action '{}', but token's action was '{}'".format(action, verify_response.action))
+            raise ValidationError("reCAPTCHA token expected for action '{}', but "
+                                  "token's action was '{}'".format(action,
+                                                                   verify_response.action))
 
         request_host = request.get_host()
         if ":" in request_host:
             request_host = request_host.split(':')[0]
         if verify_response.hostname != request_host:
-            raise ValidationError("reCAPTCHA token not evaluated from the same host ({}) as request ({})".format(verify_response.hostname, request_host))
+            raise ValidationError(
+                "reCAPTCHA token not evaluated from the same host ({}) as request ({})".format(verify_response.hostname,
+                                                                                               request_host))
 
     except ValidationError as e:
         raise ValidationError('reCAPTCHA check failed') from e
@@ -78,6 +87,6 @@ def validate_recaptcha_token(request: HttpRequest, token: str, action: str):
         # Wrap and log the unexpected error but still return the same generic message
         try:
             raise RecaptchaCheckError("unexpected error when checking reCAPTCHA") from e
-        except RecaptchaCheckError as e:
-            logger.error(e, exc_info=True)
+        except RecaptchaCheckError as er:
+            logger.error(er, exc_info=True)
         raise ValidationError('reCAPTCHA check failed') from e
