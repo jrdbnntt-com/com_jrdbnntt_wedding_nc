@@ -1,6 +1,6 @@
 from django.contrib import admin
-from . import Reservation
-from ..guest import Guest
+from website.models.reservation import Reservation
+from website.models.guest import Guest
 
 
 @admin.register(Reservation)

@@ -1,7 +1,7 @@
 from django.core.mail import EmailMessage
 from django.conf import settings
 from urllib.parse import urljoin
-from ...models.email_template import EmailTemplate
+from website.models.email_template import EmailTemplate
 
 
 def build_site_link(path: str) -> str:

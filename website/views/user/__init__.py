@@ -1,7 +1,7 @@
 from django.contrib.auth import logout
 from django.shortcuts import render, redirect
 
-from ..decorators.auth import require_auth_or_redirect_with_return
+from website.views.decorators.auth import require_auth_or_redirect_with_return
 
 
 @require_auth_or_redirect_with_return

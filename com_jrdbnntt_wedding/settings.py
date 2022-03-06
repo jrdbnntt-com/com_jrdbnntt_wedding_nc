@@ -13,8 +13,8 @@ import ntpath
 import os
 import pathlib
 from pathlib import Path
-from . import config
-from . import logs
+from com_jrdbnntt_wedding import config
+from com_jrdbnntt_wedding import logs
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent

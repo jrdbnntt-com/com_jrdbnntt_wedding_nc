@@ -1,6 +1,6 @@
 from django import template
 
-from ..models.guest import Guest
+from website.models.guest import Guest
 
 register = template.Library()
 

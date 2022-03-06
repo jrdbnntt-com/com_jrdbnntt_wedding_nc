@@ -1,6 +1,6 @@
 from django import forms
 
-from .. import StandardForm, widgets
+from website.forms import StandardForm, widgets
 
 
 class UsernamePasswordForm(StandardForm):

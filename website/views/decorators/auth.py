@@ -1,5 +1,5 @@
 from functools import wraps
-from ...core.auth.user import redirect_for_signin_with_return
+from website.core.auth.user import redirect_for_signin_with_return
 from django.urls import resolve
 from django.shortcuts import redirect
 

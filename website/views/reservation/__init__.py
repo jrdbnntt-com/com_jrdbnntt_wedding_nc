@@ -4,13 +4,13 @@ from django.core.exceptions import ValidationError
 from django.http.request import HttpRequest
 from django.shortcuts import render, redirect
 
-from ..decorators.reservation import require_activated_reservation, require_unactivated_reservation
-from ...core.auth import recaptcha
-from ...core import mail
-from ...forms.reservation import ActivateForm
-from ...models import reservation
-from ...models.guest import Guest
-from ...core.session import SESSION_KEY_RESERVATION_ID
+from website.views.decorators.reservation import require_activated_reservation, require_unactivated_reservation
+from website.core.auth import recaptcha
+from website.core import mail
+from website.forms.reservation import ActivateForm
+from website.models import reservation
+from website.models.guest import Guest
+from website.core.session import SESSION_KEY_RESERVATION_ID
 
 
 @require_activated_reservation()

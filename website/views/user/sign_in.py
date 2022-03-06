@@ -4,11 +4,11 @@ from django.contrib.auth import authenticate, login
 from django.core.exceptions import ValidationError
 from django.shortcuts import render, redirect
 
-from ..decorators.auth import require_unauthenticated
-from ...core.auth import recaptcha
-from ...forms.user.sign_in import UsernamePasswordForm, ReservationCodeForm
-from ...core.session import SESSION_KEY_POST_SIGN_IN_REDIRECT, SESSION_KEY_RESERVATION_ID
-from ...models.reservation import Reservation
+from website.views.decorators.auth import require_unauthenticated
+from website.core.auth import recaptcha
+from website.forms.user.sign_in import UsernamePasswordForm, ReservationCodeForm
+from website.core.session import SESSION_KEY_POST_SIGN_IN_REDIRECT, SESSION_KEY_RESERVATION_ID
+from website.models.reservation import Reservation
 
 logger = logging.getLogger(__name__)
 

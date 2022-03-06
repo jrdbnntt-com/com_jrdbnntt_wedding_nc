@@ -1,4 +1,3 @@
-from django.contrib import admin
-from .models.reservation.admin import ReservationAdmin
-from .models.guest import GuestAdmin
-from .models.email_template import EmailTemplateAdmin
+import website.models.reservation.admin
+import website.models.guest
+import website.models.email_template

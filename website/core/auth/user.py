@@ -3,7 +3,7 @@ from urllib.parse import urlencode
 from django.http import HttpResponseRedirect
 from django.shortcuts import reverse
 
-from ..session import SESSION_KEY_POST_SIGN_IN_REDIRECT
+from website.core.session import SESSION_KEY_POST_SIGN_IN_REDIRECT
 
 
 def redirect_for_signin_with_return(request, post_sign_in_redirect_view, *url_path_args, **url_params):

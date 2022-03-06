@@ -1,4 +1,4 @@
-from . import StandardForm
+from website.forms import StandardForm
 from django import forms
 from django.core.exceptions import ValidationError
 

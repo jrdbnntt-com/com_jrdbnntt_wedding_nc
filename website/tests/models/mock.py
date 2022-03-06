@@ -1,8 +1,8 @@
 import random
 
 from django.test import TestCase
-from ...models.reservation import Reservation
-from ...models.guest import Guest
+from website.models.reservation import Reservation
+from website.models.guest import Guest
 import string
 import secrets
 import names

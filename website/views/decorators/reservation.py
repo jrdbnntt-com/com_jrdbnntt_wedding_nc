@@ -2,9 +2,9 @@ from functools import wraps
 
 from django.shortcuts import redirect
 
-from .auth import require_auth_or_redirect_with_return, require_unauthenticated
-from ...models.reservation import Reservation
-from ...core.session import SESSION_KEY_RESERVATION_ID
+from website.views.decorators.auth import require_auth_or_redirect_with_return, require_unauthenticated
+from website.models.reservation import Reservation
+from website.core.session import SESSION_KEY_RESERVATION_ID
 
 
 def require_activated_reservation(decorated_view_func=None):
