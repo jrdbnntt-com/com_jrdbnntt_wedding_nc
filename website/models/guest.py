@@ -56,6 +56,7 @@ class GuestAdmin(admin.ModelAdmin):
         'assigned_table',
         'assigned_table_seat',
     )
+    list_filter = ('rsvp_answer', 'hidden')
 
     @staticmethod
     def reservation__access_code(obj: Guest):
