@@ -3,6 +3,7 @@ com_jrdbnntt_wedding/config/development.cfg
 com_jrdbnntt_wedding/config/production.cfg
 com_jrdbnntt_wedding/config/test.cfg
 webpack-stats.json
+.idea/workspace.xml
 
 ### JetBrains template
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio, WebStorm and Rider

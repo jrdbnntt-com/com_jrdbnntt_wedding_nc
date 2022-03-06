@@ -2,12 +2,14 @@
 {% load render_bundle from webpack_loader %}
 {% block head_code %}
     {% render_bundle 'entry_views_user_sign_in_reservation' %}
+    {% include "_templates/forms/recaptcha_script.html" with recaptcha_site_key=recaptcha_site_key recaptcha_action=recaptcha_action %}
 {% endblock %}
 {% block content %}
 
-    <h1>TODO: {{page_title}}</h1>
+    <h1>TODO: {{ page_title }}</h1>
 
-    <form id="form_sign_in" action="{% url 'user/sign_in/reservation' %}{% if redirect %}?redirect=true{% endif %}" method="post">
+    <form id="form_sign_in" action="{% url 'user/sign_in/reservation' %}{% if redirect %}?redirect=true{% endif %}"
+          method="post">
         {% csrf_token %}
         {{ form }}
     </form>

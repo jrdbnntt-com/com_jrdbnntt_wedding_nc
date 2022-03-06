@@ -51,17 +51,17 @@ def reservation(request):
 
                 success_view = determine_sign_in_success_view(request, "reservation")
                 if res.user is None:
-                    redirect("reservation/activate")
+                    return redirect("reservation/activate")
                 else:
                     login(request, res.user)
-                    redirect(success_view)
+                    return redirect(success_view)
             except ValidationError as e:
                 validation_error = e
+        if settings.DEBUG:
+            logger.debug("reservation login failed with form data '%s'" % form.cleaned_data)
         form.clear_sensitive_form_data()
         if validation_error is not None:
             form.add_error(None, validation_error.message)
-        if settings.DEBUG:
-            logger.debug("reservation login failed with form data '%s'" % form.cleaned_data)
     else:
         form = ReservationCodeForm()
     return render(request, "user/sign_in/reservation/index.html", {
@@ -96,11 +96,11 @@ def user(request):
                     raise ValidationError("Invalid username or password")
             except ValidationError as e:
                 validation_error = e
+        if settings.DEBUG:
+            logger.debug("user login failed with form data '%s'" % form.cleaned_data)
         form.clear_sensitive_form_data()
         if validation_error is not None:
             form.add_error(None, validation_error.message)
-        if settings.DEBUG:
-            logger.debug("user login failed with form data '%s'" % form.cleaned_data)
     else:
         form = UsernamePasswordForm()
     return render(request, "user/sign_in/user/index.html", {

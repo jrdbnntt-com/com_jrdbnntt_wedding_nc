@@ -4,13 +4,13 @@ from django.core.exceptions import ValidationError
 from django.http.request import HttpRequest
 from django.shortcuts import render, redirect
 
-from website.views.decorators.reservation import require_activated_reservation, require_unactivated_reservation
-from website.core.auth import recaptcha
 from website.core import mail
-from website.forms.reservation import ActivateForm
-from website.models import reservation
-from website.models.guest import Guest
+from website.core.auth import recaptcha
 from website.core.session import SESSION_KEY_RESERVATION_ID
+from website.forms.reservation import ActivateForm
+from website.models.guest import Guest
+from website.models.reservation import Reservation, activate_reservation
+from website.views.decorators.reservation import require_activated_reservation, require_unactivated_reservation
 
 
 @require_activated_reservation()
@@ -40,7 +40,7 @@ def activate(request: HttpRequest, reservation_id: int):
                 form.add_error('email', 'Email already in use, please use another one')
             else:
                 # Activate
-                res, new_user = reservation.activate_reservation(reservation_id, email)
+                res, new_user = activate_reservation(reservation_id, email)
                 # Authenticate session
                 login(request, new_user)
                 request.session[SESSION_KEY_RESERVATION_ID] = res.id
@@ -66,9 +66,10 @@ def activate(request: HttpRequest, reservation_id: int):
 @require_activated_reservation
 def index(request: HttpRequest, reservation_id: int):
     # TODO make a page that summarizes the reservation
+    reservation = Reservation.objects.filter(id=reservation_id).get()
     guests = Guest.objects.filter(reservation__id=reservation_id, hidden=False).all()
     return render(request, "reservation/index.html", {
         'page_title': 'Reservation',
+        'reservation': reservation,
         'guests': guests
     })
-

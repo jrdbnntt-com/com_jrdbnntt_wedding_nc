@@ -2,9 +2,9 @@ from functools import wraps
 
 from django.shortcuts import redirect
 
-from website.views.decorators.auth import require_auth_or_redirect_with_return, require_unauthenticated
-from website.models.reservation import Reservation
 from website.core.session import SESSION_KEY_RESERVATION_ID
+from website.models.reservation import Reservation
+from website.views.decorators.auth import require_auth_or_redirect_with_return, require_unauthenticated
 
 
 def require_activated_reservation(decorated_view_func=None):
@@ -15,7 +15,7 @@ def require_activated_reservation(decorated_view_func=None):
             res_id = None
             if SESSION_KEY_RESERVATION_ID in request.session:
                 # Get reservation from session
-                res_id = SESSION_KEY_RESERVATION_ID
+                res_id = request.session[SESSION_KEY_RESERVATION_ID]
                 if Reservation.objects.filter(id=res_id, user=request.user).count() != 1:
                     # Invalid id, remove from session
                     res_id = None
@@ -45,12 +45,11 @@ def require_unactivated_reservation(decorated_view_func=None, redirect_view="use
         def _wrapped_view(request, *args, **kwargs):
             if SESSION_KEY_RESERVATION_ID in request.session:
                 # Get reservation from session
-                res_id = SESSION_KEY_RESERVATION_ID
+                res_id = request.session[SESSION_KEY_RESERVATION_ID]
                 if Reservation.objects.filter(id=res_id, activated=False, user__isnull=True).count() == 1:
-                    view_func(request, reservation_id=res_id, *args, **kwargs)
+                    return view_func(request, reservation_id=res_id, *args, **kwargs)
                 else:
                     # Invalid id, remove from session
-                    res_id = None
                     del request.session[SESSION_KEY_RESERVATION_ID]
                     request.session.modified = True
             return redirect(redirect_view)

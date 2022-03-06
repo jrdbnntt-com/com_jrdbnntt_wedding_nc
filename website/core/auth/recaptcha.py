@@ -53,7 +53,7 @@ def validate_recaptcha_token(request: HttpRequest, token: str, action: str):
             verify_response = RecaptchaCheckResponse(resp.json())
         except Exception as e:
             raise RecaptchaCheckError(
-                "failed to read recaptcha verify response as json (response='{}')".format(resp.raw)) from e
+                "failed to read recaptcha verify response as json (response='{}')".format(resp.text)) from e
 
         # Validate the attempt based on Google's verify response
         if len(verify_response.error_codes) != 0:
@@ -66,8 +66,7 @@ def validate_recaptcha_token(request: HttpRequest, token: str, action: str):
                                                                                                 MIN_RECAPTCHA_SCORE))
         if verify_response.action != action:
             raise ValidationError("reCAPTCHA token expected for action '{}', but "
-                                  "token's action was '{}'".format(action,
-                                                                   verify_response.action))
+                                  "token's action was '{}'".format(action, verify_response.action))
 
         request_host = request.get_host()
         if ":" in request_host:

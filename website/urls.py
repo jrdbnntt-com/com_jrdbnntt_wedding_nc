@@ -19,9 +19,9 @@ urlpatterns = [
         path('sign_out', user.sign_out, name="user/sign_out"),
         path('profile/', user.profile, name='user/profile'),
     ])),
-    path('reservation', include([
-        path('', reservation.index),
-        path('activate/', reservation.activate)
+    path('reservation/', include([
+        path('', reservation.index, name='reservation'),
+        path('activate/', reservation.activate, name='reservation/activate')
     ]))
 ]
 

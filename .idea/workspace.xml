@@ -5,7 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1412e4fd-cd2f-4404-8033-678bb8678153" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/core/auth/recaptcha.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/core/auth/recaptcha.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/src/views/reservation/activate/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/views/reservation/activate/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/src/views/reservation/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/views/reservation/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/src/views/user/sign_in/reservation/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/views/user/sign_in/reservation/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/views/decorators/reservation.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/views/decorators/reservation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/views/reservation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/views/reservation/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/views/user/sign_in.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/views/user/sign_in.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -224,7 +233,7 @@
       <workItem from="1642029144911" duration="1289000" />
       <workItem from="1642030990132" duration="51103000" />
       <workItem from="1646508891412" duration="2229000" />
-      <workItem from="1646516713284" duration="41108000" />
+      <workItem from="1646516713284" duration="44433000" />
     </task>
     <servers />
   </component>
@@ -241,7 +250,24 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="CUSTOM_BOOLEAN_PROPERTIES">
+                <map>
+                  <entry key="Show.Git.Branches" value="true" />
+                </map>
+              </option>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -255,6 +281,6 @@
     <SUITE FILE_PATH="coverage/com_jrdbnntt_wedding$Run_Django_Dev_Server.coverage" NAME="Django Dev Server Coverage Results" MODIFIED="1641866721955" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/com_jrdbnntt_wedding$python_manage_py_test_website_tests_models_mock_MockTest_test_delete_all_reservations.coverage" NAME="python manage.py test website.tests.models.mock.MockTest.test_delete_all_reservations Coverage Results" MODIFIED="1646531726552" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/com_jrdbnntt_wedding$Test__website_tests_models_mock_MockTest_test_install_100_mock_reservations.coverage" NAME="Test: website.tests.models.mock.MockTest.test_install_100_mock_reservations Coverage Results" MODIFIED="1646547758692" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/com_jrdbnntt_wedding$Django_Dev_Server.coverage" NAME="Django Dev Server Coverage Results" MODIFIED="1646549888519" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/com_jrdbnntt_wedding$Django_Dev_Server.coverage" NAME="Django Dev Server Coverage Results" MODIFIED="1646558815259" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
