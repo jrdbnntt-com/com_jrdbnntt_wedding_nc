@@ -4,23 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1412e4fd-cd2f-4404-8033-678bb8678153" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/com_jrdbnntt_wedding/config/base.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/com_jrdbnntt_wedding/config/base.cfg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/com_jrdbnntt_wedding/logs.py" beforeDir="false" afterPath="$PROJECT_DIR$/com_jrdbnntt_wedding/logs.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/com_jrdbnntt_wedding/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/com_jrdbnntt_wedding/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/context_processors.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/context_processors.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/core/auth/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/core/auth/user.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/core/mail/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/core/mail/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/models/email_template.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/models/email_template.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/models/guest.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/models/guest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/models/reservation/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/models/reservation/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/tests/models/mock.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/tests/models/mock.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/views/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/views/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/views/user/sign_in.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/views/user/sign_in.py" afterDir="false" />
-    </list>
+    <list default="true" id="1412e4fd-cd2f-4404-8033-678bb8678153" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -238,7 +222,7 @@
       <workItem from="1642029144911" duration="1289000" />
       <workItem from="1642030990132" duration="51103000" />
       <workItem from="1646508891412" duration="2229000" />
-      <workItem from="1646516713284" duration="33902000" />
+      <workItem from="1646516713284" duration="34213000" />
     </task>
     <servers />
   </component>

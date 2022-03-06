@@ -17,5 +17,8 @@ fi
 
 source ./venv/bin/activate
 
+echo "Refreshing SendGrid EmailTemplates..."
+python3 manage.py refresh_email_templates
+
 echo "Starting Django ASGI application with Daphne..."
 python3 -m daphne com_jrdbnntt_wedding.asgi:application "$@"
