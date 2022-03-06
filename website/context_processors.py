@@ -14,6 +14,7 @@ def set_navigation_options(request):
     nav_options = [
         NavOption('home', 'Home'),
         NavOption('event', 'Event'),
+        NavOption('reservation/rsvp', 'RSVP'),
         NavOption('user/sign_in', 'Sign in', require_auth=False),
         NavOption('user/profile', 'Profile', require_auth=True),
     ]

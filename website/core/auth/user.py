@@ -6,9 +6,12 @@ from django.shortcuts import reverse
 from website.core.session import SESSION_KEY_POST_SIGN_IN_REDIRECT
 
 
-def redirect_for_signin_with_return(request, post_sign_in_redirect_view, sign_in_view="user/sign_in", *url_path_args, **url_params):
+def redirect_for_signin_with_return(request, post_sign_in_redirect_view, sign_in_view="user/sign_in",
+                                    request_args=None,
+                                    request_kwargs=None,
+                                    **url_params):
     # Save return url to session for secure retrieval later
-    post_sign_in_redirect_url = reverse(post_sign_in_redirect_view, args=url_path_args)
+    post_sign_in_redirect_url = reverse(post_sign_in_redirect_view, args=request_args, kwargs=request_kwargs)
     url_params = urlencode(url_params)
     if len(url_params) > 0:
         post_sign_in_redirect_url += "?" + url_params

@@ -1,13 +1,13 @@
 {% extends "_templates/main/index.html" %}
 {% load render_bundle from webpack_loader %}
 {% block head_code %}
-    {% render_bundle 'entry_views_user_reservation_edit' %}
+    {% render_bundle 'entry_views_reservation_rsvp' %}
 {% endblock %}
 {% block content %}
 
-    <h1>TODO: {{page_title}}</h1>
+    <h1>TODO: {{ page_title }}</h1>
 
-    <form action="{% url 'reservation/edit' %}" method="post">
+    <form action="{% url 'reservation/rsvp' %}" method="post">
         {% csrf_token %}
         {{ form }}
     </form>

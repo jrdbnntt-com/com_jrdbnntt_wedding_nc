@@ -9,7 +9,7 @@ from website.views.decorators.auth import require_auth_or_redirect_with_return, 
 
 def require_activated_reservation(decorated_view_func=None):
     def decorator(view_func):
-        @require_auth_or_redirect_with_return()
+        @require_auth_or_redirect_with_return(sign_in_view="user/sign_in/reservation")
         @wraps(view_func)
         def _wrapped_view(request, *args, **kwargs):
             res_id = None

@@ -1,23 +1,24 @@
+from django.http.request import HttpRequest
 from django.shortcuts import render, redirect
 
 from website.core.auth.user import redirect_for_signin_with_return
 from website.views.decorators.auth import require_auth_or_redirect_with_return, require_unauthenticated
 
 
-def home(request):
+def home(request: HttpRequest):
     return render(request, "home/index.html", {
         'page_title': 'Home'
     })
 
 
-def event(request):
+def event(request: HttpRequest):
     return render(request, "event/index.html", {
         'page_title': 'Event'
     })
 
 
-def rsvp():
-    return redirect("user/sign_in/reservation")
+def rsvp(request: HttpRequest):
+    return redirect("reservation/rsvp")
 
 
 @require_unauthenticated

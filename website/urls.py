@@ -5,6 +5,7 @@ from website import views
 from website.views import reservation
 from website.views import user
 from website.views.user import sign_in
+from website.views.reservation import rsvp
 
 urlpatterns = [
     path('', views.home, name='home'),
@@ -21,7 +22,11 @@ urlpatterns = [
     ])),
     path('reservation/', include([
         path('', reservation.index, name='reservation'),
-        path('activate/', reservation.activate, name='reservation/activate')
+        path('activate/', reservation.activate, name='reservation/activate'),
+        path('rsvp/', include([
+            path('', rsvp.index, name="reservation/rsvp"),
+            path('quick_answer/<str:answer>/', rsvp.quick_answer, name="reservation/rsvp/quick_answer")
+        ]))
     ]))
 ]
 
