@@ -1,12 +1,13 @@
-import random
-
-from django.test import TestCase
-from website.models.reservation import Reservation
-from website.models.guest import Guest
-import string
-import secrets
-import names
 import logging
+import random
+import secrets
+import string
+
+import names
+from django.test import TestCase
+
+from website.models.guest import Guest
+from website.models.reservation import Reservation
 
 logger = logging.getLogger(__name__)
 
@@ -41,16 +42,17 @@ def random_str(length: int, charset=string.ascii_letters) -> str:
 
 
 def create_mock_reservation():
+    reservation_last_name = names.get_last_name()
     res = Reservation.objects.create(
-        name=MOCK_NAME_PREFIX + names.get_last_name(),
+        name=MOCK_NAME_PREFIX + reservation_last_name,
     )
     guest_count = random.choices([1, 2, 3], [.20, .75, .05])[0]
     for _ in range(guest_count):
         Guest.objects.create(
             reservation=res,
             first_name=names.get_first_name(),
-            last_name=names.get_last_name(),
-            rsvp_answer=random.choices([True, False], [.90, .10])[0],
+            last_name=random.choices([names.get_last_name(), reservation_last_name], [.30, .70])[0],
+            rsvp_answer=random.choices([True, False, None], [.80, .10, .10])[0],
             food_comment=random.choices(["", "vegan", "vegetarian"], [.90, .5, .5])[0]
         )
     logger.info("Created mock reservation with %d guests named '%s'" % (guest_count, res.name))

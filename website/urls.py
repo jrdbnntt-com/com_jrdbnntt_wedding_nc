@@ -1,9 +1,10 @@
+from django.conf import settings
 from django.urls import path, include
 
-from . import views
-from .views import reservation
-from .views import user
-from .views.user import sign_in
+from website import views
+from website.views import reservation
+from website.views import user
+from website.views.user import sign_in
 
 urlpatterns = [
     path('', views.home, name='home'),
@@ -23,3 +24,6 @@ urlpatterns = [
         path('activate/', reservation.activate)
     ]))
 ]
+
+if settings.ADMIN_SITE_ENABLED:
+    urlpatterns.append(path('admin/login/', views.admin_login_redirect))

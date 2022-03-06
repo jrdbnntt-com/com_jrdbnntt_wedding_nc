@@ -173,12 +173,14 @@ SENDGRID_API_KEY = active_config.get(config.SECTION_EMAIL, 'SENDGRID_API_KEY')
 config.assert_defined(config.SECTION_EMAIL, 'SENDGRID_API_KEY', SENDGRID_API_KEY)
 EMAIL_HOST = active_config.get(config.SECTION_EMAIL, 'EMAIL_HOST')
 EMAIL_HOST_USER = active_config.get(config.SECTION_EMAIL, 'EMAIL_HOST_USER')
+if EMAIL_HOST_USER is None or EMAIL_HOST_USER == "":
+    EMAIL_HOST_USER = SENDGRID_API_KEY
 EMAIL_HOST_PASSWORD = active_config.get(config.SECTION_EMAIL, 'EMAIL_HOST_PASSWORD')
 EMAIL_PORT = active_config.get(config.SECTION_EMAIL, 'EMAIL_PORT')
 
 # Email message settings
-EMAIL_FROM_RSVP = active_config.get(config.SECTION_EMAIL, 'EMAIL_FROM_RSVP')
-config.assert_defined(config.SECTION_EMAIL, 'EMAIL_FROM_RSVP', EMAIL_FROM_RSVP)
+EMAIL_FROM_DEFAULT = active_config.get(config.SECTION_EMAIL, 'EMAIL_FROM_DEFAULT')
+config.assert_defined(config.SECTION_EMAIL, 'EMAIL_FROM_DEFAULT', EMAIL_FROM_DEFAULT)
 EMAIL_LINK_BASE_URL = active_config.get(config.SECTION_EMAIL, 'EMAIL_LINK_BASE_URL')
 config.assert_defined(config.SECTION_EMAIL, 'EMAIL_LINK_BASE_URL', EMAIL_LINK_BASE_URL)
 

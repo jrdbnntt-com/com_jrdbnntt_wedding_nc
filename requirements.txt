@@ -4,3 +4,4 @@ daphne
 requests
 django-sendgrid-v5
 names
+sendgrid

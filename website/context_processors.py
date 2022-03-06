@@ -16,13 +16,17 @@ def set_navigation_options(request):
         NavOption('event', 'Event'),
         NavOption('user/sign_in', 'Sign in', require_auth=False),
         NavOption('user/profile', 'Profile', require_auth=True),
-        NavOption('user/sign_out', 'Sign Out', require_auth=True)
     ]
+    if settings.ADMIN_SITE_ENABLED:
+        nav_options.append(NavOption('admin:index', 'Admin', require_admin=True))
+    nav_options.append(NavOption('user/sign_out', 'Sign Out', require_auth=True))
     for option in nav_options:
         if option.view == request.resolver_match.view_name:
             option.active = True
         if request.user.is_authenticated:
             if not option.require_auth and option.require_auth is not None:
+                option.show = False
+            if option.require_admin and not request.user.is_superuser:
                 option.show = False
         else:
             if option.require_auth:
@@ -34,10 +38,13 @@ def set_navigation_options(request):
 
 
 class NavOption:
-    def __init__(self, view, title, require_auth=None):
+    def __init__(self, view, title, require_auth=None, require_admin=False):
         self.view = view
         self.title = title
         self.require_auth = require_auth
         self.active = False
         self.show = True
         self.href = reverse(self.view)
+        self.require_admin = require_admin
+        if self.require_admin:
+            self.require_auth = True

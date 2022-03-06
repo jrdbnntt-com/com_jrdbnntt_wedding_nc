@@ -6,7 +6,7 @@ from django.shortcuts import reverse
 from website.core.session import SESSION_KEY_POST_SIGN_IN_REDIRECT
 
 
-def redirect_for_signin_with_return(request, post_sign_in_redirect_view, *url_path_args, **url_params):
+def redirect_for_signin_with_return(request, post_sign_in_redirect_view, sign_in_view="user/sign_in", *url_path_args, **url_params):
     # Save return url to session for secure retrieval later
     post_sign_in_redirect_url = reverse(post_sign_in_redirect_view, args=url_path_args)
     url_params = urlencode(url_params)
@@ -17,4 +17,4 @@ def redirect_for_signin_with_return(request, post_sign_in_redirect_view, *url_pa
         request.session.modified = True
 
     # Redirect to the sign in index page with ?redirect=true
-    return HttpResponseRedirect(reverse("user/sign_in") + "?redirect=true")
+    return HttpResponseRedirect(reverse(sign_in_view) + "?redirect=true")

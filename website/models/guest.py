@@ -1,9 +1,10 @@
+from django.contrib import admin
 from django.db import models
 from django.db.models.signals import post_save, pre_save
 from django.dispatch import receiver
-from django.contrib import admin
-from website.models.reservation import Reservation
 from django.utils import timezone
+
+from website.models.reservation import Reservation
 
 
 class Guest(models.Model):
@@ -12,7 +13,7 @@ class Guest(models.Model):
     reservation = models.ForeignKey(Reservation, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
-    rsvp_answer = models.BooleanField(default=None)
+    rsvp_answer = models.BooleanField(default=None, blank=True, null=True)
     rsvp_comment = models.CharField(max_length=1000, blank=True)
     assigned_table = models.IntegerField(null=True, blank=True)
     assigned_table_seat = models.IntegerField(null=True, blank=True)
@@ -22,10 +23,13 @@ class Guest(models.Model):
     updated_at = models.DateTimeField(default=timezone.now, editable=False)
 
     def __str__(self):
-        return "{} ({})".format(self.full_name(), self.rsvp_answer_display())
+        return self.full_name()
 
     def full_name(self):
         return "{} {}".format(self.first_name, self.last_name)
+
+    def full_name_rsvp(self):
+        return "{} ({})".format(self.full_name(), self.rsvp_answer_display())
 
     def rsvp_answer_display(self):
         if self.rsvp_answer is None:
@@ -37,7 +41,29 @@ class Guest(models.Model):
 
 @admin.register(Guest)
 class GuestAdmin(admin.ModelAdmin):
-    pass
+    ordering = ('-hidden', 'last_name', 'first_name')
+    list_display = (
+        'hidden',
+        'reservation__access_code',
+        'reservation__name',
+        'first_name',
+        'last_name',
+        'updated_at',
+        'rsvp_answer',
+        'rsvp_answer_display',
+        'rsvp_comment',
+        'food_comment',
+        'assigned_table',
+        'assigned_table_seat',
+    )
+
+    @staticmethod
+    def reservation__access_code(obj: Guest):
+        return obj.reservation.access_code
+
+    @staticmethod
+    def reservation__name(obj: Guest):
+        return obj.reservation.name
 
 
 @receiver(pre_save, sender=Guest)

@@ -1,8 +1,8 @@
 import errno
-from pathlib import Path
-from datetime import datetime
 import logging
 import os
+from datetime import datetime
+from pathlib import Path
 
 LOG_BASE_DIR = Path(Path(__file__).resolve().parent.parent, 'logs').resolve()
 
@@ -78,14 +78,15 @@ def build_django_config(debug=False):
             },
         },
         'loggers': {
-            'website': {
-                'handlers': ['console', 'file_full', 'file_website'],
-                'level': logging.DEBUG if debug else logging.INFO
-            },
-            'django': {
+            '': {
                 'handlers': ['console', 'file_full'],
                 'level': logging.DEBUG if debug else logging.WARN,
                 'propagate': True,
+            },
+            'website': {
+                'handlers': ['console', 'file_full', 'file_website'],
+                'level': logging.DEBUG if debug else logging.INFO,
+                'propagate': False
             },
         }
     }

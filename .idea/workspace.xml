@@ -5,20 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1412e4fd-cd2f-4404-8033-678bb8678153" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/website/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com_jrdbnntt_wedding/config/base.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/com_jrdbnntt_wedding/config/base.cfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com_jrdbnntt_wedding/logs.py" beforeDir="false" afterPath="$PROJECT_DIR$/com_jrdbnntt_wedding/logs.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com_jrdbnntt_wedding/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/com_jrdbnntt_wedding/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/context_processors.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/context_processors.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/core/auth/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/core/auth/user.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/core/mail/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/core/mail/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/forms/reservation.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/forms/reservation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/forms/user/sign_in.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/forms/user/sign_in.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/models/email_template.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/models/email_template.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/models/guest.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/models/guest.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/models/reservation/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/models/reservation/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/templatetags/reservation.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/templatetags/reservation.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/tests/models/mock.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/tests/models/mock.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/views/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/views/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/views/decorators/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/views/decorators/auth.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/views/decorators/reservation.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/views/decorators/reservation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/views/reservation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/views/reservation/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/views/user/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/views/user/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/views/user/sign_in.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/views/user/sign_in.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -67,7 +67,7 @@
     <property name="add_unversioned_files" value="$PROJECT_DIR$/venv/lib/python3.7/site-packages/django/template/context.py&#10;/home/jbennett/dev/com_jrdbnntt_wedding/com_jrdbnntt_wedding/config/production.cfg&#10;/home/jbennett/dev/com_jrdbnntt_wedding/venv/lib/python3.7/site-packages/django/db/models/fields/related.py" />
     <property name="javascript.nodejs.core.library.configured.version" value="16.13.2" />
     <property name="javascript.nodejs.core.library.typings.version" value="16.11.19" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/website/src/views/reservation" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/website/management/commands" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -80,11 +80,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/website/management/commands" />
       <recent name="$PROJECT_DIR$/website/src/views/reservation" />
       <recent name="$PROJECT_DIR$/website/src/views/_templates/forms/widgets" />
       <recent name="$PROJECT_DIR$/website/src/views/reservation/activate" />
       <recent name="$PROJECT_DIR$/website/src/views/_templates/forms/buttons" />
-      <recent name="$PROJECT_DIR$/com_jrdbnntt_wedding/config" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/website/management/commands" />
@@ -94,7 +94,7 @@
       <recent name="$PROJECT_DIR$/website/core" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.Django Dev Server">
+  <component name="RunManager" selected="npm.build">
     <configuration name="Test: website.tests.models.mock.MockTest.test_install_100_mock_reservations" type="DjangoTestsConfigurationType" temporary="true">
       <module name="com_jrdbnntt_wedding" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -216,9 +216,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.build" />
         <item itemvalue="Django tests.Test: website.tests.models.mock.MockTest.test_install_100_mock_reservations" />
         <item itemvalue="npm.watch-dev" />
-        <item itemvalue="npm.build" />
         <item itemvalue="npm.clean" />
         <item itemvalue="Shell Script.server_start.sh" />
       </list>
@@ -238,7 +238,7 @@
       <workItem from="1642029144911" duration="1289000" />
       <workItem from="1642030990132" duration="51103000" />
       <workItem from="1646508891412" duration="2229000" />
-      <workItem from="1646516713284" duration="21948000" />
+      <workItem from="1646516713284" duration="33902000" />
     </task>
     <servers />
   </component>
@@ -267,8 +267,8 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/com_jrdbnntt_wedding$Run_Django_Dev_Server.coverage" NAME="Django Dev Server Coverage Results" MODIFIED="1641866721955" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/com_jrdbnntt_wedding$Test__website_tests_models_mock_MockTest_test_install_100_mock_reservations.coverage" NAME="Test: website.tests.models.mock.MockTest.test_install_100_mock_reservations Coverage Results" MODIFIED="1646527900036" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/com_jrdbnntt_wedding$python_manage_py_test_website_tests_models_mock_MockTest_test_delete_all_reservations.coverage" NAME="python manage.py test website.tests.models.mock.MockTest.test_delete_all_reservations Coverage Results" MODIFIED="1646531726552" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/com_jrdbnntt_wedding$Django_Dev_Server.coverage" NAME="Django Dev Server Coverage Results" MODIFIED="1646538932029" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/com_jrdbnntt_wedding$Test__website_tests_models_mock_MockTest_test_install_100_mock_reservations.coverage" NAME="Test: website.tests.models.mock.MockTest.test_install_100_mock_reservations Coverage Results" MODIFIED="1646547758692" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/com_jrdbnntt_wedding$Django_Dev_Server.coverage" NAME="Django Dev Server Coverage Results" MODIFIED="1646549888519" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

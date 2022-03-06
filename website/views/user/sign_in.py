@@ -1,14 +1,15 @@
 import logging
 
+from django.conf import settings
 from django.contrib.auth import authenticate, login
 from django.core.exceptions import ValidationError
 from django.shortcuts import render, redirect
 
-from website.views.decorators.auth import require_unauthenticated
 from website.core.auth import recaptcha
-from website.forms.user.sign_in import UsernamePasswordForm, ReservationCodeForm
 from website.core.session import SESSION_KEY_POST_SIGN_IN_REDIRECT, SESSION_KEY_RESERVATION_ID
+from website.forms.user.sign_in import UsernamePasswordForm, ReservationCodeForm
 from website.models.reservation import Reservation
+from website.views.decorators.auth import require_unauthenticated
 
 logger = logging.getLogger(__name__)
 
@@ -54,12 +55,13 @@ def reservation(request):
                 else:
                     login(request, res.user)
                     redirect(success_view)
-
             except ValidationError as e:
                 validation_error = e
         form.clear_sensitive_form_data()
         if validation_error is not None:
             form.add_error(None, validation_error.message)
+        if settings.DEBUG:
+            logger.debug("reservation login failed with form data '%s'" % form.cleaned_data)
     else:
         form = ReservationCodeForm()
     return render(request, "user/sign_in/reservation/index.html", {
@@ -97,6 +99,8 @@ def user(request):
         form.clear_sensitive_form_data()
         if validation_error is not None:
             form.add_error(None, validation_error.message)
+        if settings.DEBUG:
+            logger.debug("user login failed with form data '%s'" % form.cleaned_data)
     else:
         form = UsernamePasswordForm()
     return render(request, "user/sign_in/user/index.html", {

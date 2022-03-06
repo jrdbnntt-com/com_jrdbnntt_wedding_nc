@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 
-from website.views.decorators.auth import require_auth_or_redirect_with_return
+from website.core.auth.user import redirect_for_signin_with_return
+from website.views.decorators.auth import require_auth_or_redirect_with_return, require_unauthenticated
 
 
 def home(request):
@@ -17,3 +18,9 @@ def event(request):
 
 def rsvp():
     return redirect("user/sign_in/reservation")
+
+
+@require_unauthenticated
+def admin_login_redirect(request, *args, **kwargs):
+    return redirect_for_signin_with_return(request, post_sign_in_redirect_view="admin:index",
+                                           sign_in_view="user/sign_in/user")
