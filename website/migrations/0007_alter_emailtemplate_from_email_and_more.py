@@ -2,7 +2,7 @@
 
 from django.db import migrations, models
 import django.utils.timezone
-import website.models.email_template
+import website.models.mail.template
 
 
 class Migration(migrations.Migration):
@@ -15,7 +15,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='emailtemplate',
             name='from_email',
-            field=models.CharField(default=website.models.email_template.default_from_email, max_length=200),
+            field=models.CharField(default=website.models.mail.template.default_from_email, max_length=200),
         ),
         migrations.AlterField(
             model_name='guest',
