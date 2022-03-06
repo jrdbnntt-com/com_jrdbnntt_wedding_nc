@@ -27,7 +27,7 @@ def load(runtime_environment_override=None) -> ConfigParser:
     if runtime_environment_override is not None:
         active_runtime_environment = runtime_environment_override
 
-    print("Configuring for runtime: ", active_runtime_environment)
+    print("CONFIG: Configuring for runtime: ", active_runtime_environment)
 
     config_file = CONFIG_FILES[active_runtime_environment]
     print("CONFIG: Loading base config file: ", CONFIG_FILES['base'])

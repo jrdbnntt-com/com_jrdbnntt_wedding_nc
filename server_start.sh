@@ -8,6 +8,11 @@
 #
 # CLI arguments are passed to the python application for parsing there. See com_jrdbnntt_wedding.asgi for details.
 ########################################################################################################################
+function print_action {
+    echo -e "######################################################################################\n$1"
+}
+
+print_action "Entering python environment..."
 
 # Initialize virtual environment
 if [ ! -d "./venv" ]; then
@@ -17,8 +22,8 @@ fi
 
 source ./venv/bin/activate
 
-echo "Refreshing SendGrid EmailTemplates..."
+print_action "Refreshing SendGrid EmailTemplates..."
 python3 manage.py refresh_email_templates
 
-echo "Starting Django ASGI application with Daphne..."
+print_action "Starting Django ASGI application with Daphne..."
 python3 -m daphne com_jrdbnntt_wedding.asgi:application "$@"
