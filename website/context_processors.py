@@ -1,12 +1,16 @@
 from django.conf import settings
 from django.urls import reverse
 
+from website.core.date import format_month_day_year_long
+
 
 def add_global_vars(request):
     return {
         'base_site_domain': 'https://hannahjaredwedding.com',
         'page_title_prefix': 'Hannah & Jared',
-        'recaptcha_site_key': settings.RECAPTCHA_SITE_KEY
+        'recaptcha_site_key': settings.RECAPTCHA_SITE_KEY,
+        'event_location': settings.EVENT_PUBLIC_LOCATION,
+        'event_date': format_month_day_year_long(settings.EVENT_DATE),
     }
 
 

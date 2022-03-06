@@ -29,6 +29,12 @@ module.exports = (env, argv) => {
                 ]
             })
         ),
+        resolve: {
+            modules: [
+                __dirname,
+                'node_modules'
+            ]
+        },
         output: {
             path: dirs.output,
             filename: "js/[name].[contenthash].js",

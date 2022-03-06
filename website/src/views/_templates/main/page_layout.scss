@@ -1,3 +1,5 @@
+@import 'website/src/css/fonts';
+
 .main-body-container {
   background: white;
   min-height: 100vh;
@@ -26,4 +28,14 @@
 .main-content-container {
   padding-top: 50px;
   padding-bottom: 50px;
+}
+
+.brand-large {
+  font-size: 1.25em;
+  text-align: center;
+}
+
+.brand-name {
+  @include font-brand;
+  font-size: 2em;
 }

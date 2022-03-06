@@ -1,4 +1,4 @@
-import "../../../views/_templates/main/index"
+import "website/src/views/_templates/main/index"
 import "./index.scss"
 
 console.log("TODO")

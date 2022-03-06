@@ -15,6 +15,7 @@ import pathlib
 from pathlib import Path
 from com_jrdbnntt_wedding import config
 from com_jrdbnntt_wedding import logs
+import datetime
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -184,3 +185,6 @@ config.assert_defined(config.SECTION_EMAIL, 'EMAIL_FROM_DEFAULT', EMAIL_FROM_DEF
 EMAIL_LINK_BASE_URL = active_config.get(config.SECTION_EMAIL, 'EMAIL_LINK_BASE_URL')
 config.assert_defined(config.SECTION_EMAIL, 'EMAIL_LINK_BASE_URL', EMAIL_LINK_BASE_URL)
 
+# Event details
+EVENT_DATE = datetime.datetime.strptime(active_config.get(config.SECTION_EVENT_DETAILS, 'DATE'), '%m/%d/%Y').date()
+EVENT_PUBLIC_LOCATION = active_config.get(config.SECTION_EVENT_DETAILS, 'PUBLIC_LOCATION')

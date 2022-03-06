@@ -17,6 +17,7 @@ CONFIG_FILES = {
 SECTION_DJANGO = 'django'
 SECTION_RECAPTCHA = 'recaptcha'
 SECTION_EMAIL = 'email'
+SECTION_EVENT_DETAILS = 'event_details'
 
 
 def load(runtime_environment_override=None) -> ConfigParser:

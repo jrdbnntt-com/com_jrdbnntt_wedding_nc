@@ -1,7 +1,7 @@
-import "../../../views/_templates/main/index"
+import "website/src/views/_templates/main/index"
 import "./index.scss"
 import * as $ from "jquery";
-import {attach} from "../../../js/recaptcha";
+import {attach} from "website/src/js/recaptcha";
 
 // Attach recaptcha to submit button
 $(document).ready(() => {
