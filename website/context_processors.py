@@ -15,7 +15,6 @@ def set_navigation_options(request):
         NavOption('home', 'Home'),
         NavOption('event', 'Event'),
         NavOption('user/sign_in', 'Sign in', require_auth=False),
-        NavOption('user/register', 'Register', require_auth=False),
         NavOption('user/profile', 'Profile', require_auth=True),
         NavOption('user/sign_out', 'Sign Out', require_auth=True)
     ]

@@ -4,12 +4,12 @@ from django.shortcuts import redirect
 
 from .auth import require_auth_or_redirect_with_return, require_unauthenticated
 from ...models.reservation import Reservation
-from ...session import SESSION_KEY_RESERVATION_ID
+from ...core.session import SESSION_KEY_RESERVATION_ID
 
 
-@require_auth_or_redirect_with_return()
 def require_activated_reservation(decorated_view_func=None):
     def decorator(view_func):
+        @require_auth_or_redirect_with_return()
         @wraps(view_func)
         def _wrapped_view(request, *args, **kwargs):
             res_id = None
@@ -38,9 +38,9 @@ def require_activated_reservation(decorated_view_func=None):
     return decorator
 
 
-@require_unauthenticated()
 def require_unactivated_reservation(decorated_view_func=None, redirect_view="user/sign_in/reservation"):
     def decorator(view_func):
+        @require_unauthenticated()
         @wraps(view_func)
         def _wrapped_view(request, *args, **kwargs):
             if SESSION_KEY_RESERVATION_ID in request.session:

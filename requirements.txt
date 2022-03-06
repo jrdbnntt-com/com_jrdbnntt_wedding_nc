@@ -2,3 +2,5 @@ django
 django-webpack-loader
 daphne
 requests
+django-sendgrid-v5
+names

@@ -5,7 +5,7 @@ from ..guest import Guest
 
 @admin.register(Reservation)
 class ReservationAdmin(admin.ModelAdmin):
-    list_display = ("access_code", "user", "activated", "email", "guests_all", "guests_rsvp")
+    list_display = ("access_code", "name", "user", "activated", "guests_all", "guests_rsvp")
 
     @admin.display(description="Guests (all)")
     def guests_all(self, obj):

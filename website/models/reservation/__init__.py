@@ -1,7 +1,7 @@
 import secrets
 import string
-from datetime import datetime
 
+from django.utils import timezone
 from django.contrib.auth.models import User
 from django.db import models
 from django.db.models.signals import pre_save
@@ -16,6 +16,7 @@ class Reservation(models.Model):
     """ A guest reservation for one or more Guests. Used for accounts. """
     ACCESS_CODE_LENGTH = 6
     ACCESS_CODE_CHARS = string.ascii_uppercase + "23456789"
+    name = models.CharField(max_length=200)
     user = models.OneToOneField(User, on_delete=models.SET_NULL, null=True)
     access_code = models.CharField(max_length=ACCESS_CODE_LENGTH, default=generate_access_code, unique=True)
     activated = models.BooleanField(default=False)  # Set to True once the reservation has been accessed once
@@ -27,8 +28,8 @@ class Reservation(models.Model):
     mailing_address_city = models.CharField(max_length=200, blank=True)
     mailing_address_state = models.CharField(max_length=2, blank=True)
     mailing_address_zip = models.CharField(max_length=10, blank=True)
-    created_at = models.DateTimeField(default=datetime.now, editable=False)
-    updated_at = models.DateTimeField(default=datetime.now, editable=False)
+    created_at = models.DateTimeField(default=timezone.now, editable=False)
+    updated_at = models.DateTimeField(default=timezone.now, editable=False)
 
     def __str__(self):
         if self.user is not None:
@@ -40,14 +41,14 @@ class Reservation(models.Model):
 @receiver(pre_save, sender=Reservation)
 def pre_save(sender, instance: Reservation, **kwargs):
     """ Updates the updated_at timestamp prior to each save """
-    instance.updated_at = datetime.now()
+    instance.updated_at = timezone.now()
 
 
 def activate_reservation(reservation_id: int, email: str):
-    res = Reservation.objects.filter(id=reservation_id).only("id", "access_code").get()
+    res = Reservation.objects.filter(id=reservation_id).only("id", "access_code", "name").get()
     usr = User.objects.create_user(email, email, res.access_code)
     res.user = usr
     res.activated = True
-    res.activated_at = datetime.now()
+    res.activated_at = timezone.now()
     res.save()
-    return usr
+    return res, usr

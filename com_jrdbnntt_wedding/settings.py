@@ -9,24 +9,29 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-
+import ntpath
 import os
+import pathlib
 from pathlib import Path
-from .config import config, CONFIG_SECTION_DJANGO, CONFIG_SECTION_RECAPTCHA
+from . import config
+from . import logs
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+active_config = config.load()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config.get(CONFIG_SECTION_DJANGO, 'SECRET_KEY')
+SECRET_KEY = active_config.get(config.SECTION_DJANGO, 'SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config.getboolean(CONFIG_SECTION_DJANGO, 'DEBUG')
+DEBUG = active_config.getboolean(config.SECTION_DJANGO, 'DEBUG')
+LOGGING = logs.build_django_config(DEBUG)
 
-ALLOWED_HOSTS = config.get(CONFIG_SECTION_DJANGO, 'ALLOWED_HOSTS').split(',')
+ALLOWED_HOSTS = active_config.get(config.SECTION_DJANGO, 'ALLOWED_HOSTS').split(',')
 
 # Front-end file management with webpack
 STATICFILES_DIRS = (
@@ -147,15 +152,33 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Security
-SECURE_SSL_REDIRECT = config.getboolean(CONFIG_SECTION_DJANGO, 'SECURE_SSL_REDIRECT')
+SECURE_SSL_REDIRECT = active_config.getboolean(config.SECTION_DJANGO, 'SECURE_SSL_REDIRECT')
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-SECURE_HSTS_SECONDS = config.getint(CONFIG_SECTION_DJANGO, 'SECURE_HSTS_SECONDS')
-SECURE_HSTS_PRELOAD = config.getboolean(CONFIG_SECTION_DJANGO, 'SECURE_HSTS_PRELOAD')
+SECURE_HSTS_SECONDS = active_config.getint(config.SECTION_DJANGO, 'SECURE_HSTS_SECONDS')
+SECURE_HSTS_PRELOAD = active_config.getboolean(config.SECTION_DJANGO, 'SECURE_HSTS_PRELOAD')
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
+ADMIN_SITE_ENABLED = active_config.getboolean(config.SECTION_DJANGO, 'ADMIN_SITE_ENABLED')
 
 # reCAPTCHA
-RECAPTCHA_SITE_KEY = config.get(CONFIG_SECTION_RECAPTCHA, 'SITE_KEY')
-RECAPTCHA_SECRET_KEY = config.get(CONFIG_SECTION_RECAPTCHA, 'SECRET_KEY')
-if RECAPTCHA_SECRET_KEY is None or RECAPTCHA_SECRET_KEY == "":
-    raise AssertionError("Invalid configuration: Missing {}.{}".format(CONFIG_SECTION_RECAPTCHA, 'SECRET_KEY'))
+RECAPTCHA_SITE_KEY = active_config.get(config.SECTION_RECAPTCHA, 'SITE_KEY')
+config.assert_defined(config.SECTION_RECAPTCHA, 'SITE_KEY', RECAPTCHA_SITE_KEY)
+RECAPTCHA_SECRET_KEY = active_config.get(config.SECTION_RECAPTCHA, 'SECRET_KEY')
+config.assert_defined(config.SECTION_RECAPTCHA, 'SECRET_KEY', RECAPTCHA_SECRET_KEY)
+
+# Email configuration (SendGrid)
+EMAIL_BACKEND = 'sendgrid_backend.SendgridBackend'
+SENDGRID_SANDBOX_MODE_IN_DEBUG = active_config.getboolean(config.SECTION_EMAIL, 'SENDGRID_SANDBOX_MODE_IN_DEBUG')
+SENDGRID_API_KEY = active_config.get(config.SECTION_EMAIL, 'SENDGRID_API_KEY')
+config.assert_defined(config.SECTION_EMAIL, 'SENDGRID_API_KEY', SENDGRID_API_KEY)
+EMAIL_HOST = active_config.get(config.SECTION_EMAIL, 'EMAIL_HOST')
+EMAIL_HOST_USER = active_config.get(config.SECTION_EMAIL, 'EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = active_config.get(config.SECTION_EMAIL, 'EMAIL_HOST_PASSWORD')
+EMAIL_PORT = active_config.get(config.SECTION_EMAIL, 'EMAIL_PORT')
+
+# Email message settings
+EMAIL_FROM_RSVP = active_config.get(config.SECTION_EMAIL, 'EMAIL_FROM_RSVP')
+config.assert_defined(config.SECTION_EMAIL, 'EMAIL_FROM_RSVP', EMAIL_FROM_RSVP)
+EMAIL_LINK_BASE_URL = active_config.get(config.SECTION_EMAIL, 'EMAIL_LINK_BASE_URL')
+config.assert_defined(config.SECTION_EMAIL, 'EMAIL_LINK_BASE_URL', EMAIL_LINK_BASE_URL)
+

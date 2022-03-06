@@ -5,9 +5,9 @@ from django.core.exceptions import ValidationError
 from django.shortcuts import render, redirect
 
 from ..decorators.auth import require_unauthenticated
-from ...auth import recaptcha
+from ...core.auth import recaptcha
 from ...forms.user.sign_in import UsernamePasswordForm, ReservationCodeForm
-from ...session import SESSION_KEY_POST_SIGN_IN_REDIRECT, SESSION_KEY_RESERVATION_ID
+from ...core.session import SESSION_KEY_POST_SIGN_IN_REDIRECT, SESSION_KEY_RESERVATION_ID
 from ...models.reservation import Reservation
 
 logger = logging.getLogger(__name__)

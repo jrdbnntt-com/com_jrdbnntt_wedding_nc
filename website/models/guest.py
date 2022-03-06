@@ -2,9 +2,8 @@ from django.db import models
 from django.db.models.signals import post_save, pre_save
 from django.dispatch import receiver
 from django.contrib import admin
-from datetime import datetime
 from .reservation import Reservation
-from .food_option import FoodOption
+from django.utils import timezone
 
 
 class Guest(models.Model):
@@ -17,11 +16,10 @@ class Guest(models.Model):
     rsvp_comment = models.CharField(max_length=1000, blank=True)
     assigned_table = models.IntegerField(null=True, blank=True)
     assigned_table_seat = models.IntegerField(null=True, blank=True)
-    food_selection = models.ForeignKey(FoodOption, on_delete=models.SET_NULL, null=True, blank=True)
     food_comment = models.CharField(max_length=1000, blank=True)
     hidden = models.BooleanField(default=False)  # "deleted" by reservation user
-    created_at = models.DateTimeField(default=datetime.now, editable=False)
-    updated_at = models.DateTimeField(default=datetime.now, editable=False)
+    created_at = models.DateTimeField(default=timezone.now, editable=False)
+    updated_at = models.DateTimeField(default=timezone.now, editable=False)
 
     def __str__(self):
         return "{} ({})".format(self.full_name(), self.rsvp_answer_display())
@@ -45,7 +43,7 @@ class GuestAdmin(admin.ModelAdmin):
 @receiver(pre_save, sender=Guest)
 def pre_save(sender, instance: Guest, **kwargs):
     """ Updates the updated_at timestamp prior to each save """
-    instance.updated_at = datetime.now()
+    instance.updated_at = timezone.now()
 
 
 @receiver(post_save, sender=Guest)
