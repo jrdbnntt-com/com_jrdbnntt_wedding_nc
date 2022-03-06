@@ -8,6 +8,7 @@ from website.models.reservation import Reservation
 class ReservationAdmin(admin.ModelAdmin):
     ordering = ("name",)
     list_display = ("access_code", "name", "user", "activated", "guests_all", "guests_rsvp")
+    list_filter = ('activated',)
 
     @admin.display(description="All Guests (RSVP)")
     def guests_all(self, obj):
