@@ -24,6 +24,11 @@
     {% load render_bundle from webpack_loader %}
     {% render_bundle 'style_bootstrap' %}
     {% render_bundle 'style_templates_main' %}
+    <script>
+        {% for key, value in js_window_params %}
+            window.{{ key }} = {{ value |safe }}
+        {% endfor %}
+    </script>
     {% block head_code %}{% endblock %}
 </head>
 <body>
@@ -33,13 +38,13 @@
             {% block header %}
                 <div class="d-none d-lg-block justify-content-center">
                     <p class="brand-large">
-                        <span class="brand-name">Hannah & Jared</span><br>
-                        <span>{{ event_date }}&nbsp;&bull;&nbsp;{{ event_location }}</span><br>
-                        <span id="countdown">X time to go!</span>
+                        <span class="brand-name">HANNAH <i>&</i> JARED</span><br>
+                        <span>{{ event_date }} &bull; {{ event_location }}</span><br>
+                        <span id="countdown"></span>
                     </p>
                 </div>
                 <nav class="navbar navbar-expand-lg">
-                    <a class="navbar-brand d-lg-none" href="{% url 'home' %}">Hannah & Jared</a>
+                    <a class="navbar-brand d-lg-none font-brand" href="{% url 'home' %}">HANNAH <i>&</i> JARED</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarSupportedContent">
                         <i class="bi bi-list"></i>

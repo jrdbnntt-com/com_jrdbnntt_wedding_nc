@@ -9,13 +9,14 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
+import datetime
 import ntpath
 import os
 import pathlib
 from pathlib import Path
+
 from com_jrdbnntt_wedding import config
 from com_jrdbnntt_wedding import logs
-import datetime
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -37,7 +38,7 @@ ALLOWED_HOSTS = active_config.get(config.SECTION_DJANGO, 'ALLOWED_HOSTS').split(
 # Front-end file management with webpack
 STATICFILES_DIRS = (
     BASE_DIR / 'website/static/build',
-    BASE_DIR / 'website/static/cloud',
+    BASE_DIR / 'website/static/cloud'
 )
 WEBPACK_LOADER = {
     'DEFAULT': {
@@ -100,7 +101,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'com_jrdbnntt_wedding.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
@@ -110,7 +110,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -130,7 +129,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
@@ -140,7 +138,6 @@ TIME_ZONE = 'America/Los_Angeles'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
@@ -186,5 +183,5 @@ EMAIL_LINK_BASE_URL = active_config.get(config.SECTION_EMAIL, 'EMAIL_LINK_BASE_U
 config.assert_defined(config.SECTION_EMAIL, 'EMAIL_LINK_BASE_URL', EMAIL_LINK_BASE_URL)
 
 # Event details
-EVENT_DATE = datetime.datetime.strptime(active_config.get(config.SECTION_EVENT_DETAILS, 'DATE'), '%m/%d/%Y').date()
+EVENT_DATE = datetime.datetime.fromisoformat(active_config.get(config.SECTION_EVENT_DETAILS, 'DATE'))
 EVENT_PUBLIC_LOCATION = active_config.get(config.SECTION_EVENT_DETAILS, 'PUBLIC_LOCATION')

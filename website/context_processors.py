@@ -11,6 +11,9 @@ def add_global_vars(request):
         'recaptcha_site_key': settings.RECAPTCHA_SITE_KEY,
         'event_location': settings.EVENT_PUBLIC_LOCATION,
         'event_date': format_month_day_year_long(settings.EVENT_DATE),
+        'js_window_params': [
+            ('EVENT_DATE_ISO', '"%s"' % settings.EVENT_DATE.isoformat())
+        ]
     }
 
 

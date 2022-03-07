@@ -1,3 +1,35 @@
+@font-face {
+  font-family: "Libre Baskerville";
+  src: url(../fonts/Libre_Baskerville/LibreBaskerville-Regular.ttf);
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Libre Baskerville";
+  src: url(../fonts/Libre_Baskerville/LibreBaskerville-Bold.ttf);
+  font-style: normal;
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "Libre Baskerville";
+  src: url(../fonts/Libre_Baskerville/LibreBaskerville-Italic.ttf);
+  font-style: italic;
+}
+
 @mixin font-brand {
-  font-family: serif;
+  font-family: "Libre Baskerville", serif;
+}
+
+@mixin font-serif-header {
+  font-family: "Libre Baskerville", serif;
+  font-weight: bold;
+}
+
+@mixin font-serif-body {
+  font-family: "Libre Baskerville", serif;
+}
+
+.front-brand {
+  @include font-brand;
 }

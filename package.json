@@ -22,6 +22,7 @@
     "glob": "^7.2.0",
     "jquery": "^3.6.0",
     "mini-css-extract-plugin": "^2.4.6",
+    "moment": "^2.29.1",
     "postcss": "^8.4.5",
     "postcss-loader": "^6.2.1",
     "resolve-url-loader": "^5.0.0-beta.1",
