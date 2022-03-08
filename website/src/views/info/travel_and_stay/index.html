@@ -1,0 +1,15 @@
+{% extends "_templates/main/index.html" %}
+{% load render_bundle from webpack_loader %}
+{% block head_code %}
+    {% render_bundle 'entry_views_info_travel' %}
+{% endblock %}
+{% block content %}
+
+    <h1>TODO: {{page_title}}</h1>
+
+    <h2>Accommodations</h2>
+    <p>We have a hotel room block at the Redmond Inn, approximately 10 minutes from the venue. They have affordable room options. Please visit this link (X) or call them at (800) 634-8080 and tell them you are booking rooms under the Hannah & Jared wedding</p>
+    <p>For other places to say, <a target="_blank" href="https://www.airbnb.com/s/Redmond--WA--USA/homes?date_picker_type=calendar&query=Redmond%2C%20WA%2C%20USA&checkin=2022-07-08&checkout=2022-07-10">AirBnb</a> or <a target="_blank" href="https://www.vrbo.com/search/keywords:redmond-oregon-united-states-of-america/arrival:2022-07-08/departure:2022-07-10">VRBO</a> have a variety of options available in the area around Redmond.</p>
+
+
+{% endblock %}

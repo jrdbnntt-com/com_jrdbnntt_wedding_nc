@@ -20,7 +20,12 @@ def add_global_vars(request):
 def set_navigation_options(request):
     nav_options = [
         NavOption('home', 'Home'),
-        NavOption('event', 'Event'),
+        NavOption('info/story', 'Our Story'),
+        NavOption('info/travel', 'Travel'),
+        NavOption('info/things_to_do', 'Things to Do'),
+        NavOption('info/photos', 'Photos'),
+        NavOption('info/wedding_party', 'Wedding Party'),
+        NavOption('info/event', 'Event'),
         NavOption('reservation/rsvp', 'RSVP'),
         NavOption('user/sign_in', 'Sign in', require_auth=False),
         NavOption('user/profile', 'Profile', require_auth=True),

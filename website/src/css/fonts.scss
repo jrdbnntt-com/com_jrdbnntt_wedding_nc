@@ -21,15 +21,19 @@
   font-family: "Libre Baskerville", serif;
 }
 
-@mixin font-serif-header {
-  font-family: "Libre Baskerville", serif;
+@mixin font-header {
+  @include font-brand;
   font-weight: bold;
 }
 
-@mixin font-serif-body {
-  font-family: "Libre Baskerville", serif;
+@mixin font-normal {
+  font-family: "Roboto", sans-serif;
 }
 
-.front-brand {
+.font-brand {
   @include font-brand;
+}
+
+.font-normal {
+  @include font-normal
 }

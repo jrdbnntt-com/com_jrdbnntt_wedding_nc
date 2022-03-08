@@ -5,20 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1412e4fd-cd2f-4404-8033-678bb8678153" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/website/src/fonts/Libre_Baskerville/LibreBaskerville-Bold.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/src/fonts/Libre_Baskerville/LibreBaskerville-Italic.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/src/fonts/Libre_Baskerville/LibreBaskerville-Regular.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/src/fonts/Libre_Baskerville/OFL.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/com_jrdbnntt_wedding/config/base.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/com_jrdbnntt_wedding/config/base.cfg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/com_jrdbnntt_wedding/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/com_jrdbnntt_wedding/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/context_processors.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/context_processors.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/core/auth/user.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/src/css/bootstrap.scss" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/css/bootstrap/bootstrap.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/src/css/fonts.scss" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/css/fonts.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/src/css/variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/css/bootstrap/variables.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/src/views/_templates/main/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/views/_templates/main/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/src/views/_templates/main/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/views/_templates/main/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/src/views/_templates/main/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/views/_templates/main/index.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/src/views/_templates/main/nav.scss" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/views/_templates/main/nav.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/src/views/_templates/main/page_layout.scss" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/views/_templates/main/page_layout.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/src/views/event/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/views/info/event/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/src/views/event/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/views/info/event/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/src/views/event/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/views/info/event/index.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/views/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/views/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/views/decorators/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/views/decorators/auth.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +70,7 @@
     <property name="add_unversioned_files" value="$PROJECT_DIR$/venv/lib/python3.7/site-packages/django/template/context.py&#10;/home/jbennett/dev/com_jrdbnntt_wedding/com_jrdbnntt_wedding/config/production.cfg&#10;/home/jbennett/dev/com_jrdbnntt_wedding/venv/lib/python3.7/site-packages/django/db/models/fields/related.py" />
     <property name="javascript.nodejs.core.library.configured.version" value="16.13.2" />
     <property name="javascript.nodejs.core.library.typings.version" value="16.11.19" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/website/src/views/_templates/main" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/website/src/views/info/wedding_party" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -80,18 +84,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/website/src/views/_templates/main" />
-      <recent name="$PROJECT_DIR$/website/management/commands" />
-      <recent name="$PROJECT_DIR$/website/src/views/reservation" />
-      <recent name="$PROJECT_DIR$/website/src/views/_templates/forms/widgets" />
-      <recent name="$PROJECT_DIR$/website/src/views/reservation/activate" />
+      <recent name="$PROJECT_DIR$/website/src/views/info/wedding_party" />
+      <recent name="$PROJECT_DIR$/website/src/views/info/travel" />
+      <recent name="$PROJECT_DIR$/website/src/views/info/things_to_do" />
+      <recent name="$PROJECT_DIR$/website/src/views/info/story" />
+      <recent name="$PROJECT_DIR$/website/src/views/info/photos" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/website/src/css/bootstrap" />
+      <recent name="$PROJECT_DIR$/website/src/views/info" />
       <recent name="$PROJECT_DIR$/website/src/fonts" />
       <recent name="$PROJECT_DIR$/website/static/local" />
       <recent name="$PROJECT_DIR$/website/src/views/reservation/rsvp" />
-      <recent name="$PROJECT_DIR$/website/models/mail" />
-      <recent name="$PROJECT_DIR$/website/management/commands" />
     </key>
   </component>
   <component name="RunManager" selected="npm.build">
@@ -238,7 +242,7 @@
       <workItem from="1642029144911" duration="1289000" />
       <workItem from="1642030990132" duration="51103000" />
       <workItem from="1646508891412" duration="2229000" />
-      <workItem from="1646516713284" duration="67699000" />
+      <workItem from="1646516713284" duration="78498000" />
     </task>
     <servers />
   </component>
@@ -286,6 +290,6 @@
     <SUITE FILE_PATH="coverage/com_jrdbnntt_wedding$Run_Django_Dev_Server.coverage" NAME="Django Dev Server Coverage Results" MODIFIED="1641866721955" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/com_jrdbnntt_wedding$python_manage_py_test_website_tests_models_mock_MockTest_test_delete_all_reservations.coverage" NAME="python manage.py test website.tests.models.mock.MockTest.test_delete_all_reservations Coverage Results" MODIFIED="1646531726552" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/com_jrdbnntt_wedding$Test__website_tests_models_mock_MockTest_test_install_100_mock_reservations.coverage" NAME="Test: website.tests.models.mock.MockTest.test_install_100_mock_reservations Coverage Results" MODIFIED="1646547758692" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/com_jrdbnntt_wedding$Django_Dev_Server.coverage" NAME="Django Dev Server Coverage Results" MODIFIED="1646612635287" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/com_jrdbnntt_wedding$Django_Dev_Server.coverage" NAME="Django Dev Server Coverage Results" MODIFIED="1646718169905" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

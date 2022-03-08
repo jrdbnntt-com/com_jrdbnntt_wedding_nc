@@ -2,14 +2,12 @@ from django.conf import settings
 from django.urls import path, include
 
 from website import views
-from website.views import reservation
-from website.views import user
-from website.views.user import sign_in
+from website.views import reservation, user, registry, info
 from website.views.reservation import rsvp
+from website.views.user import sign_in
 
 urlpatterns = [
     path('', views.home, name='home'),
-    path('event/', views.event, name='event'),
     path('rsvp/', views.rsvp, name='rsvp'),
     path('user/', include([
         path('sign_in/', include([
@@ -27,6 +25,17 @@ urlpatterns = [
             path('', rsvp.index, name="reservation/rsvp"),
             path('quick_answer/<str:answer>/', rsvp.quick_answer, name="reservation/rsvp/quick_answer")
         ]))
+    ])),
+    path('registry/', include([
+        path('', registry.index, name="registry")
+    ])),
+    path('info/', include([
+        path('event/', info.event, name='info/event'),
+        path('photos/', info.photos, name='info/photos'),
+        path('story/', info.story, name='info/story'),
+        path('things_to_do/', info.things_to_do, name='info/things_to_do'),
+        path('travel/', info.travel, name='info/travel'),
+        path('wedding_party/', info.wedding_party, name='info/wedding_party')
     ]))
 ]
 

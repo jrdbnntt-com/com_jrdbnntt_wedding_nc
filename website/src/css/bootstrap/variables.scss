@@ -1,0 +1,9 @@
+// Required
+@import "node_modules/bootstrap/scss/functions";
+
+// Default variable overrides
+$navbar-nav-link-padding-x: .75rem;
+
+// Required
+@import "node_modules/bootstrap/scss/variables";
+@import "node_modules/bootstrap/scss/mixins";

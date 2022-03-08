@@ -21,6 +21,9 @@
     {% endif %}
 
     {# Code #}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     {% load render_bundle from webpack_loader %}
     {% render_bundle 'style_bootstrap' %}
     {% render_bundle 'style_templates_main' %}
@@ -29,6 +32,7 @@
             window.{{ key }} = {{ value |safe }}
         {% endfor %}
     </script>
+    {% render_bundle 'main' %}
     {% block head_code %}{% endblock %}
 </head>
 <body>
@@ -36,9 +40,9 @@
     <div class="main-header">
         <div class="container main-header-container">
             {% block header %}
-                <div class="d-none d-lg-block justify-content-center">
-                    <p class="brand-large">
-                        <span class="brand-name">HANNAH <i>&</i> JARED</span><br>
+                <div class="d-none d-lg-block justify-content-center brand-large">
+                    <div class="brand-name">HANNAH <i>&</i> JARED</div>
+                    <p>
                         <span>{{ event_date }} &bull; {{ event_location }}</span><br>
                         <span id="countdown"></span>
                     </p>

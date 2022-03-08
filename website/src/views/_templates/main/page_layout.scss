@@ -1,17 +1,20 @@
 @import 'website/src/css/fonts';
 
 body {
-  @include font-serif-body
+  @include font-normal
 }
 
 h1, h2, h3, h4, h5, h6 {
-  @include font-serif-header
+  @include font-header
 }
 
 p, span {
-  @include font-serif-body
+  @include font-normal
 }
 
+.nav-link {
+  @include font-brand
+}
 
 .main-body-container {
   background: white;
@@ -19,7 +22,7 @@ p, span {
 }
 
 .main-header {
-  background: lightgray;
+  background: white;
 }
 
 .main-header-container {
@@ -27,7 +30,7 @@ p, span {
 }
 
 .main-footer {
-  background: lightgray;
+  background: white;
 }
 
 .main-footer-container {
@@ -48,7 +51,13 @@ p, span {
   text-align: center;
 }
 
+.brand-large {
+  margin-top: 100px;
+  margin-bottom: 30px;
+}
+
 .brand-name {
   @include font-brand;
   font-size: 2em;
+  margin-bottom: 15px;
 }

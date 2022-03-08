@@ -1,0 +1,14 @@
+{% extends "_templates/main/index.html" %}
+{% load render_bundle from webpack_loader %}
+{% block head_code %}
+    {% render_bundle 'entry_views_info_story' %}
+{% endblock %}
+{% block content %}
+
+    <h1>Our Story</h1>
+
+    <p>By the time Hannah and Jared finally make their way down the aisle, they will have been married for 2 years, 2 months and 14 days. Let’s start at the beginning…</p>
+    <p>Jared and Hannah met the new old fashioned way (OkCupid) in October 2017, just a couple months after Jared moved to Seattle from Tallahassee. Their first date was at the Hazlewood in Ballard, a snazzy cocktail bar. Hannah was a community mental health case manager and Jared was a software engineer - the conversation was easy because they had no understanding of what the other did for a living. They moved to the Matador in Ballard, where they admitted to a shared love of Long Island Iced Teas. Hannah got a text asking if she was going to go to a halloween party that night- when they responded saying they were on a date, their friend said, "Bring him!" Jared threw together his costume that he had in his car (all three of Jim’s costumes from <i>The Office</i>)--</p>
+    <p>By the time Hannah lost her health insurance at the beginning of the pandemic, and it became the most practical thing to do during a time of massive uncertainty. Witnessed and officiated by their best friends, Hannah and Jared had an intimate Zoom ceremony on April 26, 2020.</p>
+
+{% endblock %}
