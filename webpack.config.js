@@ -1,5 +1,4 @@
 const path = require('path');
-const webpack = require('webpack');
 const BundleTracker = require('webpack-bundle-tracker');
 const glob = require('glob');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -165,7 +164,7 @@ module.exports = (env, argv) => {
 
                 // Load fonts
                 {
-                    test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/i,
+                    test: /(\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?)|(\.ttf)$/i,
                     type: 'asset/resource',
                     generator: {
                         filename: 'fonts/[name].[contenthash][ext]'
