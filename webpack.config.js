@@ -18,25 +18,12 @@ module.exports = (env, argv) => {
         context: dirs.src,
         entry: Object.assign(
             {
-                style_bootstrap: path.resolve(dirs.src, 'css/bootstrap/bootstrap.scss'),
-                style_templates_main: {
-                    import: path.resolve(dirs.src, 'views/_templates/main/index.scss'),
-                    dependOn: [
-                        'style_bootstrap'
-                    ]
-                },
                 main: {
-                    import: path.resolve(dirs.src, 'views/_templates/main/index.js'),
-                    dependOn: [
-                        'style_bootstrap',
-                        'style_templates_main'
-                    ]
+                    import: path.resolve(dirs.src, 'views/_templates/main/index.js')
                 }
             },
             collectViewEntries({
                 dependOn: [
-                    'style_bootstrap',
-                    'style_templates_main',
                     'main',
                 ]
             })

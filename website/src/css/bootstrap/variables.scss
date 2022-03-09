@@ -1,9 +1,24 @@
-// Required
 @import "node_modules/bootstrap/scss/functions";
 
-// Default variable overrides
+// Bootstrap overrides
+@import "website/src/css/main/variables";
 $navbar-nav-link-padding-x: .75rem;
+$primary: $wedding-color-emerald-green;
+$body-color: $color-dark;
+$body-bg: $color-light;
 
-// Required
 @import "node_modules/bootstrap/scss/variables";
 @import "node_modules/bootstrap/scss/mixins";
+
+// Extra utility variables related to bootstrap
+$grid-breakpoint-xs: map-get($grid-breakpoints, 'xs');
+$grid-breakpoint-sm: map-get($grid-breakpoints, 'sm');
+$grid-breakpoint-md: map-get($grid-breakpoints, 'md');
+$grid-breakpoint-lg: map-get($grid-breakpoints, 'lg');
+$grid-breakpoint-xl: map-get($grid-breakpoints, 'xl');
+$grid-breakpoint-xxl: map-get($grid-breakpoints, 'xxl');
+$grid-breakpoint-max-sm: $grid-breakpoint-md;
+$grid-breakpoint-max-md: $grid-breakpoint-lg;
+$grid-breakpoint-max-lg: $grid-breakpoint-xl;
+$grid-breakpoint-max-xl: $grid-breakpoint-xxl;
+$nav-breakpoint: $grid-breakpoint-lg;

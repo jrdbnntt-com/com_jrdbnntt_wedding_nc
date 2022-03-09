@@ -1,7 +1,7 @@
-import "bootstrap"
-import "website/src/css/bootstrap/bootstrap.scss"
-import "bootstrap-icons/font/bootstrap-icons.css"
-import "./nav.js"
+import "./index.scss";
+import "bootstrap";
+import "website/src/css/bootstrap/bootstrap.scss";
+import "bootstrap-icons/font/bootstrap-icons.css";
 import * as $ from "jquery";
 import moment from "moment";
 

@@ -1,3 +1,69 @@
-@import "website/src/css/bootstrap/variables";
-@import "page_layout";
-@import "nav";
+@import "website/src/css/main/main";
+@import "css/page_layout";
+@import "css/nav";
+
+body {
+  @include font-normal;
+  color: $body-color;
+  background: $body-bg;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @include font-header
+}
+
+p, span {
+  @include font-normal
+}
+
+.brand-large {
+  font-size: 1.25em;
+  text-align: center;
+}
+
+.brand-large {
+  margin-top: 100px;
+  margin-bottom: 30px;
+}
+
+.brand-name {
+  @include font-brand;
+  font-size: 2em;
+  margin-bottom: 15px;
+}
+
+img {
+  &.photo {
+    border-radius: 3px;
+    max-width: 2000px;
+  }
+}
+
+@media (min-width: $grid-breakpoint-max-sm) {
+  .full-width-until-md {
+    .photo {
+      border-radius: 0;
+    }
+  }
+}
+@media (max-width: $grid-breakpoint-max-md) {
+  .full-width-until-lg {
+    .photo {
+      border-radius: 0;
+    }
+  }
+}
+@media (max-width: $grid-breakpoint-max-lg) {
+  .full-width-until-xl {
+    .photo {
+      border-radius: 0;
+    }
+  }
+}
+@media (max-width: $grid-breakpoint-max-xl) {
+  .full-width-until-xxl {
+    .photo {
+      border-radius: 0;
+    }
+  }
+}

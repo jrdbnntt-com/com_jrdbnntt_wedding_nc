@@ -1,0 +1,28 @@
+@import "website/src/css/main/variables";
+
+@font-face {
+  font-family: "Libre Baskerville";
+  src: url(../../fonts/Libre_Baskerville/LibreBaskerville-Regular.ttf);
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Libre Baskerville";
+  src: url(../../fonts/Libre_Baskerville/LibreBaskerville-Bold.ttf);
+  font-style: normal;
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "Libre Baskerville";
+  src: url(../../fonts/Libre_Baskerville/LibreBaskerville-Italic.ttf);
+  font-style: italic;
+}
+
+.font-brand {
+  @include font-brand;
+}
+
+.font-normal {
+  @include font-normal
+}

@@ -1,10 +1,14 @@
 {% extends "_templates/main/index.html" %}
 {% load render_bundle from webpack_loader %}
+{% load static %}
 {% block head_code %}
     {% render_bundle 'entry_views_home' %}
 {% endblock %}
 {% block content %}
 
-    <h1>TODO: {{page_title}}</h1>
+    <div class="full-width-until-xxl">
+        <img class="photo" src="{% static 'img/HannahJared_Engagement-2256.jpg' %}" width="100%" alt="Hannah & Jared"/>
+    </div>
+
 
 {% endblock %}

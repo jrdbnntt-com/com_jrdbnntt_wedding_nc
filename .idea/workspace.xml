@@ -6,11 +6,17 @@
   <component name="ChangeListManager">
     <list default="true" id="1412e4fd-cd2f-4404-8033-678bb8678153" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/context_processors.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/context_processors.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/views/_templates/main/page_layout.scss" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/views/_templates/main/page_layout.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/views/info/travel_and_stay/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/views/info/travel_and_stay/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/views/info.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/views/info.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/src/css/bootstrap/variables.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/src/css/fonts.scss" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/css/main/fonts.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/src/css/variables.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/src/views/_templates/main/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/views/_templates/main/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/src/views/_templates/main/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/views/_templates/main/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/src/views/_templates/main/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/views/_templates/main/index.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/src/views/_templates/main/nav.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/src/views/_templates/main/nav.scss" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/views/_templates/main/css/nav.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/src/views/_templates/main/page_layout.scss" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/views/_templates/main/css/page_layout.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/src/views/home/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/views/home/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,14 +85,14 @@
       <recent name="$PROJECT_DIR$/website/src/views/info/photos" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/website/src/css/main" />
+      <recent name="$PROJECT_DIR$/website/src/views/_templates/main/css" />
       <recent name="$PROJECT_DIR$/website/src/css/bootstrap" />
       <recent name="$PROJECT_DIR$/website/src/views/info" />
       <recent name="$PROJECT_DIR$/website/src/fonts" />
-      <recent name="$PROJECT_DIR$/website/static/local" />
-      <recent name="$PROJECT_DIR$/website/src/views/reservation/rsvp" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.Django Dev Server">
+  <component name="RunManager" selected="npm.build">
     <configuration name="Test: website.tests.models.mock.MockTest.test_install_100_mock_reservations" type="DjangoTestsConfigurationType" temporary="true">
       <module name="com_jrdbnntt_wedding" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -231,7 +237,7 @@
       <workItem from="1642030990132" duration="51103000" />
       <workItem from="1646508891412" duration="2229000" />
       <workItem from="1646516713284" duration="82176000" />
-      <workItem from="1646789222236" duration="1531000" />
+      <workItem from="1646789222236" duration="11087000" />
     </task>
     <servers />
   </component>

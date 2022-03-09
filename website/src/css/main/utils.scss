@@ -1,0 +1,30 @@
+@import "website/src/css/bootstrap/variables";
+
+@mixin full-width {
+  width: 100vw;
+  position: relative;
+  left: calc(-1 * (100vw - 100%)/2);
+}
+.full-width {
+  @include full-width;
+}
+@media (min-width: $grid-breakpoint-max-sm) {
+  .full-width-until-md {
+    @include full-width;
+  }
+}
+@media (max-width: $grid-breakpoint-max-md) {
+  .full-width-until-lg {
+    @include full-width;
+  }
+}
+@media (max-width: $grid-breakpoint-max-lg) {
+  .full-width-until-xl {
+    @include full-width;
+  }
+}
+@media (max-width: $grid-breakpoint-max-xl) {
+  .full-width-until-xxl {
+    @include full-width;
+  }
+}

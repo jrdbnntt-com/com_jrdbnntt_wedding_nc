@@ -1,10 +1,11 @@
-@import "website/src/css/bootstrap/variables";
+@import 'website/src/css/main/fonts';
 
 /**
  * Page Navigation
  */
 nav {
   .nav-link {
+    @include font-brand;
     color: inherit;
 
     &.active {
