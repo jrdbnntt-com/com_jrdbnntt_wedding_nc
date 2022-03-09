@@ -27,13 +27,7 @@ def story(request: HttpRequest):
     })
 
 
-def things_to_do(request: HttpRequest):
-    return render(request, "info/things_to_do/index.html", {
-        'page_title': 'Things To Do'
-    })
-
-
-def travel(request: HttpRequest):
+def travel_and_stay(request: HttpRequest):
     return render(request, "info/travel_and_stay/index.html", {
         'page_title': 'Travel'
     })

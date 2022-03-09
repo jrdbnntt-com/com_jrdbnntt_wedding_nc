@@ -31,10 +31,9 @@ urlpatterns = [
     ])),
     path('info/', include([
         path('event/', info.event, name='info/event'),
-        path('photos/', info.photos, name='info/photos'),
+        # path('photos/', info.photos, name='info/photos'),
         path('story/', info.story, name='info/story'),
-        path('things_to_do/', info.things_to_do, name='info/things_to_do'),
-        path('travel/', info.travel, name='info/travel'),
+        path('travel_and_stay/', info.travel_and_stay, name='info/travel_and_stay'),
         path('wedding_party/', info.wedding_party, name='info/wedding_party')
     ]))
 ]

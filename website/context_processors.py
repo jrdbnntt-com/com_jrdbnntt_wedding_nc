@@ -21,9 +21,8 @@ def set_navigation_options(request):
     nav_options = [
         NavOption('home', 'Home'),
         NavOption('info/story', 'Our Story'),
-        NavOption('info/travel', 'Travel'),
-        NavOption('info/things_to_do', 'Things to Do'),
-        NavOption('info/photos', 'Photos'),
+        NavOption('info/travel_and_stay', 'Travel & Stay'),
+        # NavOption('info/photos', 'Photos'),
         NavOption('info/wedding_party', 'Wedding Party'),
         NavOption('info/event', 'Event'),
         NavOption('reservation/rsvp', 'RSVP'),

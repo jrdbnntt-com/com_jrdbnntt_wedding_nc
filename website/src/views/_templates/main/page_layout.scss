@@ -1,7 +1,10 @@
 @import 'website/src/css/fonts';
+@import "website/src/css/variables";
 
 body {
-  @include font-normal
+  @include font-normal;
+  background: $color-light;
+  color: $color-dark;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -17,12 +20,11 @@ p, span {
 }
 
 .main-body-container {
-  background: white;
   min-height: 100vh;
 }
 
 .main-header {
-  background: white;
+
 }
 
 .main-header-container {
@@ -30,7 +32,7 @@ p, span {
 }
 
 .main-footer {
-  background: white;
+
 }
 
 .main-footer-container {
@@ -38,7 +40,7 @@ p, span {
 }
 
 .main-content {
-  background: white;
+
 }
 
 .main-content-container {
