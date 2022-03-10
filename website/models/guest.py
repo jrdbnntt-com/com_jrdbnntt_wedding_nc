@@ -7,6 +7,11 @@ from django.utils import timezone
 from website.models.reservation import Reservation
 
 
+def init():
+    """ Does nothing, just here to keep import """
+    pass
+
+
 class Guest(models.Model):
     """ A single guest for the event """
     MAX_HIDDEN_PER_RESERVATION = 10
@@ -14,6 +19,7 @@ class Guest(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     rsvp_answer = models.BooleanField(default=None, blank=True, null=True)
+    rehearsal_rsvp_answer = models.BooleanField(default=None, blank=True, null=True)
     rsvp_comment = models.CharField(max_length=1000, blank=True)
     assigned_table = models.IntegerField(null=True, blank=True)
     assigned_table_seat = models.IntegerField(null=True, blank=True)
@@ -22,19 +28,28 @@ class Guest(models.Model):
     created_at = models.DateTimeField(default=timezone.now, editable=False)
     updated_at = models.DateTimeField(default=timezone.now, editable=False)
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.full_name()
 
-    def full_name(self):
+    def full_name(self) -> str:
         return "{} {}".format(self.first_name, self.last_name)
 
-    def full_name_rsvp(self):
+    def full_name_rsvp(self) -> str:
         return "{} ({})".format(self.full_name(), self.rsvp_answer_display())
 
-    def rsvp_answer_display(self):
-        if self.rsvp_answer is None:
+    def rsvp_answer_display(self) -> str:
+        return self._answer_display(self.rsvp_answer)
+
+    def rehearsal_rsvp_answer_display(self) -> str:
+        if self.reservation.invited_to_rehearsal:
+            return self._answer_display(self.rehearsal_rsvp_answer)
+        return '(not invited)'
+
+    @staticmethod
+    def _answer_display(answer: bool) -> str:
+        if answer is None:
             return "TBD"
-        if self.rsvp_answer:
+        if answer:
             return "Going"
         return "Not Going"
 
@@ -49,14 +64,18 @@ class GuestAdmin(admin.ModelAdmin):
         'first_name',
         'last_name',
         'updated_at',
-        'rsvp_answer',
         'rsvp_answer_display',
+        'rehearsal_rsvp_answer_display',
         'rsvp_comment',
         'food_comment',
         'assigned_table',
         'assigned_table_seat',
     )
-    list_filter = ('rsvp_answer', 'hidden')
+    list_filter = (
+        'rsvp_answer_display',
+        'rehearsal_rsvp_answer_display',
+        'hidden'
+    )
 
     @staticmethod
     def reservation__access_code(obj: Guest):
@@ -78,8 +97,18 @@ def post_save(sender, instance: Guest, created, raw, using, update_fields, **kwa
     """ If hiding, delete other hidden Guest objects for the same reservation to ensure that there are at max 10 """
     if update_fields is not None:
         update_fields = frozenset(update_fields)
+        rsvp_updated = False
+        reservation = None
         if "hidden" in update_fields and instance.hidden:
             reservation = Guest.objects.only("reservation").get(pk=instance.id).reservation
             hidden_guests = Guest.objects.filter(reservation=reservation, hidden=True).order_by("-updated_at")
             if len(hidden_guests) > Guest.MAX_HIDDEN_PER_RESERVATION:
                 hidden_guests[Guest.MAX_HIDDEN_PER_RESERVATION:].delete()
+            rsvp_updated = True
+        if "rsvp_answer" in update_fields or "rehearsal_rsvp_answer" in update_fields:
+            rsvp_updated = True
+        if rsvp_updated:
+            if reservation is None:
+                reservation = Guest.objects.only("reservation").get(pk=instance.id).reservation
+            reservation.rsvp_updated_at = timezone.now()
+            reservation.save()

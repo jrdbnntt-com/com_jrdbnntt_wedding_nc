@@ -2,10 +2,11 @@ import secrets
 import string
 
 from django.utils import timezone
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 from django.db import models
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
+from website.core.auth.user import groups
 
 
 def generate_access_code():
@@ -30,6 +31,7 @@ class Reservation(models.Model):
     mailing_address_zip = models.CharField(max_length=10, blank=True)
     created_at = models.DateTimeField(default=timezone.now, editable=False)
     updated_at = models.DateTimeField(default=timezone.now, editable=False)
+    invited_to_rehearsal = models.BooleanField(default=False)
 
     def __str__(self):
         if self.user is not None:
@@ -45,10 +47,19 @@ def pre_save(sender, instance: Reservation, **kwargs):
 
 
 def activate_reservation(reservation_id: int, email: str):
-    res = Reservation.objects.filter(id=reservation_id).only("id", "access_code", "name").get()
+    res = Reservation.objects.filter(id=reservation_id).only("id", "access_code", "name", "invited_to_rehearsal").get()
     usr = User.objects.create_user(email, email, res.access_code)
     res.user = usr
     res.activated = True
     res.activated_at = timezone.now()
     res.save()
+
+    wedding_guests_group = Group.objects.filter(name=groups.WEDDING_GUESTS).get()
+    wedding_guests_group.user_set.add(usr)
+    wedding_guests_group.save()
+    if res.invited_to_rehearsal:
+        rehearsal_guests_group = Group.objects.filter(name=groups.REHEARSAL_GUESTS).get()
+        rehearsal_guests_group.user_set.add(usr)
+        rehearsal_guests_group.save()
+
     return res, usr

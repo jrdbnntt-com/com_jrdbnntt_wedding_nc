@@ -1,6 +1,10 @@
-from django.conf import settings
 from django.contrib import admin
 from django.db import models
+
+
+def init():
+    """ Does nothing, just here to keep import """
+    pass
 
 
 class EmailSubscriptionGroup(models.Model):

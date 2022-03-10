@@ -5,6 +5,11 @@ from django.db import models
 from website.models.mail.subscription_group import EmailSubscriptionGroup
 
 
+def init():
+    """ Does nothing, just here to keep import """
+    pass
+
+
 def default_from_email():
     return settings.EMAIL_FROM_DEFAULT
 

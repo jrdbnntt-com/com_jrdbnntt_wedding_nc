@@ -5,9 +5,13 @@ from django.contrib.auth.models import Group
 logger = logging.getLogger(__name__)
 
 WEDDING_PARTY = "Wedding Party"
+REHEARSAL_GUESTS = "Rehearsal Guests"
+WEDDING_GUESTS = "Wedding Guests"
 
 functional_groups = [
-    WEDDING_PARTY
+    WEDDING_PARTY,
+    REHEARSAL_GUESTS,
+    WEDDING_GUESTS
 ]
 
 for group in functional_groups:

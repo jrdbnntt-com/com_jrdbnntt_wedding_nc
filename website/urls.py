@@ -2,6 +2,7 @@ from django.conf import settings
 from django.urls import path, include
 
 from website import views
+from website.models.aggregate import init as init_model_aggregates
 from website.views import reservation, user, registry, info
 from website.views.reservation import rsvp
 from website.views.user import sign_in
@@ -40,3 +41,5 @@ urlpatterns = [
 
 if settings.ADMIN_SITE_ENABLED:
     urlpatterns.append(path('admin/login/', views.admin_login_redirect))
+
+init_model_aggregates()

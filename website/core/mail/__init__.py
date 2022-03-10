@@ -18,3 +18,16 @@ def send_registration_activated_confirmation(to_email: str, to_name: str, reserv
         'to_name': to_name,
         'reservation_code': reservation_code
     })
+
+
+def send_rsvp_updated_email(to_email: str, to_name: str, rsvp_complete: bool, attending_wedding: bool,
+                            attending_rehearsal: bool, invited_to_rehearsal: bool, guest_rsvp_statuses: list[str]):
+    sendgrid.send_dynamic_template_email('hj_rsvp_answer_updated', to_email, {
+        'to_name': to_name,
+        'rsvp_complete': rsvp_complete,
+        'attending_wedding': attending_wedding,
+        'attending_rehearsal': attending_rehearsal,
+        'guest_rsvp_statuses': guest_rsvp_statuses,
+        'invited_to_rehearsal': invited_to_rehearsal
+    })
+    pass

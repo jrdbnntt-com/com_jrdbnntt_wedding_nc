@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.forms',
+    'background_task'
     'webpack_loader',
     'website.apps.WebsiteConfig'
 ]
