@@ -184,5 +184,10 @@ config.assert_defined(config.SECTION_EMAIL, 'EMAIL_LINK_BASE_URL', EMAIL_LINK_BA
 
 # Event details
 EVENT_DATE = datetime.datetime.fromisoformat(active_config.get(config.SECTION_EVENT_DETAILS, 'DATE'))
-DATE_RSVP_DEADLINE = datetime.datetime.fromisoformat(active_config.get(config.SECTION_EVENT_DETAILS, 'DATE_RSVP_DEADLINE'))
+DATE_RSVP_DEADLINE = datetime.datetime.fromisoformat(
+    active_config.get(config.SECTION_EVENT_DETAILS, 'DATE_RSVP_DEADLINE'))
 EVENT_PUBLIC_LOCATION = active_config.get(config.SECTION_EVENT_DETAILS, 'PUBLIC_LOCATION')
+
+# Tasks
+MIN_TIME_BETWEEN_TASK_POLLING_IN_SECONDS = active_config.getfloat(config.SECTION_TASKS,
+                                                                  'MIN_TIME_BETWEEN_TASK_POLLING_IN_SECONDS')

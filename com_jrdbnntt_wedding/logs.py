@@ -76,6 +76,12 @@ def build_django_config(debug=False):
                 'class': 'logging.FileHandler',
                 'filename': new_log_file(run_log_base_dir, 'website'),
             },
+            'file_tasks': {
+                'level': logging.DEBUG,
+                'formatter': 'default',
+                'class': 'logging.FileHandler',
+                'filename': new_log_file(run_log_base_dir, 'tasks'),
+            },
         },
         'loggers': {
             '': {
@@ -88,5 +94,15 @@ def build_django_config(debug=False):
                 'level': logging.DEBUG if debug else logging.INFO,
                 'propagate': False
             },
+            'website.core.tasks': {
+                'handlers': ['file_tasks'],
+                'level': logging.DEBUG if debug else logging.INFO,
+                'propagate': False
+            },
+            'website.models.task': {
+                'handlers': ['file_tasks'],
+                'level': logging.DEBUG if debug else logging.INFO,
+                'propagate': False
+            }
         }
     }

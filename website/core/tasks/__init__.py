@@ -1,9 +1,17 @@
+import logging
+import time
+from threading import Thread
+
+from django.conf import settings
+
 from website.core.mail import send_rsvp_updated_email
 from website.models.guest import Guest
 from website.models.reservation import Reservation
 from website.models.task import schedule_task, Task, get_processable_tasks
 
+logger = logging.getLogger(__name__)
 TASK_NAME_SEND_RSVP_UPDATED_EMAIL = 'send_rsvp_updated_email'
+_SECONDS_IN_NANOSECOND = 1000000000.0
 
 
 def schedule_send_rsvp_updated_email(reservation_id: int):
@@ -67,7 +75,27 @@ def process_task(task: Task):
     task.execute_task(TASK_EXECUTOR_LOOKUP[task.name])
 
 
-def process_all_processable_tasks():
+def process_all_processable_tasks() -> int:
+    process_count = 0
     tasks = get_processable_tasks()
     for task in tasks:
+        process_count += 1
         process_task(task)
+    return process_count
+
+
+def _process_tasks_continuously():
+    min_wait_time_ns = int(settings.MIN_TIME_BETWEEN_TASK_POLLING_IN_SECONDS * _SECONDS_IN_NANOSECOND)
+    while True:
+        start_time = time.time_ns()
+        tasks_processed = process_all_processable_tasks()
+        process_time = time.time_ns() - start_time
+        if process_time < min_wait_time_ns:
+            wait_time_ns = min_wait_time_ns - process_time
+            time.sleep(wait_time_ns / _SECONDS_IN_NANOSECOND)
+        logger.debug("Processed %d tasks in %.3f seconds" % (tasks_processed, process_time / _SECONDS_IN_NANOSECOND))
+
+
+def start_processing_tasks_in_background():
+    th = Thread(target=_process_tasks_continuously, daemon=True)
+    th.start()
