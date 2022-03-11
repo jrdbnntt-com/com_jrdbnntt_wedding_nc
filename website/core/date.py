@@ -21,8 +21,10 @@ def format_day_with_ending(day: int) -> str:
 
 
 def format_month_day_year_long(date: datetime) -> str:
+    """ July 9th, 2022 """
     return "%s %s, %d" % (
         date.strftime('%B'),
         format_day_with_ending(date.day),
         date.year
     )
+

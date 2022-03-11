@@ -1,10 +1,10 @@
 <p>Hi {{to_name}},</p>
 
 <p>
-    Your RSVP status has been successfully updated.
+    Thank you for RSVPing to our wedding!
 {{#if rsvp_complete}}
     {{#or attending_wedding attending_rehearsal}}
-        TODO message we are excited to see you this summer!
+        We are excited to see you this summer!
     {{else}}
         We are sorry you can't make it to our wedding.
     {{/or}}
@@ -13,12 +13,13 @@
 {{/if}}
 </p>
 
-<h3>Your RSVP Status</h3>
+<h3>RSVP Status</h3>
 <ul>
     {{#each guest_rsvp_statuses}}
         <li>{{this}}</li>
     {{/each}}
 </ul>
+You can make changes to your RSVP <a target="_blank" href="{{link_rsvp}}">on our website</a> until {{date_rsvp_deadline}}.
 
 {{#if attending_rehearsal}}
     <h3>Wedding Rehearsal Details</h3>

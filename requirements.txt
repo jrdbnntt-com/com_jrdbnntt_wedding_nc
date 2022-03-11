@@ -5,4 +5,3 @@ requests
 django-sendgrid-v5
 names
 sendgrid
-django-background-tasks

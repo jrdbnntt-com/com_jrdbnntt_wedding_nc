@@ -18,7 +18,7 @@ class ReservationAdmin(admin.ModelAdmin):
         "user",
         "activated",
         "guests_all",
-        "guests_rsvp"
+        "guests_rsvp",
         "guests_rehearsal_rsvp"
     )
     list_filter = ('activated',)

@@ -62,7 +62,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.forms',
-    'background_task'
     'webpack_loader',
     'website.apps.WebsiteConfig'
 ]
@@ -185,4 +184,5 @@ config.assert_defined(config.SECTION_EMAIL, 'EMAIL_LINK_BASE_URL', EMAIL_LINK_BA
 
 # Event details
 EVENT_DATE = datetime.datetime.fromisoformat(active_config.get(config.SECTION_EVENT_DETAILS, 'DATE'))
+DATE_RSVP_DEADLINE = datetime.datetime.fromisoformat(active_config.get(config.SECTION_EVENT_DETAILS, 'DATE_RSVP_DEADLINE'))
 EVENT_PUBLIC_LOCATION = active_config.get(config.SECTION_EVENT_DETAILS, 'PUBLIC_LOCATION')

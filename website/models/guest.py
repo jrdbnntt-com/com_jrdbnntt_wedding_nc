@@ -72,8 +72,8 @@ class GuestAdmin(admin.ModelAdmin):
         'assigned_table_seat',
     )
     list_filter = (
-        'rsvp_answer_display',
-        'rehearsal_rsvp_answer_display',
+        'rsvp_answer',
+        'rehearsal_rsvp_answer',
         'hidden'
     )
 

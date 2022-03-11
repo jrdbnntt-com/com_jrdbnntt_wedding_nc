@@ -1,6 +1,8 @@
-from website.core.mail import send_rsvp_updated_email
-from website.models.reservation import Reservation
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+
 from website.core.tasks import schedule_send_rsvp_updated_email
+from website.models.reservation import Reservation
 
 
 def init():
