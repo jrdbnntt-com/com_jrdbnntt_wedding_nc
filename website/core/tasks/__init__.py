@@ -8,6 +8,7 @@ from website.core.mail import send_rsvp_updated_email
 from website.models.guest import Guest
 from website.models.reservation import Reservation
 from website.models.task import schedule_task, Task, get_processable_tasks
+from datetime import datetime, timedelta
 
 logger = logging.getLogger(__name__)
 TASK_NAME_SEND_RSVP_UPDATED_EMAIL = 'send_rsvp_updated_email'
@@ -15,9 +16,13 @@ _SECONDS_IN_NANOSECOND = 1000000000.0
 
 
 def schedule_send_rsvp_updated_email(reservation_id: int):
-    schedule_task(TASK_NAME_SEND_RSVP_UPDATED_EMAIL, null, task_kwargs={
-        'reservation_id': reservation_id
-    })
+    schedule_task(
+        TASK_NAME_SEND_RSVP_UPDATED_EMAIL,
+        datetime.now() + timedelta(seconds=30),
+        task_kwargs={
+            'reservation_id': reservation_id
+        }
+    )
 
 
 def _task_send_rsvp_updated_email(reservation_id: int):
