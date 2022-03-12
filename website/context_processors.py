@@ -23,11 +23,11 @@ def set_navigation_options(request):
         NavOption('info/story', 'Our Story'),
         NavOption('info/travel_and_stay', 'Travel & Stay'),
         # NavOption('info/photos', 'Photos'),
-        NavOption('info/wedding_party', 'Wedding Party'),
-        NavOption('info/event', 'Event'),
+        # NavOption('info/wedding_party', 'Wedding Party'),
+        NavOption('info/venue', 'Venue'),
         NavOption('reservation/rsvp', 'RSVP'),
         NavOption('user/sign_in', 'Sign in', require_auth=False),
-        NavOption('user/profile', 'Profile', require_auth=True),
+        # NavOption('user/profile', 'Profile', require_auth=True),
     ]
     if settings.ADMIN_SITE_ENABLED:
         nav_options.append(NavOption('admin:index', 'Admin', require_admin=True))

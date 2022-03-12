@@ -4,14 +4,9 @@ from django.shortcuts import render
 from website.core.auth.user import groups
 
 
-def event(request: HttpRequest):
-    show_rehearsal_dinner_info = False
-    if request.user and request.user.is_authenticated and (
-            request.user.is_staff or request.user.groups.filter(name=groups.WEDDING_PARTY)):
-        show_rehearsal_dinner_info = True
-    return render(request, "info/event/index.html", {
-        'page_title': 'Event Details',
-        'show_rehearsal_dinner_info': show_rehearsal_dinner_info
+def venue(request: HttpRequest):
+    return render(request, "info/venue/index.html", {
+        'page_title': 'Venue',
     })
 
 

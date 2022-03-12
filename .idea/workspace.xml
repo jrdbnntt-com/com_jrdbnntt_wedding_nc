@@ -6,12 +6,18 @@
   <component name="ChangeListManager">
     <list default="true" id="1412e4fd-cd2f-4404-8033-678bb8678153" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/com_jrdbnntt_wedding/config/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/com_jrdbnntt_wedding/config/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/com_jrdbnntt_wedding/config/base.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/com_jrdbnntt_wedding/config/base.cfg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/com_jrdbnntt_wedding/logs.py" beforeDir="false" afterPath="$PROJECT_DIR$/com_jrdbnntt_wedding/logs.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/com_jrdbnntt_wedding/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/com_jrdbnntt_wedding/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/apps.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/core/tasks/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/core/tasks/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/context_processors.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/context_processors.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/src/css/main/utils.scss" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/css/main/utils.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/src/css/main/variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/css/main/variables.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/src/views/_templates/main/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/views/_templates/main/index.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/src/views/info/event/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/views/info/venue/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/src/views/info/event/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/views/info/venue/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/src/views/info/event/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/views/info/venue/index.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/src/views/info/story/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/views/info/story/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/src/views/info/story/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/views/info/story/index.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/views/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/views/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/views/info.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/views/info.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -232,7 +238,7 @@
       <workItem from="1642030990132" duration="51103000" />
       <workItem from="1646508891412" duration="2229000" />
       <workItem from="1646516713284" duration="82176000" />
-      <workItem from="1646789222236" duration="31649000" />
+      <workItem from="1646789222236" duration="48174000" />
     </task>
     <servers />
   </component>
@@ -280,6 +286,6 @@
     <SUITE FILE_PATH="coverage/com_jrdbnntt_wedding$Run_Django_Dev_Server.coverage" NAME="Django Dev Server Coverage Results" MODIFIED="1641866721955" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/com_jrdbnntt_wedding$python_manage_py_test_website_tests_models_mock_MockTest_test_delete_all_reservations.coverage" NAME="python manage.py test website.tests.models.mock.MockTest.test_delete_all_reservations Coverage Results" MODIFIED="1646531726552" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/com_jrdbnntt_wedding$Test__website_tests_models_mock_MockTest_test_install_100_mock_reservations.coverage" NAME="Test: website.tests.models.mock.MockTest.test_install_100_mock_reservations Coverage Results" MODIFIED="1646547758692" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/com_jrdbnntt_wedding$Django_Dev_Server.coverage" NAME="Django Dev Server Coverage Results" MODIFIED="1646963479989" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/com_jrdbnntt_wedding$Django_Dev_Server.coverage" NAME="Django Dev Server Coverage Results" MODIFIED="1646963772230" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

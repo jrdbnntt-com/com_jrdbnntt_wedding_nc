@@ -1,0 +1,24 @@
+{% extends "_templates/main/index.html" %}
+{% load render_bundle from webpack_loader %}
+{% block head_code %}
+    {% render_bundle 'entry_views_info_venue' %}
+{% endblock %}
+{% block content %}
+
+    <h1>About the Venue</h1>
+
+
+    <h2>Getting There</h2>
+    <p>
+        The venue is located at <b>5708 223rd Ave NE, Redmond, WA 98053</b>. You will want to arrive by coming from Redmond-Fall City Rd NE and turning onto 218th Ave NE, then left to 219th Ave NE, then right to 56th St which becomes 223rd Ave NE, and then the property will be on your right. If you are thinking about parking there, please read <a href="#Parking">Parking</a>.
+    </p>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2687.3437278949887!2d-122.04424168419105!3d47.658318592396675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x549073aaffde24d9%3A0x68e0e46108c2125e!2s5708%20223rd%20Ave%20NE%2C%20Redmond%2C%20WA%2098053!5e0!3m2!1sen!2sus!4v1646967750429!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+
+
+    <a id="#Parking"></a>
+    <h2>Parking</h2>
+    <p>
+        Parking inside the property gates is extremely limited to and reserved for immediate family, vendors and the wedding party. There is limited parking outside the gates available for guests. If you are parking at the venue, we highly recommend carpooling. Please park alongside the property line in the grass at an angle so that we can fit as many cars as possible. We recommend using Uber, Lyft or Seattle Yellow Cab if you would rather use a ride-share service than deal with parking or do not have a designated driver for your ride home.
+    </p>
+
+{% endblock %}

@@ -3,28 +3,68 @@
 @mixin full-width {
   width: 100vw;
   position: relative;
-  left: calc(-1 * (100vw - 100%)/2);
+  left: calc(-1 * (100vw - 100%) / 2);
 }
+
 .full-width {
   @include full-width;
 }
+
 @media (min-width: $grid-breakpoint-max-sm) {
   .full-width-until-md {
     @include full-width;
   }
 }
+
 @media (max-width: $grid-breakpoint-max-md) {
   .full-width-until-lg {
     @include full-width;
   }
 }
+
 @media (max-width: $grid-breakpoint-max-lg) {
   .full-width-until-xl {
     @include full-width;
   }
 }
+
 @media (max-width: $grid-breakpoint-max-xl) {
   .full-width-until-xxl {
     @include full-width;
   }
+}
+
+
+.parallax-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  perspective: $parallax-perspective;
+  perspective-origin: 0;
+  display: flex;
+  -webkit-overflow-scrolling: touch;
+}
+
+.parallax-layer {
+  @include parallax-layer;
+}
+
+.parallax-layer-0 {
+  @include parallax-layer;
+  @include parallax-transform(0px);
+}
+
+.parallax-layer-3 {
+  @include parallax-layer;
+  @include parallax-transform(3x);
+}
+
+.overflow-hidden-x {
+  overflow-x: hidden;
+}
+
+.overflow-hidden-y {
+  overflow-y: hidden;
 }

@@ -1,1 +1,32 @@
-// TODO
+@import "website/src/css/bootstrap/variables";
+@import "website/src/views/_templates/main/css/variables";
+
+
+.img-cover-center {
+  img {
+    object-fit: cover;
+    object-position: center 60%;
+  }
+}
+
+.main-content-container > * {
+  margin-bottom: $spacer-margin;
+}
+
+.main-content-container {
+  .row {
+    .order-1 {
+      margin-bottom: $spacer-margin;
+    }
+  }
+}
+
+@media (min-width: $grid-breakpoint-xl) {
+  .main-content-container {
+    .row {
+      .order-1 {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

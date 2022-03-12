@@ -8,7 +8,7 @@
 }
 
 @mixin font-normal {
-  font-family: "Roboto", sans-serif;
+  @include font-brand;
 }
 
 // Wedding colors
@@ -22,3 +22,26 @@ $wedding-color-burgundy: rgb(93,25,31);
 // Color utils
 $color-light: $wedding-color-warm-neutrals;
 $color-dark: $wedding-color-emerald-green;
+
+// Sass utils
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+  @return $number;
+}
+
+// Parallax utils
+$parallax-perspective: 8px;
+@function parallax-scale-factor($parallax-perspective, $z-distance) {
+  @return ((strip-unit($parallax-perspective) - strip-unit($z-distance)) / strip-unit($parallax-perspective))px;
+}
+@mixin parallax-transform($z-distance, $parallax-perspective: $parallax-perspective) {
+  transform: translateZ($z-distance) scale(parallax-scale-factor($parallax-perspective, $z-distance));
+}
+@mixin parallax-layer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+}

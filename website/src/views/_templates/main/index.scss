@@ -2,10 +2,13 @@
 @import "css/page_layout";
 @import "css/nav";
 
+$font-size-base: 1.3rem;
+
 body {
   @include font-normal;
   color: $body-color;
   background: $body-bg;
+  font-size: $font-size-base;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -13,7 +16,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 p, span {
-  @include font-normal
+  @include font-normal;
+  font-size: $font-size-base;
 }
 
 .brand-large {
@@ -34,8 +38,11 @@ p, span {
 
 img {
   &.photo {
-    border-radius: 3px;
+    border-radius: 5px;
     max-width: 2000px;
+  }
+  &.photo-vertical {
+    max-width: 750px;
   }
 }
 
@@ -65,5 +72,16 @@ img {
     .photo {
       border-radius: 0;
     }
+  }
+}
+
+
+.page-title {
+  margin-top: 3rem;
+}
+@media (min-width: $grid-breakpoint-lg) {
+  .page-title {
+    margin-top: 0;
+    text-align: center;
   }
 }

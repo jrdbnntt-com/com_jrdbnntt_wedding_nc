@@ -12,7 +12,7 @@ def home(request: HttpRequest):
 
 
 def event(request: HttpRequest):
-    return render(request, "info/event/index.html", {
+    return render(request, "info/venue/index.html", {
         'page_title': 'Event'
     })
 

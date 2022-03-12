@@ -31,11 +31,11 @@ urlpatterns = [
         path('', registry.index, name="registry")
     ])),
     path('info/', include([
-        path('event/', info.event, name='info/event'),
+        path('venue/', info.venue, name='info/venue'),
         # path('photos/', info.photos, name='info/photos'),
         path('story/', info.story, name='info/story'),
         path('travel_and_stay/', info.travel_and_stay, name='info/travel_and_stay'),
-        path('wedding_party/', info.wedding_party, name='info/wedding_party')
+        # path('wedding_party/', info.wedding_party, name='info/wedding_party')
     ]))
 ]
 
