@@ -35,6 +35,7 @@ urlpatterns = [
         # path('photos/', info.photos, name='info/photos'),
         path('story/', info.story, name='info/story'),
         path('travel_and_stay/', info.travel_and_stay, name='info/travel_and_stay'),
+        path('faqs/', info.faqs, name='info/faqs'),
         # path('wedding_party/', info.wedding_party, name='info/wedding_party')
     ]))
 ]

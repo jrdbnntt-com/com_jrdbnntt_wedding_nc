@@ -25,6 +25,7 @@ def set_navigation_options(request):
         # NavOption('info/photos', 'Photos'),
         # NavOption('info/wedding_party', 'Wedding Party'),
         NavOption('info/venue', 'Venue'),
+        NavOption('info/faqs', 'FAQs'),
         NavOption('reservation/rsvp', 'RSVP'),
         NavOption('user/sign_in', 'Sign in', require_auth=False),
         # NavOption('user/profile', 'Profile', require_auth=True),

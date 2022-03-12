@@ -6,13 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="1412e4fd-cd2f-4404-8033-678bb8678153" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/core/tasks/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/core/tasks/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/css/main/variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/css/main/variables.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/views/_templates/main/css/nav.scss" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/views/_templates/main/css/nav.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/views/_templates/main/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/views/_templates/main/index.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/context_processors.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/context_processors.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/src/views/info/story/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/views/info/story/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/src/views/info/travel_and_stay/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/views/info/travel_and_stay/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/src/views/info/venue/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/views/info/venue/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/views/info.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/views/info.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +59,7 @@
     <property name="add_unversioned_files" value="$PROJECT_DIR$/venv/lib/python3.7/site-packages/django/template/context.py&#10;/home/jbennett/dev/com_jrdbnntt_wedding/com_jrdbnntt_wedding/config/production.cfg&#10;/home/jbennett/dev/com_jrdbnntt_wedding/venv/lib/python3.7/site-packages/django/db/models/fields/related.py" />
     <property name="javascript.nodejs.core.library.configured.version" value="16.13.2" />
     <property name="javascript.nodejs.core.library.typings.version" value="16.11.19" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/website/management/commands" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/website/src/views/info" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -74,11 +73,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/website/src/views/info" />
       <recent name="$PROJECT_DIR$/website/management/commands" />
       <recent name="$PROJECT_DIR$/website/src/views/info/wedding_party" />
       <recent name="$PROJECT_DIR$/website/src/views/info/travel" />
       <recent name="$PROJECT_DIR$/website/src/views/info/things_to_do" />
-      <recent name="$PROJECT_DIR$/website/src/views/info/story" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/website/src/css/main" />
@@ -233,7 +232,7 @@
       <workItem from="1642030990132" duration="51103000" />
       <workItem from="1646508891412" duration="2229000" />
       <workItem from="1646516713284" duration="82176000" />
-      <workItem from="1646789222236" duration="57199000" />
+      <workItem from="1646789222236" duration="58319000" />
     </task>
     <servers />
   </component>

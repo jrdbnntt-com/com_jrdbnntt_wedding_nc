@@ -1,8 +1,6 @@
 from django.http.request import HttpRequest
 from django.shortcuts import render
 
-from website.core.auth.user import groups
-
 
 def venue(request: HttpRequest):
     return render(request, "info/venue/index.html", {
@@ -31,4 +29,10 @@ def travel_and_stay(request: HttpRequest):
 def wedding_party(request: HttpRequest):
     return render(request, "info/wedding_party/index.html", {
         'page_title': 'Wedding Party'
+    })
+
+
+def faqs(request: HttpRequest):
+    return render(request, "info/faqs/index.html", {
+        'page_title': 'FAQs'
     })

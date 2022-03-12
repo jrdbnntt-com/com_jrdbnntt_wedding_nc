@@ -1,0 +1,45 @@
+{% extends "_templates/main/index.html" %}
+{% load render_bundle from webpack_loader %}
+{% block head_code %}
+    {% render_bundle 'entry_views_info_faqs' %}
+{% endblock %}
+{% block content %}
+
+    <h1 class="page-title">Frequently Asked Questions</h1>
+
+    <div class="page-section">
+        <a id="rsvp-code"></a>
+        <h3><i>Where can I find my RSVP code?</i></h3>
+        <p>
+            Your RSVP code is located on the back of your invitation. If you cannot find it or are having any other
+            issues RSVPing, please reach out to Jared at <a href="mailto:jrdbnntt+wedding@gmail.com?subject=Wedding Website Help">jrdbnntt@gmail.com</a>.
+        </p>
+    </div>
+
+    <div class="page-section">
+        <a id="dress-code"></a>
+        <h3><i>What is the dress code?</i></h3>
+        <p>
+            Please dress semiformal for this summer wedding. Because it is mostly on soft grass, heels are STRONGLY
+            discouraged unless you want to be stuck in the ground.
+        </p>
+    </div>
+
+    <div class="page-section">
+        <a id="kid-policy"></a>
+        <h3><i>Are you allowing kids at your wedding?</i></h3>
+        <p>
+            Unfortunately, we are only able to accommodate children in the wedding party at our reception.
+        </p>
+    </div>
+
+    <div class="page-section">
+        <a id="parking"></a>
+        <h3><i>Can I park onsite?</i></h3>
+        <p>
+            Yes, but there is very limit parking. Please see <a href="{% url 'info/venue' %}#Parking">Parking</a> for
+            more details.
+        </p>
+    </div>
+
+{% endblock %}
