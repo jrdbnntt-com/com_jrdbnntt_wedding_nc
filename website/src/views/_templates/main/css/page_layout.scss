@@ -5,7 +5,7 @@
 }
 
 .main-header {
-
+  z-index: 1;
 }
 
 .main-header-container {
@@ -13,7 +13,7 @@
 }
 
 .main-footer {
-
+  z-index: 1;
 }
 
 .main-footer-container {
@@ -21,7 +21,7 @@
 }
 
 .main-content {
-
+  z-index: 1;
 }
 
 .main-content-container {
@@ -31,5 +31,21 @@
 @media (min-width: $nav-breakpoint) {
   .main-content-container {
     padding-top: 50px;
+  }
+}
+
+.header-background {
+  display: none;
+}
+
+@media (min-width: $nav-breakpoint) {
+  .header-background {
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: block;
+    user-select: none;
   }
 }

@@ -6,18 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="1412e4fd-cd2f-4404-8033-678bb8678153" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/context_processors.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/context_processors.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/css/main/utils.scss" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/css/main/utils.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/css/main/variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/css/main/variables.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/views/_templates/main/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/views/_templates/main/index.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/views/info/event/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/views/info/venue/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/views/info/event/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/views/info/venue/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/views/info/event/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/views/info/venue/index.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/views/info/story/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/views/info/story/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/views/info/story/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/views/info/story/index.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/views/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/views/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/views/info.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/views/info.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/src/views/_templates/main/css/page_layout.scss" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/views/_templates/main/css/page_layout.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/src/views/_templates/main/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/views/_templates/main/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -238,7 +228,7 @@
       <workItem from="1642030990132" duration="51103000" />
       <workItem from="1646508891412" duration="2229000" />
       <workItem from="1646516713284" duration="82176000" />
-      <workItem from="1646789222236" duration="48174000" />
+      <workItem from="1646789222236" duration="50581000" />
     </task>
     <servers />
   </component>
