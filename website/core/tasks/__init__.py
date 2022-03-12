@@ -98,7 +98,8 @@ def _process_tasks_continuously():
         if process_time < min_wait_time_ns:
             wait_time_ns = min_wait_time_ns - process_time
             time.sleep(wait_time_ns / _SECONDS_IN_NANOSECOND)
-        logger.debug("Processed %d tasks in %.3f seconds" % (tasks_processed, process_time / _SECONDS_IN_NANOSECOND))
+        if tasks_processed > 0:
+            logger.info("Processed %d tasks in %.3f seconds" % (tasks_processed, process_time / _SECONDS_IN_NANOSECOND))
 
 
 def start_processing_tasks_in_background():

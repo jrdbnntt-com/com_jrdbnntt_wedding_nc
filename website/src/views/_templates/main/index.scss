@@ -12,11 +12,11 @@ body {
   font-size: $font-size-base;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  @include font-header
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+  @include font-header;
 }
 
-p, span {
+p, span, li, .navbar-nav {
   @include font-normal;
   font-size: $font-size-base;
 }

@@ -4,7 +4,7 @@
 
 @mixin font-header {
   @include font-brand;
-  font-weight: bold;
+  font-weight: bold !important;
 }
 
 @mixin font-normal {
