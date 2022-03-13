@@ -23,7 +23,8 @@
     {# Code #}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+          rel="stylesheet">
     {% load render_bundle from webpack_loader %}
     <script>
         {% for key, value in js_window_params %}
@@ -76,7 +77,15 @@
 
     <div class="main-footer">
         <div class="container main-footer-container">
-            {% block footer %}TODO FOOTER{% endblock %}
+            {% block footer %}
+                <p class="text-center">
+                    &copy; Jared Bennett 2022
+                    <a target="_blank" href="https://github.com/jrdbnntt-com/com_jrdbnntt_wedding">
+                        <img alt="GitHub Logo" style="height: 1em; margin-top: -0.3em;"
+                             src="{% static 'img/layout/GitHub-Mark-32px.png' %}">
+                    </a>
+                </p>
+            {% endblock %}
         </div>
     </div>
 </div>
