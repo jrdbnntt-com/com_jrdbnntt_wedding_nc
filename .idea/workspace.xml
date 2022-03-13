@@ -6,10 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="1412e4fd-cd2f-4404-8033-678bb8678153" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/views/_templates/main/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/views/_templates/main/index.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/views/info/faqs/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/views/info/faqs/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/src/views/info/story/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/views/info/story/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/src/views/info/travel_and_stay/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/views/info/travel_and_stay/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/views/info/travel_and_stay/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/views/info/travel_and_stay/index.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/views/info.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/views/info.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -230,7 +229,7 @@
       <workItem from="1642030990132" duration="51103000" />
       <workItem from="1646508891412" duration="2229000" />
       <workItem from="1646516713284" duration="82176000" />
-      <workItem from="1646789222236" duration="69847000" />
+      <workItem from="1646789222236" duration="72802000" />
     </task>
     <servers />
   </component>

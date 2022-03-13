@@ -22,7 +22,8 @@ def story(request: HttpRequest):
 
 def travel_and_stay(request: HttpRequest):
     return render(request, "info/travel_and_stay/index.html", {
-        'page_title': 'Travel'
+        'page_title': 'Travel',
+        'bonus_text_chars': "BONUS LEO & ADA".strip('')
     })
 
 
