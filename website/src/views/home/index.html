@@ -6,9 +6,29 @@
 {% endblock %}
 {% block content %}
 
-    <div class="full-width-until-xxl">
-        <img class="photo" src="{% static 'img/HannahJared_Engagement-2256.jpg' %}" width="100%" alt="Hannah & Jared"/>
+    <div class="page-section">
+        <div class="full-width-until-xxl">
+            <img class="photo" src="{% static 'img/HannahJared_Engagement-2256.jpg' %}" width="100%"
+                 alt="Hannah & Jared"/>
+        </div>
     </div>
 
+    <p class="text-lg-center">
+        Come celebrate the marriage of Hannah and Jared in Redmond, WA on July 9, 2022.
+        <br><br>
+        Please read the details about the
+        <a href="{% url 'info/venue' %}">venue space</a>
+        and our
+        <a href="{% url 'info/faqs' %}#COVID">COVID-19 policy</a>
+        before you
+        <a href="{% url 'reservation/rsvp' %}">RSVP</a>.
+        <br>
+        <br>
+        Check out the
+        <a href="{% url 'info/travel_and_stay' %}">Travel & Stay</a>
+        page for info about where you can stay and things you can do while you are in town.
+        <br><br>
+        We look forward to seeing you!
+    </p>
 
 {% endblock %}
