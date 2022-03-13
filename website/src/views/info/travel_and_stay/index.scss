@@ -1,1 +1,13 @@
-// TODO
+.img-cover-center-20 {
+  img {
+    object-fit: cover;
+    object-position: center 20%;
+  }
+}
+
+.img-cover-center-80 {
+  img {
+    object-fit: cover;
+    object-position: center 80%;
+  }
+}

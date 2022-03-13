@@ -45,6 +45,9 @@ img {
   &.photo-vertical {
     max-width: 750px;
   }
+  &.photo-small {
+    max-height: 500px;
+  }
 }
 
 @media (min-width: $grid-breakpoint-max-sm) {
@@ -90,4 +93,28 @@ img {
 
 .page-section {
   margin-bottom: $spacer-margin;
+}
+
+
+$carousel-margin: 10px;
+.img-carousel {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  overflow-x: scroll;
+  padding-left: $carousel-margin * 2;
+  padding-right: $carousel-margin * 2;
+
+  &> * {
+    margin: $carousel-margin;
+  }
+
+  img {
+    max-height: 800px;
+  }
+
+  .caption {
+    margin-top: $carousel-margin;
+    font-style: italic;
+  }
 }

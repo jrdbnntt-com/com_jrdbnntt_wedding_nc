@@ -1,4 +1,5 @@
 {% extends "_templates/main/index.html" %}
+{% load static %}
 {% load render_bundle from webpack_loader %}
 {% block head_code %}
     {% render_bundle 'entry_views_info_travel_and_stay' %}
@@ -9,6 +10,15 @@
     <h1 class="page-title">Travel & Stay</h1>
 
     <div class="page-section">
+        <div class="full-width overflow-hidden-y">
+            <div class="img-cover-center-20">
+                <img width="100%" alt="Seattle" style="max-height: 600px;"
+                     src="{% static "img/places/seattle/seattle_rainier.jpg" %}"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-section">
         <a id="Accommodations"></a>
         <h3>Accommodations</h3>
         <p>
@@ -17,6 +27,11 @@
             <a target="_blank" href="https://reservations.travelclick.com/10700?groupID=3357861">this link</a>
             or call them at (800) 634-8080 and tell them you are booking rooms under the Lessing-Bennett wedding.
         </p>
+        <div class="d-flex justify-content-center">
+            <img class="photo" style="max-width: 1000px" alt="Redmond Inn"
+                 src="{% static 'img/places/redmond_inn.jpg' %}"/>
+        </div>
+        <br>
         <p>
             For other places to say,
             <a target="_blank"
@@ -33,124 +48,218 @@
         <h3>Things to Do</h3>
         <p>
             We are excited that some of our out-of-state friends and family will be enjoying the Pacific Northwest for
-            the first time. Here are some of our favorite restaurants, outings, and activities.
+            the first time. Here are some of our favorite restaurants, outings, and activities. The bottom of the page
+            has lots of pictures different places too!
         </p>
     </div>
 
     <div class="page-section">
         <a id="Brunch"></a>
         <h4>Brunch</h4>
-        <ul>
-            <li>Closest to the wedding venue: <b>Woodblock</b> in Redmond</li>
-            <li>Best vegetarian: <b>Cafe Flora</b> in Madison Park, Seattle</li>
-            <li>Best in the Seattle area: <b>Dreamland</b> in Fremont, Seattle</li>
-        </ul>
+
+        <p>Closest to the wedding venue: <b>Woodblock</b> in Redmond</p>
+        <p>Best vegetarian: <b>Cafe Flora</b> in Madison Park, Seattle</p>
+        <p>Best in the Seattle area: <b>Dreamland</b> in Fremont, Seattle</p>
+
     </div>
 
     <div class="page-section">
         <a id="Restaurants"></a>
         <h4>Restaurants</h4>
-        <ul>
-            <li>Hawaiian food: <b>Kona Kitchen</b> in Green Lake</li>
-            <li>Mexican & Bar: <b>Matador</b> in Ballard</li>
-            <li>Fast burgers: <b>Dick’s Drive In</b> (all around Seattle)</li>
-        </ul>
+
+        <p>Hawaiian food: <b>Kona Kitchen</b> in Green Lake</p>
+        <p>Mexican & Bar: <b>Matador</b> in Ballard</p>
+        <p>Fast burgers: <b>Dick’s Drive In</b> (all around Seattle)</p>
+
     </div>
 
     <div class="page-section">
         <a id="Seattle-Things-to-Do"></a>
         <h4>Seattle Things to Do</h4>
-        <ul>
-            <li>
-                <b>Museum of Pop Culture (MoPOP)</b>
-                - a museum dedicated to not just pop culture, but also Seattle music legends such as Pearl Jam, Jimi
-                Hendrix, and Nirvana. They also have excellent exhibits dedicated to Sci-FI, fantasy, and Hip-Hop music.
-            </li>
-            <li>
-                <b>Cafe Mox (Ballard or Bellevue)</b>
-                - a restaurant/board game store, Mox allows you to play board games while eating delicious food, with
-                great coffee and cocktails depending on the mood.
-            </li>
-            <li>
-                <b>Flatstick Pub</b>
-                - indoor mini-golf with alcohol! What else can you ask for?
-            </li>
-        </ul>
+
+        <p>
+            <b>Museum of Pop Culture (MoPOP)</b>
+            - a museum dedicated to not just pop culture, but also Seattle music legends such as Pearl Jam, Jimi
+            Hendrix, and Nirvana. They also have excellent exhibits dedicated to Sci-FI, fantasy, and Hip-Hop music.
+        </p>
+        <p>
+            <b>Cafe Mox (Ballard or Bellevue)</b>
+            - a restaurant/board game store, Mox allows you to play board games while eating delicious food, with
+            great coffee and cocktails depending on the mood.
+        </p>
+        <p>
+            <b>Flatstick Pub</b>
+            - indoor mini-golf with alcohol! What else can you ask for?
+        </p>
+        <p>
+            <b>CSZ Seattle</b>
+            - drink and watch improv! This is where Jared took all of his improv classes and might preform occasionally
+            in the future.
+        </p>
+        <p>
+            <b>Pike Place Market</b>
+            - the classic Seattle tourist spot. It has a
+        </p>
+
+
     </div>
 
     <div class="page-section">
         <a id="Parks"></a>
-        <h4>Parks</h4>
-        <ul>
-            <li>
-                <b>Green Lake</b>
-                - a massive lake in the middle of the city, this is a great spot for people watching.
-            </li>
-            <li>
-                <b>Washington Park Arboretum / UW Botanical Garden</b>
-                - this is where Hannah and Jared had their engagement photos taken, and is absolutely a must-see for
-                garden and flower lovers!
-            </li>
-            <li>
-                <b>University of Washington campus</b>
-                - not a park, but a beautiful outdoor space nonetheless! Walk around the quad where Hannah spent many
-                hours procrastinating on homework!
-            </li>
-            <li>
-                <b>Gasworks Park</b>
-                - the BEST view of the city, and a great picnic spot.
-            </li>
-        </ul>
+        <h4>Local Parks</h4>
+        <div class="overflow-hidden-y img-cover-center-80">
+            <img class="photo" width="100%" style="max-height: 500px" alt="Hannah & Jared at the arboretum"
+                 src="{% static "img/places/arboretum/HannahJared_Engagement-2285.jpg" %}">
+        </div>
+        <br>
+        <p>
+            <b>Washington Park Arboretum / UW Botanical Garden</b>
+            - this is where Hannah and Jared had their engagement photos taken, and is absolutely a must-see for
+            garden and flower lovers!
+        </p>
+        <p>
+            <b>Green Lake</b>
+            - a massive lake in the middle of the city, this is a great spot for people watching.
+        </p>
+        <p>
+            <b>University of Washington campus</b>
+            - not a park, but a beautiful outdoor space nonetheless! Walk around the quad where Hannah
+            spent many
+            hours procrastinating on homework!
+        </p>
+        <p>
+            <b>Gasworks Park</b>
+            - the BEST view of the city, and a great picnic spot.
+        </p>
+
     </div>
 
     <div class="page-section">
         <a id="Day-Trips"></a>
         <h4>Day Trips</h4>
-        <ul>
-            <li>
-                <b>Whidbey Island</b>
-                - a ferry ride away, Whidbey is Hannah and Jared’s go-to getaway and is a beautiful retreat from the
-                city. It’s the perfect destination for an easy day of driving to see the sights and visit the cute
-                towns. Notable food spots include Gordon’s on Blueberry Hill for high-end dining and Braeburn for an
-                excellent brunch experience.
-            </li>
-            <li>
-                <b>Orcas Island</b>
-                - another ferry ride away, it is the perfect destination for camping, hiking, and other outdoor
-                activities. It also has a cute town called Eastsound for all your needs while you camp.
-            </li>
-            <li>
-                <b>Snoqualmie Falls</b>
-                - a PNW classic, this and the greater Snoqualmie Pass is less than an hour from Seattle. For fans of
-                waterfalls and Twin Peaks alike!
-            </li>
-            <li>
-                <b>La Conner</b>
-                - this was the destination of Hannah & Jared’s first day trip together. Less than 2 hours a way, it is a
-                cute town with shops, food, and a walkable waterfront. Be sure to cross the Rainbow Bridge!
-            </li>
-        </ul>
+        <div class="overflow-hidden-y img-cover-center-20">
+            <img class="photo" width="100%" style="max-height: 700px" alt="Cascades on a trail"
+                 src="{% static "img/places/cascades/IMG_20180726_183428.jpg" %}">
+        </div>
+        <br>
+        <p>
+            <b>Literally any mountain or island trail</b>
+            - they are everywhere! We've got the olympics to the west and the cascades to the east. The islands even
+            have mountains. They are always fun, and you can't beat the views!
+        </p>
+        <p>
+            <b>Whidbey Island</b>
+            - a ferry ride away, Whidbey is Hannah and Jared’s go-to getaway and is a beautiful retreat from the
+            city. It’s the perfect destination for an easy day of driving to see the sights and visit the cute
+            towns. Notable food spots include Gordon’s on Blueberry Hill for high-end dining and Braeburn for an
+            excellent brunch experience. If you are up for a nice long drive, ferry to the southern tip of the
+            island and then drive up along the coast to Deception Pass.
+        </p>
+        <p>
+            <b>Orcas Island</b>
+            - another ferry ride away, it is the perfect destination for camping, hiking, and other outdoor
+            activities. It also has a cute town called Eastsound for all your needs while you camp.
+        </p>
+        <p>
+            <b>La Conner</b>
+            - this was the destination of Hannah & Jared’s first day trip together. Less than 2 hours a way, it is a
+            cute town with shops, food, and a walkable waterfront. Be sure to cross the Rainbow Bridge!
+        </p>
+        <p>
+            <b>Snoqualmie Falls</b>
+            - a PNW classic, this and the greater Snoqualmie Pass is less than an hour from Seattle. For fans of
+            waterfalls and Twin Peaks alike!
+        </p>
+        <p>
+            <b>Mt. Rainier</b>
+            - the big mountain visible from Seattle! There are a lot of easy hiking trails and gorgeous sites.
+        </p>
+        <p>
+            <b>Olympic National Park</b>
+            - on the western peninsula of the state, this is one of Jared's favorite national parks in the country.
+            Great for hiking, driving, and camping! You'll likely want to spend more than just a day here if you go,
+            but it will be worth it!
+        </p>
+
+        <br>
+        <br>
+        <h4>Around the Puget Sound</h4>
+        <div class="full-width">
+            <div class="img-carousel">
+                <div>
+                    <img class="photo" alt="Hannah & Jared at Deception Pass"
+                         src="{% static "img/places/deception_pass/IMG_20180602_175756.jpg" %}"/>
+                    <div class="caption">Hannah & Jared at Deception Pass</div>
+                </div>
+                <div>
+                    <img class="photo" alt="Kerry Park, Seattle"
+                         src="{% static "img/places/seattle/IMG_20180303_110149.jpg" %}"/>
+                    <div class="caption">Kerry Park, Seattle</div>
+                </div>
+                <div>
+                    <img class="photo" alt="Ada at Greenlake, Seattle"
+                         src="{% static "img/places/greenlake/PXL_20210516_164405126.jpg" %}"/>
+                    <div class="caption">Ada at Greenlake, Seattle</div>
+                </div>
+                <div>
+                    <img class="photo" alt="Hannah & Jared at Hurricane Ridge, Olympic National Park"
+                         src="{% static "img/places/olympics/IMG_20180902_143539.jpg" %}"/>
+                    <div class="caption">Hannah & Jared at Hurricane Ridge, Olympic National Park</div>
+                </div>
+                <div>
+                    <img class="photo" alt="Hannah & Jared at Ruby Beach, Olympic National Park"
+                         src="{% static "img/places/olympics/IMG_20180902_183005.jpg" %}"/>
+                    <div class="caption">Hannah & Jared at Ruby Beach, Olympic National Park</div>
+                </div>
+                <div>
+                    <img class="photo" alt="Snow Lake, Cascade Mountains"
+                         src="{% static "img/places/cascades/IMG_20180726_170057.jpg" %}"/>
+                    <div class="caption">Snow Lake, Cascade Mountains</div>
+                </div>
+                <div>
+                    <img class="photo" alt="Ada on a ferry to Orcas Island"
+                         src="{% static "img/ada/PXL_20210608_225737182.jpg" %}"/>
+                    <div class="caption">Ada on a ferry to Orcas Island</div>
+                </div>
+                <div>
+                    <img class="photo" alt="Hannah on a ferry to Whidbey Island"
+                         src="{% static "img/hannah/IMG_20180113_154736.jpg" %}"/>
+                    <div class="caption">Hannah on a ferry to Whidbey Island</div>
+                </div>
+                <div>
+                    <img class="photo" alt="Jared at Fort Casey Beach, Whidbey Island"
+                         src="{% static "img/places/whidbey_island/IMG_20180114_123603.jpg" %}"/>
+                    <div class="caption">Jared at Fort Casey Beach, Whidbey Island</div>
+                </div>
+                <div>
+                    <img class="photo" alt="Washington Park Arboretum UW Botanic Gardens, Seattle"
+                         src="{% static "img/places/arboretum/IMG_20180601_190104.jpg" %}"/>
+                    <div class="caption">Washington Park Arboretum UW Botanic Gardens, Seattle</div>
+                </div>
+                <div>
+                    <img class="photo" alt="Jared at Washington Park Arboretum UW Botanic Gardens, Seattle"
+                         src="{% static "img/places/arboretum/IMG_20180601_191716.jpg" %}"/>
+                    <div class="caption">Jared at Washington Park Arboretum UW Botanic Gardens, Seattle</div>
+                </div>
+                <div>
+                    <img class="photo" alt="Ada at Greenlake, Seattle"
+                         src="{% static "img/places/greenlake/PXL_20210516_170113300.jpg" %}"/>
+                    <div class="caption">Ada at Greenlake, Seattle</div>
+                </div>
+                <div>
+                    <img class="photo" alt="Mt. Walker Viewpoint, SE Olympics"
+                         src="{% static "img/places/olympics/IMG_20180806_192624.jpg" %}"/>
+                    <div class="caption">Mt. Walker Viewpoint, SE Olympics</div>
+                </div>
+                <div>
+                    <img class="photo" alt="Pike Place Market, Seattle"
+                         src="{% static "img/places/seattle/pike_place_market.jpg" %}"/>
+                    <div class="caption">Pike Place Market, Seattle</div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="page-section">
-        <a id="COVID-19"></a>
-        <h3>COVID-19</h3>
-        <p>
-            We hope to have a night that everyone remembers, but not as a superspreader event. As hosts, we are taking
-            all steps to ensure it is as safe as possible, including making it an entirely outdoor event.
-            <br><br>
-            <b>
-                We are requiring all guests, including plus ones, to be fully vaccinated and to show proof of
-                vaccination upon arrival.
-            </b>
-            <br><br>
-            If resources permit, we will rapid-test all guests. If you are unable or unwilling to be tested or show
-            proof of vaccination, we respectfully ask for you to not attend.
-            <br><br>
-            We are currently planning for a full event, but we reserve the right to downsize, reschedule, or cancel in
-            response to the pandemic. Please follow your comfort level and perceptions of risk when choosing to attend.
-            Masks will not be required, but encouraged as a personal choice.
-        </p>
-    </div>
+
 
 {% endblock %}
