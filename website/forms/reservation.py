@@ -7,8 +7,8 @@ from website.forms import widgets
 
 class ActivateForm(StandardForm):
     recaptcha_token = forms.CharField(widget=forms.HiddenInput())
-    email = forms.EmailField(label="Contact Email", required=True)
-    email_verify = forms.EmailField(label="Verify Contact Email", required=True)
+    email = forms.EmailField(label="Contact Email", required=True, widget=widgets.TextInput())
+    email_verify = forms.EmailField(label="Verify Contact Email", required=True, widget=widgets.TextInput())
 
     def clear_sensitive_form_data(self):
         if 'recaptcha_token' in self.cleaned_data:
