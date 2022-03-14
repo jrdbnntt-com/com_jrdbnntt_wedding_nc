@@ -28,7 +28,7 @@ def set_navigation_options(request):
         NavOption('info/faqs', 'FAQs'),
         NavOption('registry', 'Registry'),
         NavOption('reservation/rsvp', 'RSVP'),
-        NavOption('user/sign_in', 'Sign in', require_auth=False),
+        # NavOption('user/sign_in', 'Sign in', require_auth=False),
         # NavOption('user/profile', 'Profile', require_auth=True),
     ]
     if settings.ADMIN_SITE_ENABLED:

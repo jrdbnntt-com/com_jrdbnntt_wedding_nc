@@ -17,8 +17,11 @@ body {
 }
 
 p, span, li, .navbar-nav, label {
-  @include font-normal;
   font-size: $font-size-base;
+}
+
+button.btn {
+  @include font-normal;
 }
 
 .invalid-feedback, .invalid-feedback span {
