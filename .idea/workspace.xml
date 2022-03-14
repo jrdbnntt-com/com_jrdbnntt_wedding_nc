@@ -5,11 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1412e4fd-cd2f-4404-8033-678bb8678153" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/forms/reservation.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/forms/reservation.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/src/views/_templates/forms/layout/standard.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/views/_templates/forms/layout/standard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/views/reservation/activate/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/views/reservation/activate/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/src/views/_templates/main/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/views/_templates/main/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/src/views/reservation/rsvp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/views/reservation/rsvp/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/views/user/sign_in/reservation/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/views/user/sign_in/reservation/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/src/views/user/sign_in/user/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/views/user/sign_in/user/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/src/views/reservation/rsvp/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/website/src/views/reservation/rsvp/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/views/reservation/rsvp.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/views/reservation/rsvp.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -231,7 +233,7 @@
       <workItem from="1646508891412" duration="2229000" />
       <workItem from="1646516713284" duration="82176000" />
       <workItem from="1646789222236" duration="83496000" />
-      <workItem from="1647240616608" duration="16786000" />
+      <workItem from="1647240616608" duration="23736000" />
     </task>
     <servers />
   </component>

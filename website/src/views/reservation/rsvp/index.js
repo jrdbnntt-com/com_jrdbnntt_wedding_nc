@@ -20,6 +20,7 @@ function init() {
         if ($formContainer) {
             let $deleteInput = $formContainer.children('input.deletion');
             $deleteInput.val('');
+            $formContainer.find('.is-invalid').removeClass('is-invalid');
             $formContainer.toggle(true);
         }
         refreshAddFormBtn();

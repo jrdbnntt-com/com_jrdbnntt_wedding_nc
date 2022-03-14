@@ -18,8 +18,17 @@
 {% block fields %}
     {% for field in form.visible_fields %}
         <div class="form-group">
-            {{ field.errors }}
-            {{ field.label_tag }} {{ field }}
+            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+            {{ field }}
+            {% if field.errors %}
+                <div class="invalid-feedback">
+                    <span>
+                        {% for error in field.errors %}
+                            {% if forloop.counter > 1 %},{% endif %} {{ error }}
+                        {% endfor %}
+                    </span>
+                </div>
+            {% endif %}
         </div>
     {% endfor %}
 {% endblock %}

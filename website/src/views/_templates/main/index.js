@@ -10,13 +10,14 @@ const eventDate = moment(window.EVENT_DATE_ISO);
 window.moment = moment;
 
 $(document).ready(() => {
-    refresh_date_countdown();
+    refreshDateCountdown();
     setTimeout(() => {
-        refresh_date_countdown();
+        refreshDateCountdown();
     }, 1000 * 60);
+    initForms();
 })
 
-function refresh_date_countdown() {
+function refreshDateCountdown() {
     let message;
     let now = moment();
     let timeToEvent = moment.duration(eventDate.diff(now));
@@ -33,4 +34,23 @@ function refresh_date_countdown() {
     }
     message = message.toUpperCase();
     $('#countdown').text(message);
+}
+
+function initForms() {
+    let $forms = $('form');
+    if ($forms.length === 0) {
+        return;
+    }
+    let $fieldErrorMessages = $forms.find('.invalid-feedback');
+    $fieldErrorMessages.each((i, e) => {
+        let $feedback = $(e);
+        let $fieldInputs = $feedback.parent().find('input,textarea,select');
+        $fieldInputs.addClass('is-invalid');
+        let onChangeContainer = {}
+        onChangeContainer.clearErrorMessage = () => {
+            $fieldInputs.removeClass('is-invalid');
+            $fieldInputs.off('change', onChangeContainer.clearErrorMessage);
+        };
+        $fieldInputs.on('change', onChangeContainer.clearErrorMessage);
+    });
 }

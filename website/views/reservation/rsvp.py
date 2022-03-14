@@ -113,7 +113,13 @@ def index(request: HttpRequest, reservation_id: int):
                 initial_data['rehearsal_rsvp_answer'] = guest.rehearsal_rsvp_answer
         formset = formset_class(data=initial_data, form_kwargs=form_kwargs)
 
+    deleted_form_indexes = []
+    for i, form in enumerate(formset.forms):
+        if form.is_deleted():
+            deleted_form_indexes.append(i)
+
     return render(request, "reservation/rsvp/index.html", {
         'page_title': 'Edit RSVP',
-        'formset': formset
+        'formset': formset,
+        'deleted_form_indexes': deleted_form_indexes
     })

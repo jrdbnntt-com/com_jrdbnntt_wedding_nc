@@ -12,8 +12,8 @@
         {{ formset.management_form }}
         {% for form in formset %}
             <div class="page-section">
-                <div class="form-container" style="display: {% if form.guest_id.value or form.errors %}block{% else %}none{% endif %};">
-                    {{ form.DELETE }}
+                <div class="form-container"
+                     style="display: {% if forloop.counter0 in deleted_form_indexes or not form.guest_id.value %}none{% else %}block{% endif %};">
                     {{ form }}
                     {% if forloop.counter != 1 %}
                         <button class="btn-form-delete" type="button">Delete</button>

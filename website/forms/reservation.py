@@ -2,7 +2,7 @@ from django import forms
 from django.core.exceptions import ValidationError
 
 from website.forms import StandardForm
-from website.forms.widgets import RsvpAnswerSelect
+from website.forms import widgets
 
 
 class ActivateForm(StandardForm):
@@ -23,25 +23,20 @@ class ActivateForm(StandardForm):
 
 class EditGuestForm(StandardForm):
     guest_id = forms.IntegerField(widget=forms.HiddenInput(), required=False)
-    first_name = forms.CharField(label="First Name", max_length=100, strip=True)
-    last_name = forms.CharField(label="Last Name", max_length=100, strip=True)
-    rsvp_answer = forms.NullBooleanField(label="Wedding Ceremony RSVP Answer", widget=RsvpAnswerSelect)
-    rsvp_comment = forms.CharField(label="RSVP Comment", max_length=1000, required=False, strip=True)
+    first_name = forms.CharField(label="First Name", max_length=100, strip=True, widget=widgets.TextInput())
+    last_name = forms.CharField(label="Last Name", max_length=100, strip=True, widget=widgets.TextInput())
+    rsvp_answer = forms.NullBooleanField(label="Wedding Ceremony RSVP Answer", widget=widgets.RsvpAnswerSelect())
+    rsvp_comment = forms.CharField(label="RSVP Comment", max_length=1000, required=False, strip=True,
+                                   widget=widgets.TextInput())
 
     def __init__(self, invited_to_rehearsal: bool, allowed_guest_ids: list[int], *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.allowed_guest_ids = allowed_guest_ids
         self.invited_to_rehearsal = invited_to_rehearsal
-        self.required_fields = [
-            'first_name',
-            'last_name',
-            'rsvp_answer'
-        ]
-
         if invited_to_rehearsal:
             self.fields['rehearsal_rsvp_answer'] = forms.NullBooleanField(label="Rehearsal RSVP Answer",
-                                                                          widget=RsvpAnswerSelect)
-            self.field_order = [
+                                                                          widget=widgets.RsvpAnswerSelect())
+            self.order_fields([
                 'guest_id',
                 'active',
                 'first_name',
@@ -49,8 +44,7 @@ class EditGuestForm(StandardForm):
                 'rsvp_answer',
                 'rehearsal_rsvp_answer',
                 'rsvp_comment'
-            ]
-            self.required_fields.append('rehearsal_rsvp_answer')
+            ])
 
     def clean(self):
         super().clean()
@@ -58,6 +52,9 @@ class EditGuestForm(StandardForm):
             guest_id = self.cleaned_data['guest_id']
             if guest_id and guest_id not in self.allowed_guest_ids:
                 raise ValidationError("Invalid Guest ID")
+
+    def is_deleted(self):
+        return 'cleaned_data' in self and 'DELETE' in self.cleaned_data and self.cleaned_data['DELETE']
 
 
 class EditGuestFormSet(forms.BaseFormSet):
