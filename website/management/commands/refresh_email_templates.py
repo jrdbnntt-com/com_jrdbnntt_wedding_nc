@@ -79,7 +79,7 @@ class Command(BaseCommand):
                 name=template_name,
                 sendgrid_template_id=template_id
             )
-            return False, True
+            return True, False
 
     @staticmethod
     def refresh_subscription_group(group_json: dict) -> tuple[bool, bool]:

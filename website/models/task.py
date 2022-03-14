@@ -1,7 +1,7 @@
 import logging
 from datetime import datetime
 from json import JSONEncoder, JSONDecoder
-from django.utils import timezone
+
 from django.contrib import admin
 from django.db import models
 
@@ -37,11 +37,11 @@ class Task(models.Model):
         self.delete()
 
     def finish_with_success(self):
-        logger.debug("Task %s finished successfully" % self)
+        logger.info("Task %s finished successfully" % self)
         self.delete()
 
     @staticmethod
-    def marshall_kwargs(kwargs: dict) -> str:
+    def marshall_kwargs(task_kwargs: dict) -> str:
         return json_encoder.encode(task_kwargs)
 
     @staticmethod
@@ -65,13 +65,13 @@ def schedule_task(name: str, target_time: datetime, task_kwargs: dict, create_on
 
     task = Task.objects.create(
         name=name,
-        task_kwargs=kwargs_str,
+        kwargs=kwargs_str,
         target_unix_time=int(target_time.timestamp())
     )
     logger.info("Scheduled task '%s' to occur at %s (%0.3f seconds from now)" % (
         task.name,
         datetime.fromtimestamp(task.target_unix_time).isoformat(),
-        (datetime.now().timestamp() - task.target_unix_time) / 1000.0
+        (task.target_unix_time - datetime.now().timestamp())
     ))
     return task
 
@@ -82,6 +82,7 @@ def get_processable_tasks(lock=True):
     if lock:
         for task in tasks:
             task.lock()
+            task.save()
     return tasks
 
 

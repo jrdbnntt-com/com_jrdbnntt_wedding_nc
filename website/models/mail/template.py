@@ -33,4 +33,4 @@ class EmailTemplateAdmin(admin.ModelAdmin):
 
     @staticmethod
     def subscription_group(obj: EmailTemplate):
-        return obj.sendgrid_subscription_group.name
+        return obj.sendgrid_subscription_group.name if obj.sendgrid_subscription_group is not None else '(none)'

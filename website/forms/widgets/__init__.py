@@ -34,7 +34,6 @@ class CustomChoicesBooleanSelect(Select):
         super().__init__(attrs, choices)
 
     def format_value(self, value):
-        print('format_value value=%s' % value)
         if value is None:
             if self.choice_null is None:
                 raise ValueError("Invalid value '%s', null not allowed" % str(value))
@@ -48,7 +47,6 @@ class CustomChoicesBooleanSelect(Select):
 
     def value_from_datadict(self, data, files, name):
         value = data.get(name)
-        print('value_from_datadict name=%s value=%s' % (name, value))
         if value is None:
             return None
         value = str(value).lower()

@@ -3,8 +3,6 @@ import string
 
 from django.contrib.auth.models import User, Group
 from django.db import models
-from django.db.models.signals import pre_save
-from django.dispatch import receiver
 from django.utils import timezone
 
 from website.core.auth.user import groups
@@ -39,12 +37,6 @@ class Reservation(models.Model):
             return "Reservation (id={}, user.username='{}')".format(self.id, self.user.username)
         else:
             return "Reservation (id={}, inactive)".format(self.id)
-
-
-@receiver(pre_save, sender=Reservation)
-def pre_save(sender, instance: Reservation, **kwargs):
-    """ Updates the updated_at timestamp prior to each save """
-    instance.updated_at = timezone.now()
 
 
 def activate_reservation(reservation_id: int, email: str):

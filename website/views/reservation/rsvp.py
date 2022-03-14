@@ -1,4 +1,3 @@
-import json
 import logging
 
 from django.forms import formset_factory
@@ -22,9 +21,15 @@ def quick_answer(request: HttpRequest, reservation_id: int, answer: str):
         rsvp_answer = False
     else:
         return HttpResponseBadRequest()
+    res = Reservation.objects.get(id=reservation_id)
     for guest in Guest.objects.filter(reservation_id=reservation_id).all():
+        updated_fields = ['rsvp_answer']
         guest.rsvp_answer = rsvp_answer
-        guest.save()
+        if res.invited_to_rehearsal:
+            updated_fields.append('rehearsal_rsvp_answer')
+            guest.rehearsal_rsvp_answer = rsvp_answer
+        guest.save(update_fields=updated_fields)
+
     return redirect('reservation')
 
 
@@ -64,7 +69,6 @@ def index(request: HttpRequest, reservation_id: int):
                     continue
                 guest_id = form.cleaned_data['guest_id'] if 'guest_id' in form.cleaned_data else None
                 guest_data = {
-                    'reservation': res,
                     'first_name': form.cleaned_data['first_name'],
                     'last_name': form.cleaned_data['last_name'],
                     'rsvp_answer': form.cleaned_data['rsvp_answer'],
@@ -73,10 +77,15 @@ def index(request: HttpRequest, reservation_id: int):
                         'rehearsal_rsvp_answer'] if res.invited_to_rehearsal else None,
                 }
                 if guest_id and guest_id != -1:
-                    Guest.objects.filter(id=guest_id).update(**guest_data)
+                    guest = Guest.objects.get(id=guest_id)
+                    updated_fields = []
+                    for attr, value in guest_data.items():
+                        updated_fields.append(attr)
+                        setattr(guest, attr, value)
+                    guest.save(update_fields=updated_fields)
                     final_guest_ids.append(guest_id)
                 else:
-                    guest = Guest.objects.create(**guest_data)
+                    guest = Guest.objects.create(reservation=res, **guest_data)
                     final_guest_ids.append(guest.id)
             for form in formset.deleted_forms:
                 guest_id = form.cleaned_data['guest_id'] if 'guest_id' in form.cleaned_data else None

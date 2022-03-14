@@ -191,3 +191,5 @@ EVENT_PUBLIC_LOCATION = active_config.get(config.SECTION_EVENT_DETAILS, 'PUBLIC_
 # Tasks
 MIN_TIME_BETWEEN_TASK_POLLING_IN_SECONDS = active_config.getfloat(config.SECTION_TASKS,
                                                                   'MIN_TIME_BETWEEN_TASK_POLLING_IN_SECONDS')
+REAP_OLD_TASKS_AFTER_SECONDS = active_config.getfloat(config.SECTION_TASKS, 'REAP_OLD_TASKS_AFTER_SECONDS')
+CANCEL_TASKS_AFTER_SECONDS = active_config.getint(config.SECTION_TASKS, 'CANCEL_TASKS_AFTER_SECONDS')

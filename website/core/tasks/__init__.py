@@ -1,5 +1,6 @@
 import logging
 import time
+from datetime import datetime, timedelta
 from threading import Thread
 
 from django.conf import settings
@@ -8,7 +9,6 @@ from website.core.mail import send_rsvp_updated_email
 from website.models.guest import Guest
 from website.models.reservation import Reservation
 from website.models.task import schedule_task, Task, get_processable_tasks
-from datetime import datetime, timedelta
 
 logger = logging.getLogger(__name__)
 TASK_NAME_SEND_RSVP_UPDATED_EMAIL = 'send_rsvp_updated_email'
@@ -18,7 +18,7 @@ _SECONDS_IN_NANOSECOND = 1000000000.0
 def schedule_send_rsvp_updated_email(reservation_id: int):
     schedule_task(
         TASK_NAME_SEND_RSVP_UPDATED_EMAIL,
-        datetime.now() + timedelta(seconds=30),
+        datetime.now() + timedelta(seconds=5 if settings.DEBUG else 30),
         task_kwargs={
             'reservation_id': reservation_id
         }
@@ -27,7 +27,10 @@ def schedule_send_rsvp_updated_email(reservation_id: int):
 
 def _task_send_rsvp_updated_email(reservation_id: int):
     reservation = Reservation.objects.filter(id=reservation_id).get()
-    guests = Guest.objects.filter(reservation_id=reservation_id).get()
+    guests = Guest.objects.filter(reservation_id=reservation_id).all()
+
+    if reservation.user is None:
+        return
 
     attending_wedding = False
     attending_rehearsal = False
@@ -69,12 +72,13 @@ def _task_send_rsvp_updated_email(reservation_id: int):
     )
 
 
-TASK_EXECUTOR_LOOKUP: {
+TASK_EXECUTOR_LOOKUP = {
     TASK_NAME_SEND_RSVP_UPDATED_EMAIL: _task_send_rsvp_updated_email
 }
 
 
 def process_task(task: Task):
+    global TASK_EXECUTOR_LOOKUP
     if task.name not in TASK_EXECUTOR_LOOKUP:
         raise ValueError("Task name '%s' not found in task executor lookup'" % task.name)
     task.execute_task(TASK_EXECUTOR_LOOKUP[task.name])
@@ -91,7 +95,12 @@ def process_all_processable_tasks() -> int:
 
 def _process_tasks_continuously():
     min_wait_time_ns = int(settings.MIN_TIME_BETWEEN_TASK_POLLING_IN_SECONDS * _SECONDS_IN_NANOSECOND)
+    _clean_old_tasks()
+    last_clean_ns = time.time_ns()
     while True:
+        if ((time.time_ns() - last_clean_ns) / _SECONDS_IN_NANOSECOND) > settings.REAP_OLD_TASKS_AFTER_SECONDS:
+            _clean_old_tasks()
+            last_clean_ns = time.time_ns()
         start_time = time.time_ns()
         tasks_processed = process_all_processable_tasks()
         process_time = time.time_ns() - start_time
@@ -100,6 +109,16 @@ def _process_tasks_continuously():
             time.sleep(wait_time_ns / _SECONDS_IN_NANOSECOND)
         if tasks_processed > 0:
             logger.info("Processed %d tasks in %.3f seconds" % (tasks_processed, process_time / _SECONDS_IN_NANOSECOND))
+        else:
+            logger.debug("No tasks to process")
+
+
+def _clean_old_tasks():
+    oldest_allowed_unix_time = int(datetime.now().timestamp()) - settings.CANCEL_TASKS_AFTER_SECONDS
+    old_tasks = Task.objects.filter(target_unix_time__lt=oldest_allowed_unix_time).all()
+    for task in old_tasks:
+        task.delete()
+        logger.debug("Reaped old task %s" % task)
 
 
 def start_processing_tasks_in_background():

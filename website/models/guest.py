@@ -1,7 +1,5 @@
 from django.contrib import admin
 from django.db import models
-from django.db.models.signals import post_save, pre_save
-from django.dispatch import receiver
 from django.utils import timezone
 
 from website.models.reservation import Reservation
@@ -78,24 +76,3 @@ class GuestAdmin(admin.ModelAdmin):
     @staticmethod
     def reservation__name(obj: Guest):
         return obj.reservation.name
-
-
-@receiver(pre_save, sender=Guest)
-def pre_save(sender, instance: Guest, **kwargs):
-    """ Updates the updated_at timestamp prior to each save """
-    instance.updated_at = timezone.now()
-
-
-@receiver(post_save, sender=Guest)
-def post_save(sender, instance: Guest, created, raw, using, update_fields, **kwargs):
-    if update_fields is not None:
-        update_fields = frozenset(update_fields)
-        rsvp_updated = False
-        reservation = None
-        if "rsvp_answer" in update_fields or "rehearsal_rsvp_answer" in update_fields:
-            rsvp_updated = True
-        if rsvp_updated:
-            if reservation is None:
-                reservation = Guest.objects.only("reservation").get(pk=instance.id).reservation
-            reservation.rsvp_updated_at = timezone.now()
-            reservation.save()

@@ -15,7 +15,6 @@ from website.views.decorators.reservation import require_activated_reservation, 
 
 @require_activated_reservation()
 def index(request: HttpRequest, reservation_id: int):
-    # TODO make a page that summarizes the reservation
     reservation = Reservation.objects.filter(id=reservation_id).get()
     guests = Guest.objects.filter(reservation__id=reservation_id).all()
     return render(request, "reservation/index.html", {
