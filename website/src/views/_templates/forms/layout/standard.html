@@ -1,12 +1,10 @@
-{{ form.non_field_errors }}
 {% block error_summary %}
-    {% if form.subject.errors %}
-        <ol>
-            {% for error in form.subject.errors %}
-                <li><strong>{{ error|escape }}</strong></li>
-            {% endfor %}
-        </ol>
-    {% endif %}
+    {% for error in form.non_field_errors %}
+        <div class="alert alert-danger alert-dismissible" role="alert">
+            <span>{{ error|escape }}</span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endfor %}
 {% endblock %}
 
 {# Include the hidden fields #}

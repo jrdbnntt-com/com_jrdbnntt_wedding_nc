@@ -21,6 +21,14 @@ p, span, li, .navbar-nav, label {
   font-size: $font-size-base;
 }
 
+.invalid-feedback, .invalid-feedback span {
+  font-size: 1em;
+}
+
+.alert {
+  margin-bottom: 1em;
+}
+
 .brand-large {
   font-size: 1.25em;
   text-align: center;

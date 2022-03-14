@@ -5,10 +5,11 @@
 {% endblock %}
 {% block content %}
 
-    <h1>TODO: {{page_title}}</h1>
-    <ul>
-        <li><a href="{% url 'user/sign_in/reservation' %}{% if redirect %}?redirect=true{% endif %}">Sign in using reservation code</a></li>
-        <li><a href="{% url 'user/sign_in/user' %}{% if redirect %}?redirect=true{% endif %}">Sign in using user credentials</a></li>
-    </ul>
+    <h1 class="page-title">Sign-in</h1>
+    <p class="text-center">
+        <a href="{% url 'user/sign_in/reservation' %}{% if redirect %}?redirect=true{% endif %}">Sign in using reservation code</a>
+        <br><br>
+        <a href="{% url 'user/sign_in/user' %}{% if redirect %}?redirect=true{% endif %}">Sign in using user credentials</a>
+    </p>
 
 {% endblock %}

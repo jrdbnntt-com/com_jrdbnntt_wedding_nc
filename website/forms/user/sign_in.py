@@ -17,7 +17,7 @@ class UsernamePasswordForm(StandardForm):
 
 class ReservationCodeForm(StandardForm):
     recaptcha_token = forms.CharField(widget=forms.HiddenInput())
-    reservation_code = forms.CharField(label="Reservation Code", max_length=10, required=True,
+    reservation_code = forms.CharField(label="RSVP Code", max_length=10, required=True,
                                        widget=widgets.TextInput())
 
     def clear_sensitive_form_data(self):
