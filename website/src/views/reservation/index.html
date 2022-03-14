@@ -15,6 +15,45 @@
         </p>
     </div>
 
+    <div class="row">
+        <div class="page-section text-lg-center col-lg">
+            <h3>Wedding Ceremony</h3>
+            <p>
+                You are invited to celebrate the marriage of Hannah & Jared at the Turski Residence in Redmond!
+                <br><br>
+                <b>
+                    Saturday, July 9th, 2022<br>
+                    4pm til we drop
+                </b>
+                <br><br>
+                Turski Residence<br>
+                <a target="_blank" href="https://goo.gl/maps/Js57jBEFmN2gPnM36">
+                    5708 223rd Ave NE<br>
+                    Redmond, WA 98053
+                </a>
+            </p>
+        </div>
+        {% if reservation.invited_to_rehearsal %}
+            <div class="page-section text-lg-center col-lg">
+                <h3>Rehearsal Dinner</h3>
+                <p>
+                    You are invited to join Hannah & Jared’s families for dinner and drinks at Agua Verde along Portage Bay!
+                    <br><br>
+                    <b>
+                        Friday, July 8th, 2022<br>
+                        6pm to 9pm
+                    </b>
+                    <br><br>
+                    Agua Verde Cafe<br>
+                    <a target="_blank" href="https://g.page/aguaverdecafeseattle?share">
+                        1303 NE Boat St<br>
+                        Seattle, WA 98105
+                    </a>
+                </p>
+            </div>
+        {% endif %}
+    </div>
+
     <div class="page-section">
         <p class="text-lg-center">
             {% for guest in guests %}
@@ -31,5 +70,7 @@
             </a>
         </div>
     </div>
+
+
 
 {% endblock %}

@@ -7,17 +7,53 @@
 
     <h1 class="page-title">Edit RSVP</h1>
 
-    <div class="page-section">
 
+    <div class="row">
+        <div class="page-section text-lg-center col-lg">
+            <h3>Wedding Ceremony</h3>
+            <p>
+                You are invited to celebrate the marriage of Hannah & Jared at the Turski Residence in Redmond!
+                <br><br>
+                <b>
+                    Saturday, July 9th, 2022<br>
+                    4pm til we drop
+                </b>
+                <br><br>
+                Turski Residence<br>
+                <a target="_blank" href="https://goo.gl/maps/Js57jBEFmN2gPnM36">
+                    5708 223rd Ave NE<br>
+                    Redmond, WA 98053
+                </a>
+            </p>
+        </div>
+        {% if invited_to_rehearsal %}
+            <div class="page-section text-lg-center col-lg">
+                <h3>Rehearsal Dinner</h3>
+                <p>
+                    You are invited to join Hannah & Jared’s families for dinner and drinks at Agua Verde along Portage Bay!
+                    <br><br>
+                    <b>
+                        Friday, July 8th, 2022<br>
+                        6pm to 9pm
+                    </b>
+                    <br><br>
+                    Agua Verde Cafe<br>
+                    <a target="_blank" href="https://g.page/aguaverdecafeseattle?share">
+                        1303 NE Boat St<br>
+                        Seattle, WA 98105
+                    </a>
+                </p>
+            </div>
+        {% endif %}
     </div>
 
     <form action="{% url 'reservation/rsvp' %}" method="post">
         {% csrf_token %}
         {{ formset.management_form }}
-        <div class="d-flex flex-wrap justify-content-evenly">
+        <div class="d-flex flex-wrap justify-content-lg-evenly">
             {% for form in formset %}
-                <div class="page-section form-container w-100"
-                     style="max-width: 425px; display: {% if forloop.counter0 in deleted_form_indexes or not form.guest_id.value %}none{% else %}block{% endif %};">
+                <div class="page-section w-100 form-container"
+                     style="display: {% if forloop.counter0 in deleted_form_indexes or not form.guest_id.value %}none{% else %}block{% endif %};">
                     <h3 class="text-lg-center">Guest {{ forloop.counter }}</h3>
                     {{ form }}
                     {% if forloop.counter != 1 %}
@@ -34,6 +70,17 @@
                 <button class="btn-form-add btn btn-secondary" type="button">Add another guest</button>
             </div>
         </div>
+
+        <div class="page-section">
+            <p class="text-lg-center">
+                Please review our
+                <a target="_blank" href="{% url 'info/faqs' %}">Frequent Asked Questions</a>
+                for our
+                <a target="_blank" href="{% url 'info/faqs' %}#COVID">COVID-19 policy</a>
+                and other important details before submitting.
+            </p>
+        </div>
+
         <div class="page-section">
             <div class="d-flex justify-content-center">
                 <button type="submit" class="btn btn-primary btn-lg">Save RSVP</button>

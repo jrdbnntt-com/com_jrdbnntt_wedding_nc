@@ -121,5 +121,6 @@ def index(request: HttpRequest, reservation_id: int):
     return render(request, "reservation/rsvp/index.html", {
         'page_title': 'Edit RSVP',
         'formset': formset,
-        'deleted_form_indexes': deleted_form_indexes
+        'deleted_form_indexes': deleted_form_indexes,
+        'invited_to_rehearsal': res.invited_to_rehearsal
     })

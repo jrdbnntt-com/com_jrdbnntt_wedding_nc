@@ -30,8 +30,8 @@ def guest_rsvp_status_sentence(reservation: Reservation, guest: Guest) -> str:
         result += " is <b>" + guest.rsvp_answer_display().lower() + "</b> to the wedding ceremony"
     if reservation.invited_to_rehearsal:
         if guest.rehearsal_rsvp_answer is None:
-            result += " and has <b>not yet RSVP'd</b> to the wedding rehearsal"
+            result += " and has <b>not yet RSVP'd</b> to the rehearsal dinner"
         else:
-            result += " and is <b>" + guest.rehearsal_rsvp_answer_display().lower() + "</b> to the wedding rehearsal"
+            result += " and is <b>" + guest.rehearsal_rsvp_answer_display().lower() + "</b> to the rehearsal dinner"
     result += '.'
     return mark_safe(result)
