@@ -19,7 +19,7 @@ class Guest(models.Model):
     last_name = models.CharField(max_length=100)
     rsvp_answer = models.BooleanField(default=None, blank=True, null=True)
     rehearsal_rsvp_answer = models.BooleanField(default=None, blank=True, null=True)
-    rsvp_comment = models.CharField(max_length=1000, blank=True)
+    food_vegan_option = models.BooleanField(default=False, blank=True, null=True)
     assigned_table = models.IntegerField(null=True, blank=True)
     assigned_table_seat = models.IntegerField(null=True, blank=True)
     created_at = models.DateTimeField(default=timezone.now, editable=False)
@@ -62,7 +62,7 @@ class GuestAdmin(admin.ModelAdmin):
         'updated_at',
         'rsvp_answer_display',
         'rehearsal_rsvp_answer_display',
-        'rsvp_comment',
+        'food_vegan_option',
         'assigned_table',
         'assigned_table_seat',
     )

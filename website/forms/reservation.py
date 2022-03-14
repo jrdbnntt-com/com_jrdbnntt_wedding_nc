@@ -22,19 +22,19 @@ class ActivateForm(StandardForm):
 
 
 class EditGuestForm(StandardForm):
-    guest_id = forms.IntegerField(widget=forms.HiddenInput(), required=False)
+    guest_id = forms.IntegerField(widget=forms.HiddenInput(attrs={'class': 'guest-id'}), required=False)
     first_name = forms.CharField(label="First Name", max_length=100, strip=True, widget=widgets.TextInput())
     last_name = forms.CharField(label="Last Name", max_length=100, strip=True, widget=widgets.TextInput())
     rsvp_answer = forms.NullBooleanField(label="Wedding Ceremony RSVP", widget=widgets.RsvpAnswerSelect())
-    rsvp_comment = forms.CharField(label="RSVP Comment", max_length=1000, required=False, strip=True,
-                                   widget=widgets.TextInput())
+    food_vegan_option = forms.NullBooleanField(label="Do you need a vegan food option?",
+                                               widget=widgets.YesNoNullSelect())
 
     def __init__(self, invited_to_rehearsal: bool, allowed_guest_ids: list[int], *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.allowed_guest_ids = allowed_guest_ids
         self.invited_to_rehearsal = invited_to_rehearsal
         if invited_to_rehearsal:
-            self.fields['rehearsal_rsvp_answer'] = forms.NullBooleanField(label="Rehearsal RSVP",
+            self.fields['rehearsal_rsvp_answer'] = forms.NullBooleanField(label="Rehearsal Dinner RSVP",
                                                                           widget=widgets.RsvpAnswerSelect())
             self.order_fields([
                 'guest_id',
@@ -43,7 +43,7 @@ class EditGuestForm(StandardForm):
                 'last_name',
                 'rsvp_answer',
                 'rehearsal_rsvp_answer',
-                'rsvp_comment'
+                'food_vegan_option'
             ])
 
     def clean(self):
@@ -52,6 +52,12 @@ class EditGuestForm(StandardForm):
             guest_id = self.cleaned_data['guest_id']
             if guest_id and guest_id not in self.allowed_guest_ids:
                 raise ValidationError("Invalid Guest ID")
+
+    def clean_food_vegan_option(self):
+        value = self.cleaned_data['food_vegan_option']
+        if value is None:
+            raise ValidationError("Please select Yes or No.")
+        return value
 
     def is_deleted(self):
         return 'cleaned_data' in self and 'DELETE' in self.cleaned_data and self.cleaned_data['DELETE']

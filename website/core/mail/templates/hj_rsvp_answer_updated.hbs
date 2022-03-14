@@ -14,12 +14,12 @@
 </p>
 
 <h3>RSVP Status</h3>
-<ul>
-    {{#each guest_rsvp_statuses}}
-        <li>{{this}}</li>
-    {{/each}}
-</ul>
-You can make changes to your RSVP <a target="_blank" href="{{link_rsvp}}">on our website</a> until {{date_rsvp_deadline}}.
+{{#each guest_rsvp_statuses}}
+    <p>{{this}}</p>
+{{/each}}
+<p>
+    You can make changes to your RSVP <a target="_blank" href="{{link_rsvp}}">on our website</a> until {{date_rsvp_deadline}}.
+</p>
 
 {{#if attending_rehearsal}}
     <h3>Wedding Rehearsal Details</h3>

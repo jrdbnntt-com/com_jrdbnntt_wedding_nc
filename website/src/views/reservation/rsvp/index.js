@@ -18,8 +18,10 @@ function init() {
     context.$btnAddForm.on('click', (e) => {
         let $formContainer = getNextAvailableForm();
         if ($formContainer) {
-            let $deleteInput = $formContainer.children('input.deletion');
+            let $deleteInput = $formContainer.find('input.deletion');
+            let $guestIdInput = $formContainer.find('input.guest-id');
             $deleteInput.val('');
+            $guestIdInput.val('-1');
             $formContainer.find('.is-invalid').removeClass('is-invalid');
             $formContainer.toggle(true);
             $('html, body').animate({
@@ -31,8 +33,12 @@ function init() {
     $('button.btn-form-delete').on('click', (e) => {
         let $deleteBtn = $(e.target);
         let $formContainer = $deleteBtn.closest('.form-container');
-        let $deleteInput = $formContainer.children('input.deletion');
+        let $deleteInput = $formContainer.find('input.deletion');
+        let $guestIdInput = $formContainer.find('input.guest-id');
         $deleteInput.val('on');
+        if ($guestIdInput.val() === '-1') {
+            $guestIdInput.val('');
+        }
         $formContainer.toggle(false);
         refreshAddFormBtn();
     });

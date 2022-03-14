@@ -1,7 +1,7 @@
 import logging
 from datetime import datetime
 from json import JSONEncoder, JSONDecoder
-
+from django.utils import timezone
 from django.contrib import admin
 from django.db import models
 
@@ -62,11 +62,18 @@ def schedule_task(name: str, target_time: datetime, task_kwargs: dict, create_on
         task = Task.objects.filter(name=name, kwargs=kwargs_str).all()
         if len(task) > 0:
             return task[0]
-    return Task.objects.create(
+
+    task = Task.objects.create(
         name=name,
         task_kwargs=kwargs_str,
         target_unix_time=int(target_time.timestamp())
     )
+    logger.info("Scheduled task '%s' to occur at %s (%0.3f seconds from now)" % (
+        task.name,
+        datetime.fromtimestamp(task.target_unix_time).isoformat(),
+        (datetime.now().timestamp() - task.target_unix_time) / 1000.0
+    ))
+    return task
 
 
 def get_processable_tasks(lock=True):

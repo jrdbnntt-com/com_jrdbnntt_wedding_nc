@@ -45,7 +45,7 @@ def index(request: HttpRequest, reservation_id: int):
                                     can_delete=True, can_delete_extra=True, validate_max=True, validate_min=True,
                                     absolute_max=10)
 
-    allowed_guest_ids = []
+    allowed_guest_ids = [-1]
     for guest in guests:
         allowed_guest_ids.append(guest.id)
 
@@ -68,11 +68,11 @@ def index(request: HttpRequest, reservation_id: int):
                     'first_name': form.cleaned_data['first_name'],
                     'last_name': form.cleaned_data['last_name'],
                     'rsvp_answer': form.cleaned_data['rsvp_answer'],
-                    'rsvp_comment': form.cleaned_data['rsvp_comment'] if 'rsvp_comment' in form.cleaned_data else '',
+                    'food_vegan_option': form.cleaned_data['food_vegan_option'],
                     'rehearsal_rsvp_answer': form.cleaned_data[
                         'rehearsal_rsvp_answer'] if res.invited_to_rehearsal else None,
                 }
-                if guest_id:
+                if guest_id and guest_id != -1:
                     Guest.objects.filter(id=guest_id).update(**guest_data)
                     final_guest_ids.append(guest_id)
                 else:
@@ -80,7 +80,7 @@ def index(request: HttpRequest, reservation_id: int):
                     final_guest_ids.append(guest.id)
             for form in formset.deleted_forms:
                 guest_id = form.cleaned_data['guest_id'] if 'guest_id' in form.cleaned_data else None
-                if guest_id:
+                if guest_id and guest_id != -1:
                     for guest in guests:
                         if guest.id == guest_id:
                             guest.delete()
@@ -107,7 +107,7 @@ def index(request: HttpRequest, reservation_id: int):
                 (form_prefix + 'first_name'): guest.first_name,
                 (form_prefix + 'last_name'): guest.last_name,
                 (form_prefix + 'rsvp_answer'): guest.rsvp_answer,
-                (form_prefix + 'rsvp_comment'): guest.rsvp_comment,
+                (form_prefix + 'food_vegan_option'): guest.food_vegan_option
             })
             if res.invited_to_rehearsal:
                 initial_data['rehearsal_rsvp_answer'] = guest.rehearsal_rsvp_answer
