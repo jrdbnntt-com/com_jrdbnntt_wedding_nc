@@ -1,17 +1,35 @@
 {% extends "_templates/main/index.html" %}
 {% load render_bundle from webpack_loader %}
+{% load reservation %}
 {% block head_code %}
     {% render_bundle 'entry_views_reservation' %}
 {% endblock %}
 {% block content %}
 
     <h1 class="page-title">Your RSVP Summary</h1>
+    <div class="page-section">
+        <p class="text-lg-center">
+            Reservation Name: {{ reservation.name }}
+            <br><br>
+            RSVP Code: {{ reservation.access_code }}
+        </p>
+    </div>
 
     <div class="page-section">
-        {% include '_templates/reservation/reservation_summary.html' with reservation=reservation guests=guests %}
-        <a href="{% url 'reservation/rsvp' %}">
-            <button type="button" class="btn btn-primary">Edit</button>
-        </a>
+        <p class="text-lg-center">
+            {% for guest in guests %}
+                {% if forloop.counter > 1 %}
+                    <br><br>
+                {% endif %}
+                {% guest_rsvp_status_sentence reservation guest %}
+            {% endfor %}
+        </p>
+        <br><br>
+        <div class="d-flex justify-content-center">
+            <a href="{% url 'reservation/rsvp' %}">
+                <button type="button" class="btn btn-primary btn-lg">Edit RSVP</button>
+            </a>
+        </div>
     </div>
 
 {% endblock %}
