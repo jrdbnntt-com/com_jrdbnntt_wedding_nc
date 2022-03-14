@@ -53,7 +53,7 @@ def activate(request: HttpRequest, reservation_id: int):
                     to_name=res.name,
                     reservation_code=res.access_code
                 )
-                return redirect('reservation')
+                return redirect('reservation/rsvp')
         form.clear_sensitive_form_data()
     else:
         form = ActivateForm()
@@ -63,5 +63,3 @@ def activate(request: HttpRequest, reservation_id: int):
         'form': form,
         'recaptcha_action': recaptcha_action
     })
-
-
