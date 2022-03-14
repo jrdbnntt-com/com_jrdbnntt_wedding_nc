@@ -5,11 +5,23 @@
 {% endblock %}
 {% block content %}
 
-    <h1>TODO: {{ page_title }}</h1>
+    <h1 class="page-title">Edit RSVP</h1>
 
     <form action="{% url 'reservation/rsvp' %}" method="post">
         {% csrf_token %}
-        {{ form }}
+        {{ formset.management_form }}
+        {% for form in formset %}
+            <div class="page-section">
+                <div class="form-container" style="display: {% if form.guest_id.value or form.errors %}block{% else %}none{% endif %};">
+                    {{ form.DELETE }}
+                    {{ form }}
+                    {% if forloop.counter != 1 %}
+                        <button class="btn-form-delete" type="button">Delete</button>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+        <button class="btn-form-add" type="button" style="display: none;">Add Guest</button>
     </form>
 
 {% endblock %}

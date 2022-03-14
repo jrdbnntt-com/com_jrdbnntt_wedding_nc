@@ -14,7 +14,6 @@ def init():
 
 class Guest(models.Model):
     """ A single guest for the event """
-    MAX_HIDDEN_PER_RESERVATION = 10
     reservation = models.ForeignKey(Reservation, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
@@ -23,8 +22,6 @@ class Guest(models.Model):
     rsvp_comment = models.CharField(max_length=1000, blank=True)
     assigned_table = models.IntegerField(null=True, blank=True)
     assigned_table_seat = models.IntegerField(null=True, blank=True)
-    food_comment = models.CharField(max_length=1000, blank=True)
-    hidden = models.BooleanField(default=False)  # "deleted" by reservation user
     created_at = models.DateTimeField(default=timezone.now, editable=False)
     updated_at = models.DateTimeField(default=timezone.now, editable=False)
 
@@ -56,9 +53,8 @@ class Guest(models.Model):
 
 @admin.register(Guest)
 class GuestAdmin(admin.ModelAdmin):
-    ordering = ('-hidden', 'last_name', 'first_name')
+    ordering = ('last_name', 'first_name')
     list_display = (
-        'hidden',
         'reservation__access_code',
         'reservation__name',
         'first_name',
@@ -67,14 +63,12 @@ class GuestAdmin(admin.ModelAdmin):
         'rsvp_answer_display',
         'rehearsal_rsvp_answer_display',
         'rsvp_comment',
-        'food_comment',
         'assigned_table',
         'assigned_table_seat',
     )
     list_filter = (
         'rsvp_answer',
-        'rehearsal_rsvp_answer',
-        'hidden'
+        'rehearsal_rsvp_answer'
     )
 
     @staticmethod
@@ -94,17 +88,10 @@ def pre_save(sender, instance: Guest, **kwargs):
 
 @receiver(post_save, sender=Guest)
 def post_save(sender, instance: Guest, created, raw, using, update_fields, **kwargs):
-    """ If hiding, delete other hidden Guest objects for the same reservation to ensure that there are at max 10 """
     if update_fields is not None:
         update_fields = frozenset(update_fields)
         rsvp_updated = False
         reservation = None
-        if "hidden" in update_fields and instance.hidden:
-            reservation = Guest.objects.only("reservation").get(pk=instance.id).reservation
-            hidden_guests = Guest.objects.filter(reservation=reservation, hidden=True).order_by("-updated_at")
-            if len(hidden_guests) > Guest.MAX_HIDDEN_PER_RESERVATION:
-                hidden_guests[Guest.MAX_HIDDEN_PER_RESERVATION:].delete()
-            rsvp_updated = True
         if "rsvp_answer" in update_fields or "rehearsal_rsvp_answer" in update_fields:
             rsvp_updated = True
         if rsvp_updated:
