@@ -12,6 +12,7 @@
           method="post">
         {% csrf_token %}
         {{ form }}
+        {% include '_templates/forms/buttons/submit.html' %}
     </form>
 
 {% endblock %}

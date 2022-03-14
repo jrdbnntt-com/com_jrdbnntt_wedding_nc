@@ -1,5 +1,3 @@
-{% block header %}{% endblock %}
-
 {{ form.non_field_errors }}
 {% block error_summary %}
     {% if form.subject.errors %}
@@ -25,12 +23,3 @@
         </div>
     {% endfor %}
 {% endblock %}
-
-{% block submit %}
-    {% include '_templates/forms/buttons/submit.html' with button_text=btn_submit_text|default:"Submit" %}
-{% endblock %}
-
-{% block footer %}
-
-{% endblock %}
-
