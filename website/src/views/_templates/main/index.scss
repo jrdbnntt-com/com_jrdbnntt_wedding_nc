@@ -16,7 +16,7 @@ body {
   @include font-header;
 }
 
-p, span, li, .navbar-nav {
+p, span, li, .navbar-nav, label {
   @include font-normal;
   font-size: $font-size-base;
 }
@@ -42,9 +42,11 @@ img {
     border-radius: 5px;
     max-width: 2000px;
   }
+
   &.photo-vertical {
     max-width: 750px;
   }
+
   &.photo-small {
     max-height: 500px;
   }
@@ -57,6 +59,7 @@ img {
     }
   }
 }
+
 @media (max-width: $grid-breakpoint-max-md) {
   .full-width-until-lg {
     .photo {
@@ -64,6 +67,7 @@ img {
     }
   }
 }
+
 @media (max-width: $grid-breakpoint-max-lg) {
   .full-width-until-xl {
     .photo {
@@ -71,6 +75,7 @@ img {
     }
   }
 }
+
 @media (max-width: $grid-breakpoint-max-xl) {
   .full-width-until-xxl {
     .photo {
@@ -84,6 +89,7 @@ img {
   margin-top: 3rem;
   margin-bottom: $spacer-margin;
 }
+
 @media (min-width: $grid-breakpoint-lg) {
   .page-title {
     margin-top: 0;
@@ -105,7 +111,7 @@ $carousel-margin: 10px;
   padding-left: $carousel-margin * 2;
   padding-right: $carousel-margin * 2;
 
-  &> * {
+  & > * {
     margin: $carousel-margin;
   }
 
@@ -117,4 +123,8 @@ $carousel-margin: 10px;
     margin-top: $carousel-margin;
     font-style: italic;
   }
+}
+
+.form-group {
+  margin-bottom: 1em;
 }

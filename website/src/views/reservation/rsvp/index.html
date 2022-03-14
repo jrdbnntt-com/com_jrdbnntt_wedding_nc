@@ -11,18 +11,26 @@
         {% csrf_token %}
         {{ formset.management_form }}
         {% for form in formset %}
-            <div class="page-section">
-                <div class="form-container"
-                     style="display: {% if forloop.counter0 in deleted_form_indexes or not form.guest_id.value %}none{% else %}block{% endif %};">
-                    {{ form }}
-                    {% if forloop.counter != 1 %}
-                        <button class="btn-form-delete" type="button">Delete</button>
-                    {% endif %}
-                </div>
+            <div class="page-section form-container"
+                 style="display: {% if forloop.counter0 in deleted_form_indexes or not form.guest_id.value %}none{% else %}block{% endif %};">
+                <h3>Guest {{ forloop.counter }}</h3>
+                {{ form }}
+                {% if forloop.counter != 1 %}
+                    <button class="btn-form-delete btn btn-secondary" type="button">Remove
+                        Guest {{ forloop.counter }}</button>
+                {% endif %}
             </div>
         {% endfor %}
-        <button class="btn-form-add" type="button" style="display: none;">Add Guest</button>
-        {% include '_templates/forms/buttons/submit.html' %}
+        <div class="page-section" style="display: none;">
+            <div class="d-flex justify-content-center">
+                <button class="btn-form-add btn btn-secondary" type="button">Add another guest</button>
+            </div>
+        </div>
+        <div class="page-section">
+            <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-primary btn-lg">Save RSVP</button>
+            </div>
+        </div>
     </form>
 
 {% endblock %}

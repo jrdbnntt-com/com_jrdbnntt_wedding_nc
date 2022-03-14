@@ -13,7 +13,11 @@ class EmailInput(forms.EmailInput):
     template_name = '_templates/forms/widgets/email.html'
 
 
-class RsvpAnswerSelect(forms.Select):
+class Select(forms.Select):
+    template_name = '_templates/forms/widgets/select.html'
+
+
+class RsvpAnswerSelect(Select):
     def __init__(self, attrs=None):
         choices = (
             ('unknown', 'TBD'),

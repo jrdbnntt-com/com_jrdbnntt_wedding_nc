@@ -25,7 +25,7 @@ class EditGuestForm(StandardForm):
     guest_id = forms.IntegerField(widget=forms.HiddenInput(), required=False)
     first_name = forms.CharField(label="First Name", max_length=100, strip=True, widget=widgets.TextInput())
     last_name = forms.CharField(label="Last Name", max_length=100, strip=True, widget=widgets.TextInput())
-    rsvp_answer = forms.NullBooleanField(label="Wedding Ceremony RSVP Answer", widget=widgets.RsvpAnswerSelect())
+    rsvp_answer = forms.NullBooleanField(label="Wedding Ceremony RSVP", widget=widgets.RsvpAnswerSelect())
     rsvp_comment = forms.CharField(label="RSVP Comment", max_length=1000, required=False, strip=True,
                                    widget=widgets.TextInput())
 
@@ -34,7 +34,7 @@ class EditGuestForm(StandardForm):
         self.allowed_guest_ids = allowed_guest_ids
         self.invited_to_rehearsal = invited_to_rehearsal
         if invited_to_rehearsal:
-            self.fields['rehearsal_rsvp_answer'] = forms.NullBooleanField(label="Rehearsal RSVP Answer",
+            self.fields['rehearsal_rsvp_answer'] = forms.NullBooleanField(label="Rehearsal RSVP",
                                                                           widget=widgets.RsvpAnswerSelect())
             self.order_fields([
                 'guest_id',

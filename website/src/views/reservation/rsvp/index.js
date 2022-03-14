@@ -22,6 +22,9 @@ function init() {
             $deleteInput.val('');
             $formContainer.find('.is-invalid').removeClass('is-invalid');
             $formContainer.toggle(true);
+            $('html, body').animate({
+                scrollTop: $formContainer.offset().top
+            });
         }
         refreshAddFormBtn();
     });
@@ -49,5 +52,5 @@ function getNextAvailableForm() {
 }
 
 function refreshAddFormBtn() {
-    context.$btnAddForm.toggle(!!getNextAvailableForm());
+    context.$btnAddForm.closest('.page-section').toggle(!!getNextAvailableForm());
 }
