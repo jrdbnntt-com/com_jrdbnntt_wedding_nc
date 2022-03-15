@@ -13,7 +13,6 @@ logger = logging.getLogger(__name__)
 
 def init():
     """ Does nothing, just here to keep import """
-    logger.debug('init')
     pass
 
 
