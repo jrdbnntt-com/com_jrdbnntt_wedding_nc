@@ -1,34 +1,68 @@
 <p>Hi {{to_name}},</p>
-
+<br><br>
 <p>
-    Thank you for RSVPing to our wedding!
-{{#if rsvp_complete}}
-    {{#or attending_wedding attending_rehearsal}}
-        We are excited to see you this summer!
+    {{#if rsvp_complete}}
+        Thank you for RSVPing to our wedding!
+        {{#or attending_wedding attending_rehearsal}}
+            We are excited to see you this summer!
+        {{else}}
+            We are sorry you can't make it. If circumstances change, please
+            <a target="_blank" href="{{link_rsvp}}">update your RSVP</a>
+            before {{date_rsvp_deadline}}.
+        {{/or}}
     {{else}}
-        We are sorry you can't make it to our wedding.
-    {{/or}}
-{{else}}
-    
-{{/if}}
+        Thank you for starting your RSVP to our wedding! <b>Your RSVP is not yet complete</b>. Please
+        <a target="_blank" href="{{link_rsvp}}">complete your RSVP</a>
+        as soon as you are able to. Please complete your RSVP by {{date_rsvp_deadline}}.
+    {{/if}}
 </p>
 
-<h3>RSVP Status</h3>
-{{#each guest_rsvp_statuses}}
-    <p>{{this}}</p>
-{{/each}}
+<br><br>
+<h2>RSVP Status</h2>
 <p>
-    You can make changes to your RSVP <a target="_blank" href="{{link_rsvp}}">on our website</a> until {{date_rsvp_deadline}}.
+    {{#each guest_rsvp_statuses}}
+        {{this}}<br><br>
+    {{/each}}
+    <i>You can make changes to your RSVP <a target="_blank" href="{{link_rsvp}}">on our website</a>
+        until {{date_rsvp_deadline}}.</i>
 </p>
-
-{{#if attending_rehearsal}}
-    <h3>Wedding Rehearsal Details</h3>
-    <p>TODO basic rehearsal details and link to website</p>
-{{/if}}
 
 {{#if attending_wedding}}
-    <h3>Wedding Details</h3>
-    <p>TODO basic wedding details and link to website</p>
+    <br><br>
+    <h2>Wedding Ceremony</h2>
+    <p>
+        <b>
+            Saturday, July 9th, 2022<br>
+            4pm til we drop
+        </b>
+        <br><br>
+        Turski Residence<br>
+        <a target="_blank" href="https://goo.gl/maps/Js57jBEFmN2gPnM36">
+            5708 223rd Ave NE<br>
+            Redmond, WA 98053
+        </a>
+    </p>
 {{/if}}
 
-<p>Thanks,<br>Hannah & Jared</p>
+{{#if attending_rehearsal}}
+    <br><br>
+    <h2>Rehearsal Dinner</h2>
+    <p>
+        <b>
+            Friday, July 8th, 2022<br>
+            6pm to 9pm
+        </b>
+        <br><br>
+        Agua Verde Cafe<br>
+        <a target="_blank" href="https://g.page/aguaverdecafeseattle?share">
+            1303 NE Boat St<br>
+            Seattle, WA 98105
+        </a>
+    </p>
+{{/if}}
+<br><br>
+<p>
+    Thanks,<br>
+    Hannah & Jared<br>
+    {{link_home}}
+</p>

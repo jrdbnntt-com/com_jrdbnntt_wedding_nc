@@ -140,3 +140,11 @@ $carousel-margin: 10px;
 .form-group {
   margin-bottom: 1em;
 }
+
+@media (min-width: $grid-breakpoint-lg) {
+  .form-container {
+    max-width: 425px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}

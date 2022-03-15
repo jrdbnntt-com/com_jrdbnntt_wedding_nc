@@ -8,10 +8,14 @@
 
     <h1 class="page-title">Reservation Activation</h1>
 
-    <form id="form_activate" action="{% url 'reservation/activate' %}" method="post">
-        {% csrf_token %}
-        {{ form }}
-        {% include '_templates/forms/buttons/submit.html' %}
-    </form>
+    <div class="page-section d-flex justify-content-center">
+        <div class="w-100 form-container">
+            <form id="form_activate" action="{% url 'reservation/activate' %}" method="post">
+                {% csrf_token %}
+                {{ form }}
+                {% include '_templates/forms/buttons/submit.html' %}
+            </form>
+        </div>
+    </div>
 
 {% endblock %}

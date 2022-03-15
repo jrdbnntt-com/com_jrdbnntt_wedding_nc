@@ -17,7 +17,7 @@ class Reservation(models.Model):
     ACCESS_CODE_LENGTH = 6
     ACCESS_CODE_CHARS = string.ascii_uppercase + "23456789"
     name = models.CharField(max_length=200)
-    user = models.OneToOneField(User, on_delete=models.SET_NULL, null=True)
+    user = models.OneToOneField(User, on_delete=models.SET_NULL, null=True, blank=True)
     access_code = models.CharField(max_length=ACCESS_CODE_LENGTH, default=generate_access_code, unique=True)
     activated = models.BooleanField(default=False)  # Set to True once the reservation has been accessed once
     activated_at = models.DateTimeField(null=True, blank=True)

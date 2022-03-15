@@ -1,9 +1,5 @@
 {% extends "_templates/main/index.html" %}
-{% load render_bundle from webpack_loader %}
 {% load reservation %}
-{% block head_code %}
-    {% render_bundle 'entry_views_reservation' %}
-{% endblock %}
 {% block content %}
 
     <h1 class="page-title">Reservation Summary</h1>

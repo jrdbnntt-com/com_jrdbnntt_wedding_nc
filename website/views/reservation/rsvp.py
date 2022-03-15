@@ -119,7 +119,7 @@ def index(request: HttpRequest, reservation_id: int):
                 (form_prefix + 'food_vegan_option'): guest.food_vegan_option
             })
             if res.invited_to_rehearsal:
-                initial_data['rehearsal_rsvp_answer'] = guest.rehearsal_rsvp_answer
+                initial_data[form_prefix + 'rehearsal_rsvp_answer'] = guest.rehearsal_rsvp_answer
         formset = formset_class(data=initial_data, form_kwargs=form_kwargs)
 
     deleted_form_indexes = []

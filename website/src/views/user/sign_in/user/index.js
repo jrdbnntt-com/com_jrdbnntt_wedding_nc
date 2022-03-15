@@ -1,5 +1,3 @@
-import "website/src/views/_templates/main/index"
-import "./index.scss"
 import * as $ from "jquery";
 import {attach} from "website/src/js/recaptcha";
 

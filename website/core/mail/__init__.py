@@ -12,9 +12,11 @@ def _build_site_link(path: str) -> str:
 
 def send_registration_activated_confirmation(to_email: str, to_name: str, reservation_code: str):
     sendgrid.send_dynamic_template_email('hj_registration_activated_confirmation', to_email, {
+        'link_home': settings.EMAIL_LINK_BASE_URL,
         'link_rsvp': _build_site_link('rsvp'),
         'link_rsvp_yes': _build_site_link('reservation/rsvp/quick_answer/yes'),
         'link_rsvp_no': _build_site_link('reservation/rsvp/quick_answer/no'),
+        'link_faqs': _build_site_link('info/faqs'),
         'to_email': to_email,
         'to_name': to_name,
         'reservation_code': reservation_code
@@ -24,7 +26,9 @@ def send_registration_activated_confirmation(to_email: str, to_name: str, reserv
 def send_rsvp_updated_email(to_email: str, to_name: str, rsvp_complete: bool, attending_wedding: bool,
                             attending_rehearsal: bool, invited_to_rehearsal: bool, guest_rsvp_statuses: list[str]):
     sendgrid.send_dynamic_template_email('hj_rsvp_answer_updated', to_email, {
+        'link_home': settings.EMAIL_LINK_BASE_URL,
         'to_name': to_name,
+        'link_rsvp': _build_site_link('/reservation/rsvp'),
         'rsvp_complete': rsvp_complete,
         'attending_wedding': attending_wedding,
         'attending_rehearsal': attending_rehearsal,

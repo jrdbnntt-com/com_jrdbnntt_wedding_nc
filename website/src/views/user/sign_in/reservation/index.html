@@ -8,17 +8,20 @@
 
     <h1 class="page-title">Reservation Sign-in</h1>
 
-    <div class="page-section">
-        <form id="form_sign_in" action="{% url 'user/sign_in/reservation' %}{% if redirect %}?redirect=true{% endif %}"
-              method="post">
-            {% csrf_token %}
-            {{ form }}
-            {% include '_templates/forms/buttons/submit.html' with button_text="Sign in" %}
-        </form>
+    <div class="page-section d-flex justify-content-center">
+        <div class="w-100 form-container">
+            <form id="form_sign_in"
+                  action="{% url 'user/sign_in/reservation' %}{% if redirect %}?redirect=true{% endif %}"
+                  method="post">
+                {% csrf_token %}
+                {{ form }}
+                {% include '_templates/forms/buttons/submit.html' with button_text="Sign in" %}
+            </form>
+        </div>
     </div>
 
     <div class="page-section">
-        <p>
+        <p class="text-lg-center">
             Your RSVP code is located <a href="{% url 'info/faqs' %}#rsvp-code">on the back of your
             invitation</a>.
         </p>

@@ -47,12 +47,12 @@ def _task_send_rsvp_updated_email(reservation_id: int):
         if guest.rsvp_answer is None:
             status += " has not yet RSVP'd to the wedding reception"
         else:
-            status += " has RSVP'd " + guest.rsvp_answer_display()
+            status += " is " + guest.rsvp_answer_display().lower() + " to the wedding reception"
         if reservation.invited_to_rehearsal:
-            if guest.rsvp_answer is None:
-                status += " and has not yet RSVP'd to the wedding rehearsal"
+            if guest.rehearsal_rsvp_answer is None:
+                status += " and has not yet RSVP'd to the rehearsal dinner"
             else:
-                status += " and has RSVP'd " + guest.rehearsal_rsvp_answer_display()
+                status += " and is " + guest.rehearsal_rsvp_answer_display().lower() + " to the rehearsal dinner"
         status += '.'
         guest_rsvp_statuses.append(status)
 
