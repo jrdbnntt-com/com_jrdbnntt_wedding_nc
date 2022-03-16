@@ -92,7 +92,7 @@ NGINX_CONFIG_LINK_PATH="${NGINX_CONFIG_DIR}/${PROJECT_DIR_NAME}.conf"
 if [ ! -L "${NGINX_CONFIG_LINK_PATH}" ]; then
   ln -s "${PROJECT_NGINX_CONFIG_PATH}" "${NGINX_CONFIG_LINK_PATH}"
 fi
-nginx -s HUP
+nginx -s reload
 
 # Install systemd service
 echo "Installing systemd config..."

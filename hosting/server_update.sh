@@ -39,7 +39,7 @@ echo "${FILES_TO_LOG}" | xargs -0 runuser -g "${SERVICE_USER}" -u "${SERVICE_USE
 
 # Restart service and reload nginx
 systemctl start "${SYSTEMD_SERVICE_NAME}"
-nginx -s HUP
+nginx -s reload
 
 echo "Server updated"
 cd "${ORIGINAL_WORKING_DIR}" || exit 1
