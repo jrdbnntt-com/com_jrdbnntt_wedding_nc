@@ -63,7 +63,7 @@ chmod g+s "${DJANGO_SERVER_LOG_DIR}"
 
 # Install environment as service user
 echo "Installing project environment..."
-runuser -g "${SERVICE_USER}" -u "${SERVICE_USER}" --/bin/bash ./hosting/server_install_environment.sh
+runuser -g "${SERVICE_USER}" -u "${SERVICE_USER}" -- /bin/bash ./hosting/server_install_environment.sh
 echo "Project environment installed"
 
 # Install nginx config
