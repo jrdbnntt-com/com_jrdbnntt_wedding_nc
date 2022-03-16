@@ -11,8 +11,9 @@
 # - systemd
 # - user group 'www-data'
 # - systemd-analyze
-# - ssl cert at '/etc/nginx/certs/com_jrdbnntt_wedding/cert.crt'
-# - ssl cert key at '/etc/nginx/certs/com_jrdbnntt_wedding/cert.key'
+# - ssl cert at '/etc/nginx/certs/com_jrdbnntt_wedding/cert.crt' (should be the Cloudflare origin cert)
+# - ssl cert key at '/etc/nginx/certs/com_jrdbnntt_wedding/cert.key' (should be the Cloudflare origin cert key)
+#  - cloudflare origin pull cert key at '/etc/nginx/certs/cloudflare/authenticated_origin_pull_ca.pem' (https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/#certificate-value)
 # - nvm installed at /usr/local/nvm
 ########################################################################################################################
 set -e # Stop script if any command fails
