@@ -4,6 +4,7 @@ com_jrdbnntt_wedding/config/production.cfg
 com_jrdbnntt_wedding/config/test.cfg
 webpack-stats.json
 /website/static/cloud
+/.idea
 
 ### Python template
 # Byte-compiled / optimized / DLL files
