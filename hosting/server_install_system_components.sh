@@ -72,7 +72,7 @@ nvm install ${NODE_RUNTIME}
 nvm use ${NODE_RUNTIME}
 NODE_INSTALL_DIR=$(dirname "$(dirname "$(which node)")")
 chmod -R ugo+r "${NODE_INSTALL_DIR}"
-chmod -R u=rwx,go=rx "${NODE_INSTALL_DIR}/bin/*"
+chmod -R u=rwx,go=rx "${NODE_INSTALL_DIR}"/bin/*
 
 echo "Installing user-level project environment..."
 runuser -g "${SERVICE_USER}" -u "${SERVICE_USER}" -- /bin/bash ./hosting/server_install_environment.sh
