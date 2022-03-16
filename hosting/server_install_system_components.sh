@@ -89,9 +89,13 @@ echo "Project environment installed"
 
 # Install nginx config
 echo "Installing nginx config..."
-NGINX_CONFIG_LINK_PATH="${NGINX_CONFIG_DIR}/${PROJECT_DIR_NAME}.conf"
-if [ ! -L "${NGINX_CONFIG_LINK_PATH}" ]; then
-  ln -s "${PROJECT_NGINX_CONFIG_PATH}" "${NGINX_CONFIG_LINK_PATH}"
+NGINX_CONFIG_LINK_PATH__AVAILABLE="${NGINX_DIR}/sites-available/${PROJECT_DIR_NAME}.conf"
+NGINX_CONFIG_LINK_PATH__ENABLED="${NGINX_DIR}/sites-enabled/${PROJECT_DIR_NAME}.conf"
+if [ ! -L "${NGINX_CONFIG_LINK_PATH__AVAILABLE}" ]; then
+  ln -s "${PROJECT_NGINX_CONFIG_PATH}" "${NGINX_CONFIG_LINK_PATH__AVAILABLE}"
+fi
+if [ ! -L "${NGINX_CONFIG_LINK_PATH__ENABLED}" ]; then
+  ln -s "${NGINX_CONFIG_LINK_PATH__AVAILABLE}" "${NGINX_CONFIG_LINK_PATH__ENABLED}"
 fi
 nginx -s reload
 
