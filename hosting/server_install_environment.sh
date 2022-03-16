@@ -7,7 +7,7 @@
 #
 # Dependencies:
 # - python3.10 or python3.9 or python3.8, venv, source
-# - node, nvm
+# - node, npm
 ########################################################################################################################
 set -e # Stop script if any command fails
 
@@ -57,15 +57,7 @@ echo "Python environment ready"
 ########################################################################################################################
 # NODE.JS ENVIRONMENT
 ########################################################################################################################
-NODE_RUNTIME=v16
-
-echo "Installing Node.js runtime (${NODE_RUNTIME})..."
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-nvm install ${NODE_RUNTIME}
-nvm use ${NODE_RUNTIME}
-
-echo "Installed Node.js runtime:"
+echo "Using Node.js runtime:"
 node --version
 npm --version
 

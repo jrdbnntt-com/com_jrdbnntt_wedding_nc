@@ -13,6 +13,7 @@
 # - systemd-analyze
 # - ssl cert at '/etc/nginx/certs/com_jrdbnntt_wedding/cert.crt'
 # - ssl cert key at '/etc/nginx/certs/com_jrdbnntt_wedding/cert.key'
+# - nvm
 ########################################################################################################################
 set -e # Stop script if any command fails
 
@@ -62,7 +63,14 @@ chmod g+s "${PROJECT_DIR}"
 chmod g+s "${DJANGO_SERVER_LOG_DIR}"
 
 # Install environment as service user
-echo "Installing project environment..."
+echo "Installing root-level project environment..."
+NODE_RUNTIME=v16
+echo "Installing Node.js runtime (${NODE_RUNTIME})..."
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+nvm install ${NODE_RUNTIME}
+nvm use ${NODE_RUNTIME}
+echo "Installing user-level project environment..."
 runuser -g "${SERVICE_USER}" -u "${SERVICE_USER}" -- /bin/bash ./hosting/server_install_environment.sh
 echo "Project environment installed"
 
