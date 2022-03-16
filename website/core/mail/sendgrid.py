@@ -1,6 +1,7 @@
 import json
 import logging
 from json import JSONDecoder, JSONEncoder
+from json.decoder import JSONDecodeError
 
 import python_http_client
 import sendgrid
@@ -60,7 +61,11 @@ def get_all_results(sg_client: python_http_client, query_params: dict, page_size
         query_params['page_size'] = page_size
     while True:
         resp = sg_client.get(query_params=query_params)
-        json_response = json_decoder.decode(str(resp.body)[2:-3])
+        response_body_json = str(resp.body.decode("UTF-8"))
+        try:
+            json_response = json_decoder.decode(response_body_json)
+        except JSONDecodeError as e:
+            raise Exception("Failed to decode response body '%s'" % response_body_json) from e
         if isinstance(json_response, dict):
             if 'result' in json_response:
                 if len(json_response['result']) > 0:

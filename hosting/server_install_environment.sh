@@ -11,6 +11,11 @@
 ########################################################################################################################
 set -e # Stop script if any command fails
 
+ORIGINAL_WORKING_DIR="$(pwd)"
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+source "${SCRIPT_DIR}/server_config_vars.sh"
+cd "${PROJECT_DIR}" || exit 1
+
 ########################################################################################################################
 # PYTHON ENVIRONMENT
 ########################################################################################################################
@@ -75,3 +80,4 @@ echo "Building front-end..."
 npm run build
 
 echo "Server installed and ready to start"
+cd "${ORIGINAL_WORKING_DIR}" || exit 1

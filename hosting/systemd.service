@@ -1,0 +1,11 @@
+[Unit]
+Description=Django HTTP server com_jrdbnntt_wedding
+
+[Service]
+User=com_jrdbnntt_wedding
+WorkingDirectory=/var/www/com_jrdbnntt_wedding
+ExecStart=/etc/bin/bash ./hosting/server_start.sh
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
