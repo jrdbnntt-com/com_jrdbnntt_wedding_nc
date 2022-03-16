@@ -46,13 +46,19 @@ if [ ! -L "${DJANGO_PROJECT_LOG_DIR}" ]; then
   ln -s "${DJANGO_SERVER_LOG_DIR}" "${DJANGO_PROJECT_LOG_DIR}"
 fi
 
-# Create service user
+# Create service user and a dummy home directory for node
 echo "Checking service user..."
 if id "${SERVICE_USER}" &>/dev/null; then
     echo "Using existing user '${SERVICE_USER}' as the service user"
 else
     echo "Creating system user '${SERVICE_USER}'..."
     useradd --system "${SERVICE_USER}"
+fi
+SERVICE_USER_HOME="/home/${SERVICE_USER}"
+if [ ! -d "${SERVICE_USER_HOME}" ]; then
+  echo "Creating dummy home directory '${SERVICE_USER_HOME}' for service user..."
+  mkdir -p "${SERVICE_USER_HOME}"
+  chown -R "${SERVICE_USER}:${FILE_OWNERSHIP_GROUP}" "${SERVICE_USER_HOME}"
 fi
 
 # Allow service user to access required files
