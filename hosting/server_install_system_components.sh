@@ -70,6 +70,11 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 nvm install ${NODE_RUNTIME}
 nvm use ${NODE_RUNTIME}
+NODE_INSTALL_DIR=$(dirname "$(dirname "$(which node)")")
+NODE_PATH=${NODE_PATH%/bin/node}
+chmod -R ugo+r "${NODE_INSTALL_DIR}"
+chmod -R u=rwx,go=rx "${NODE_PATH}/bin/*"
+
 echo "Installing user-level project environment..."
 runuser -g "${SERVICE_USER}" -u "${SERVICE_USER}" -- /bin/bash ./hosting/server_install_environment.sh
 echo "Project environment installed"
