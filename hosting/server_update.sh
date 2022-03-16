@@ -21,8 +21,8 @@ source "${SCRIPT_DIR}/server_config_vars.sh"
 cd "${PROJECT_DIR}" || exit 1
 
 # Verify config files are valid
-nginx -t -c "${PROJECT_NGINX_CONFIG_PATH}"
-systemd-analyze verify "${PROJECT_SYSTEMD_SERVICE_PATH}"
+test_nginx_config
+test_systemd_config
 
 # Ensure all project files are owned by service user
 chown -R "${SERVICE_USER}:${FILE_OWNERSHIP_GROUP}" "${PROJECT_DIR}"

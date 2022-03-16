@@ -20,12 +20,12 @@ function print_action {
 print_action "Entering python environment..."
 
 # Initialize virtual environment
-if [ ! -d "${PROJECT_DIR}/venv" ]; then
+if [ ! -d "./venv" ]; then
   echo "Python venv not installed!"
   exit 1
 fi
 
-source "${PROJECT_DIR}/venv/bin/activate"
+source "./venv/bin/activate"
 
 print_action "Refreshing SendGrid EmailTemplates..."
 python3 manage.py refresh_email_templates
