@@ -29,7 +29,7 @@ if [ ! -d "./venv" ]; then
   elif command -v python3.9 &> /dev/null; then
       python3.9 -m venv "./venv"
   elif command -v python3.8 &> /dev/null; then
-      python3.9 -m venv "./venv"
+      python3.8 -m venv "./venv"
   else
     echo "Error! Python 3.8+ required"
     exit 1
