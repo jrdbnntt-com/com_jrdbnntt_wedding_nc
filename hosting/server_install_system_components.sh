@@ -101,7 +101,7 @@ if [ ! -L "${SYSTEMD_SERVICE_LINK_PATH}" ]; then
   ln -s "${PROJECT_SYSTEMD_SERVICE_PATH}" "${SYSTEMD_SERVICE_LINK_PATH}"
 fi
 systemctl daemon-reload
-systemcll start "${SYSTEMD_SERVICE_NAME}"
+systemctl start "${SYSTEMD_SERVICE_NAME}"
 systemctl enable "${SYSTEMD_SERVICE_NAME}"
 
 echo "System components installed and server running"
