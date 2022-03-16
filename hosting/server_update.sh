@@ -33,9 +33,9 @@ systemctl stop "${SYSTEMD_SERVICE_NAME}"
 
 # Archive logs
 LOG_ARCHIVE_PATH="${DJANGO_SERVER_LOG_DIR}/logs_${FILENAME_DATETIME_NOW_SUFFIX}.tar.gz"
-FILES_TO_LOG=$(runuser -l "${SERVICE_USER}" find -P /var/log -mindepth 1 -maxdepth 1 '(' -type d,f ! -name '*.gz' ')' | tr '\n' ' ')
-echo "${FILES_TO_LOG}" | xargs -0 runuser -l "${SERVICE_USER}" tar -czvf "${LOG_ARCHIVE_PATH}"
-echo "${FILES_TO_LOG}" | xargs -0 runuser -l "${SERVICE_USER}" rm -rf
+FILES_TO_LOG=$(runuser -g "${SERVICE_USER}" -u "${SERVICE_USER}" --find -P /var/log -mindepth 1 -maxdepth 1 '(' -type d,f ! -name '*.gz' ')' | tr '\n' ' ')
+echo "${FILES_TO_LOG}" | xargs -0 runuser -g "${SERVICE_USER}" -u "${SERVICE_USER}" --tar -czvf "${LOG_ARCHIVE_PATH}"
+echo "${FILES_TO_LOG}" | xargs -0 runuser -g "${SERVICE_USER}" -u "${SERVICE_USER}" --rm -rf
 
 # Restart service and reload nginx
 systemctl start "${SYSTEMD_SERVICE_NAME}"
