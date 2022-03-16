@@ -13,7 +13,7 @@
 # - systemd-analyze
 # - ssl cert at '/etc/nginx/certs/com_jrdbnntt_wedding/cert.crt'
 # - ssl cert key at '/etc/nginx/certs/com_jrdbnntt_wedding/cert.key'
-# - nvm
+# - nvm installed at /usr/local/nvm
 ########################################################################################################################
 set -e # Stop script if any command fails
 
@@ -66,7 +66,9 @@ chmod g+s "${DJANGO_SERVER_LOG_DIR}"
 echo "Installing root-level project environment..."
 NODE_RUNTIME=v16
 echo "Installing Node.js runtime (${NODE_RUNTIME})..."
-export NVM_DIR="$HOME/.nvm"
+if [ ! -d "$NVM_DIR" ]; then
+  echo "NVM_DIR does not exist or is not in path"
+fi
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 nvm install ${NODE_RUNTIME}
 nvm use ${NODE_RUNTIME}
