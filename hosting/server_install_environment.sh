@@ -16,6 +16,14 @@ SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 source "${SCRIPT_DIR}/server_config_vars.sh"
 cd "${PROJECT_DIR}" || exit 1
 
+if [ "$#" -eq 2 ]; then
+  NODE_CMD="$1"
+  NPM_CMD="$2"
+else
+  NODE_CMD="node"
+  NPM_CMD="npm"
+fi
+
 ########################################################################################################################
 # PYTHON ENVIRONMENT
 ########################################################################################################################
@@ -58,18 +66,18 @@ echo "Python environment ready"
 # NODE.JS ENVIRONMENT
 ########################################################################################################################
 echo "Using Node.js runtime:"
-node --version
-npm --version
+${NODE_CMD} --version
+${NPM_CMD} --version
 
 # Handle dependencies
 echo "Installing/updating Node.js package dependencies..."
-npm install
+${NPM_CMD} install
 
 echo "Node.js environment ready."
 
 # Build front-end
 echo "Building front-end..."
-npm run build
+${NPM_CMD} run build
 
 echo "Server installed and ready to start"
 cd "${ORIGINAL_WORKING_DIR}" || exit 1

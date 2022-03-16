@@ -75,7 +75,7 @@ chmod -R ugo+r "${NODE_INSTALL_DIR}"
 chmod -R u=rwx,go=rx "${NODE_INSTALL_DIR}"/bin/*
 
 echo "Installing user-level project environment..."
-runuser -g "${SERVICE_USER}" -u "${SERVICE_USER}" -- /bin/bash ./hosting/server_install_environment.sh
+runuser -g "${SERVICE_USER}" -u "${SERVICE_USER}" -- /bin/bash ./hosting/server_install_environment.sh "$(which node)" "$(which npm)"
 echo "Project environment installed"
 
 # Install nginx config
