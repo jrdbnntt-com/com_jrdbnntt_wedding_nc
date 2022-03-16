@@ -5,11 +5,11 @@ REQUIRED_REPO_INSTALL_DIR="/var/www/${PROJECT_DIR_NAME}"
 DJANGO_SERVER_LOG_DIR="/var/www/${PROJECT_DIR_NAME}"
 NGINX_CONFIG_DIR='/etc/nginx/conf.d'
 SYSTEMD_INSTALL_DIR="/etc/systemd/system"
-SYSTEMD_SERVICE_NAME="${PROJECT_DIR_NAME}.service"
+SYSTEMD_SERVICE_NAME="com_jrdbnntt_wedding"
 PROJECT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )/.." &> /dev/null && pwd )
 PROJECT_NGINX_CONFIG_PATH="${PROJECT_DIR}/hosting/nginx.conf"
 PROJECT_NGINX_TEST_CONFIG_PATH="${PROJECT_DIR}/hosting/nginx_test.conf"
-PROJECT_SYSTEMD_SERVICE_PATH="${PROJECT_DIR}/hosting/systemd.service"
+PROJECT_SYSTEMD_SERVICE_PATH="${PROJECT_DIR}/hosting/com_jrdbnntt_wedding.service"
 FILENAME_DATETIME_NOW_SUFFIX=$(date --utc +"%Y-%m-%dT%H-%M-%SZ")
 DAPHNE_SERVER_PORT=5000
 

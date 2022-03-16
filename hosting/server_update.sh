@@ -38,6 +38,7 @@ echo "${FILES_TO_LOG}" | xargs -0 runuser -g "${SERVICE_USER}" -u "${SERVICE_USE
 echo "${FILES_TO_LOG}" | xargs -0 runuser -g "${SERVICE_USER}" -u "${SERVICE_USER}" -- rm -rf
 
 # Restart service and reload nginx
+systemctl daemon-reload
 systemctl start "${SYSTEMD_SERVICE_NAME}"
 nginx -s reload
 

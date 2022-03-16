@@ -96,13 +96,9 @@ nginx -s reload
 
 # Install systemd service
 echo "Installing systemd config..."
-SYSTEMD_SERVICE_LINK_PATH="${SYSTEMD_INSTALL_DIR}/${SYSTEMD_SERVICE_NAME}"
-if [ ! -L "${SYSTEMD_SERVICE_LINK_PATH}" ]; then
-  ln -s "${PROJECT_SYSTEMD_SERVICE_PATH}" "${SYSTEMD_SERVICE_LINK_PATH}"
-fi
+systemctl enable "${PROJECT_SYSTEMD_SERVICE_PATH}"
 systemctl daemon-reload
 systemctl start "${SYSTEMD_SERVICE_NAME}"
-systemctl enable "${SYSTEMD_SERVICE_NAME}"
 
 echo "System components installed and server running"
 cd "${ORIGINAL_WORKING_DIR}" || exit 1
