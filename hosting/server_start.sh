@@ -61,6 +61,7 @@ print_action "Collecting static files"
 if [ -d "${PROJECT_STATIC_ROOT}" ]; then
   rm -rf "${PROJECT_STATIC_ROOT}"
 fi
+mkdir -p "${PROJECT_STATIC_ROOT}"
 python3 manage.py collectstatic
 
 print_action "Refreshing SendGrid EmailTemplates..."
