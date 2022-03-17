@@ -19,7 +19,7 @@ fi
 cd "${PROJECT_STATIC_CLOUD_DIR}" || exit 1
 ARCHIVE_PATH="${CLOUD_ARCHIVE_DIR}/static_cloud_${FILENAME_DATETIME_NOW_SUFFIX}.tar.gz"
 FILES_TO_TAR="$(find -L "." -mindepth 1 '(' -type f -regextype posix-extended -regex '^.*\.(jpg|jpeg|png|ttf|woff|js|css|xml|txt|pdf|json|ico)$' ')' -printf "\"%P\" ")"
-echo -n "${FILES_TO_TAR}" | xargs tar -czvf "${ARCHIVE_PATH}"
+echo -n "${FILES_TO_TAR}" | xargs tar -czvf "${ARCHIVE_PATH}" --mode=644
 cd "${PROJECT_DIR}" || exit 1
 
 cd "${ORIGINAL_WORKING_DIR}" || exit 1
