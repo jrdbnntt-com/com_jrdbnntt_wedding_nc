@@ -4,7 +4,7 @@ Description=Django HTTP server com_jrdbnntt_wedding
 [Service]
 User=com_jrdbnntt_wedding
 WorkingDirectory=/var/www/com_jrdbnntt_wedding
-ExecStart=/bin/bash ./hosting/server_start.sh
+ExecStart=/bin/bash ./hosting/server_start.sh -p
 Restart=always
 
 [Install]

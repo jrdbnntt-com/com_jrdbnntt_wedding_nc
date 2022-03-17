@@ -13,21 +13,48 @@ SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 source "${SCRIPT_DIR}/server_config_vars.sh"
 cd "${PROJECT_DIR}" || exit 1
 
+
+if [ -z "${RUNTIME_ENVIRONMENT}" ]; then
+  RUNTIME_ENVIRONMENT="DEVELOPMENT"
+fi
+while [ $# -gt 0 ]; do
+    case $1 in
+    -p|--prod|--production)
+      RUNTIME_ENVIRONMENT="PRODUCTION"
+      shift 1
+      ;;
+    -d|--dev|--development)
+      RUNTIME_ENVIRONMENT="DEVELOPMENT"
+      shift 1
+      ;;
+    -t|--test)
+      RUNTIME_ENVIRONMENT="TEST"
+      shift 1
+      ;;
+    --runtime)
+      if [ $# -ge 2 ]; then
+        RUNTIME_ENVIRONMENT="$2"
+      else
+        echo "Error: --runtime param requires a second argument to specify the runtime to use"
+        exit 1
+      fi
+    esac
+done
+export RUNTIME_ENVIRONMENT
+echo "Starting server with RUNTIME_ENVIRONMENT set to '${RUNTIME_ENVIRONMENT}'"
+
 function print_action {
     echo -e "######################################################################################\n$1"
 }
 
 print_action "Entering python environment..."
-
-# Initialize virtual environment
 if [ ! -d "./venv" ]; then
   echo "Python venv not installed!"
   exit 1
 fi
-
 source "./venv/bin/activate"
 
-print_action "Preforming any necessary database migrations"
+print_action "Preforming any necessary database migrations..."
 python3 manage.py migrate
 
 print_action "Refreshing SendGrid EmailTemplates..."

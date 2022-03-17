@@ -7,7 +7,6 @@ import sys
 def main():
     """Run administrative tasks."""
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'com_jrdbnntt_wedding.settings')
-    os.environ.setdefault('RUNTIME_ENVIRONMENT', 'DEVELOPMENT')
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
