@@ -26,7 +26,7 @@ class Reservation(models.Model):
     mailing_address_line_1 = models.CharField(max_length=200, blank=True)
     mailing_address_line_2 = models.CharField(max_length=200, blank=True)
     mailing_address_city = models.CharField(max_length=200, blank=True)
-    mailing_address_state = models.CharField(max_length=2, blank=True)
+    mailing_address_state = models.CharField(max_length=5, blank=True)
     mailing_address_zip = models.CharField(max_length=10, blank=True)
     created_at = models.DateTimeField(default=timezone.now, editable=False)
     updated_at = models.DateTimeField(default=timezone.now, editable=False)

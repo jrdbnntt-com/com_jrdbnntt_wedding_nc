@@ -57,6 +57,12 @@ source "./venv/bin/activate"
 print_action "Preforming any necessary database migrations..."
 python3 manage.py migrate
 
+print_action "Collecting static files"
+if [ -d "${PROJECT_STATIC_ROOT}" ]; then
+  rm -rf "${PROJECT_STATIC_ROOT}"
+fi
+python3 manage.py collectstatic
+
 print_action "Refreshing SendGrid EmailTemplates..."
 python3 manage.py refresh_email_templates
 

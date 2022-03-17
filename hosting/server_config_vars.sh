@@ -13,6 +13,7 @@ PROJECT_NGINX_CONFIG_PATH="${PROJECT_DIR}/hosting/nginx.conf"
 PROJECT_NGINX_TEST_CONFIG_PATH="${PROJECT_DIR}/hosting/nginx_test.conf"
 PROJECT_SYSTEMD_SERVICE_PATH="${PROJECT_DIR}/hosting/com_jrdbnntt_wedding.service"
 PROJECT_STATIC_CLOUD_DIR="${PROJECT_DIR}/website/static/cloud"
+PROJECT_STATIC_ROOT="${PROJECT_DIR}/static"
 FILENAME_DATETIME_NOW_SUFFIX=$(date --utc +"%Y-%m-%dT%H-%M-%SZ")
 DAPHNE_SERVER_PORT=5000
 

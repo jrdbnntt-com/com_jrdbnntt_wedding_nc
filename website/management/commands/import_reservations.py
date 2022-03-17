@@ -5,6 +5,8 @@ from django.core.management.base import BaseCommand
 
 from website.models.reservation import Reservation
 from website.models.guest import Guest
+from distutils.util import strtobool
+from django.core import serializers
 
 required_csv_columns = [
     'name',
@@ -17,7 +19,8 @@ optional_csv_columns = [
     'mailing_address_line_2',
     'mailing_address_city',
     'mailing_address_state',
-    'mailing_address_zip'
+    'mailing_address_zip',
+    'invited_to_rehearsal'
 ]
 
 
@@ -125,6 +128,14 @@ class Command(BaseCommand):
             if res.mailing_address_zip != mailing_address_zip:
                 res.mailing_address_zip = mailing_address_zip
                 updated = True
+        if 'invited_to_rehearsal' in row:
+            invited_to_rehearsal = strtobool(row['invited_to_rehearsal'])
+            if res.invited_to_rehearsal != invited_to_rehearsal:
+                res.invited_to_rehearsal = invited_to_rehearsal
+                updated = True
         if updated:
-            res.save()
+            try:
+                res.save()
+            except Exception as e:
+                raise Exception("Failed to save reservation %s made from row %s" % (serializers.serialize('json', [res]), row)) from e
         return new, (not new and updated)
