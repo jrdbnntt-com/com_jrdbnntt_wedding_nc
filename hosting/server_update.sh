@@ -34,7 +34,7 @@ systemctl stop "${SYSTEMD_SERVICE_NAME}"
 # Archive logs
 cd "${DJANGO_SERVER_LOG_DIR}" || exit 1
 LOG_ARCHIVE_PATH="${DJANGO_SERVER_LOG_DIR}/logs_${FILENAME_DATETIME_NOW_SUFFIX}.tar.gz"
-FILES_TO_LOG=$(runuser -g "${SERVICE_USER}" -u "${SERVICE_USER}" -- find -P "." -mindepth 1 -maxdepth 1 '(' -type d,f ! -name '*.gz' ')' | tr '\n' ' ')
+FILES_TO_LOG=$(runuser -g "${SERVICE_USER}" -u "${SERVICE_USER}" -- find -P "." -mindepth 1 -maxdepth 1 '(' -type d,f ! -name '*.gz' ')' -printf "%p ")
 echo "${FILES_TO_LOG}" | xargs -0 runuser -g "${SERVICE_USER}" -u "${SERVICE_USER}" -- tar -czvf "${LOG_ARCHIVE_PATH}"
 echo "${FILES_TO_LOG}" | xargs -0 runuser -g "${SERVICE_USER}" -u "${SERVICE_USER}" -- rm -rf
 cd "${PROJECT_DIR}" || exit 1
