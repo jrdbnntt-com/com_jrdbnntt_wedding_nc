@@ -5,3 +5,5 @@ requests
 django-sendgrid-v5
 names
 sendgrid
+wheel
+psycopg2

@@ -8,6 +8,7 @@ Wedding website for Jared & Hannah!
 * `python3` - Python 3.8+
 * `python3 -m venv` - Shipped with Python 3
 * `nvm` - See https://github.com/nvm-sh/nvm
+* `postgresql`, `python3.X-dev` (replace X with version used, e.g `python3.8-dev`), `libpq-dev`
 
 ### Installation
 Run `./server_install.sh` to configure the Python and Node.js environments.

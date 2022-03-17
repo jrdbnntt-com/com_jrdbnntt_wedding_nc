@@ -19,6 +19,7 @@ SECTION_RECAPTCHA = 'recaptcha'
 SECTION_EMAIL = 'email'
 SECTION_EVENT_DETAILS = 'event_details'
 SECTION_TASKS = 'tasks'
+SECTION_DATABASE = 'database'
 
 
 def load(runtime_environment_override=None) -> ConfigParser:

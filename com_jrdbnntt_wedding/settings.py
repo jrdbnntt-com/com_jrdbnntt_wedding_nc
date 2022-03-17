@@ -103,11 +103,14 @@ WSGI_APPLICATION = 'com_jrdbnntt_wedding.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'HOST': active_config.get(config.SECTION_DATABASE, 'HOST'),
+        'PORT': active_config.getint(config.SECTION_DATABASE, 'PORT'),
+        'NAME': active_config.get(config.SECTION_DATABASE, 'NAME'),
+        'USER': active_config.get(config.SECTION_DATABASE, 'USER'),
+        'PASSWORD': active_config.get(config.SECTION_DATABASE, 'PASSWORD')
     }
 }
 

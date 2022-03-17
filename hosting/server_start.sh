@@ -27,6 +27,9 @@ fi
 
 source "./venv/bin/activate"
 
+print_action "Preforming any necessary database migrations"
+python3 manage.py migrate
+
 print_action "Refreshing SendGrid EmailTemplates..."
 python3 manage.py refresh_email_templates
 

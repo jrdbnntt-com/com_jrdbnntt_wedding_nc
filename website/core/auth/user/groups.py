@@ -14,7 +14,9 @@ functional_groups = [
     WEDDING_GUESTS
 ]
 
-for group in functional_groups:
-    if not Group.objects.filter(name__exact=group).exists():
-        Group.objects.create(name=group)
-        logger.warning("Created missing functional user group '%s'", group)
+
+def create_missing_functional_groups():
+    for group in functional_groups:
+        if not Group.objects.filter(name__exact=group).exists():
+            Group.objects.create(name=group)
+            logger.warning("Created missing functional user group '%s'", group)
