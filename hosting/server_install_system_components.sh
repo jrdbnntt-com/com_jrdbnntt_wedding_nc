@@ -36,15 +36,14 @@ test_systemd_config
 
 # Build log dir
 echo "Building log dir..."
-DJANGO_PROJECT_LOG_DIR="./logs"
 if [ ! -d "${DJANGO_SERVER_LOG_DIR}" ]; then
   mkdir -p "${DJANGO_SERVER_LOG_DIR}"
 fi
-if [ ! -L "${DJANGO_PROJECT_LOG_DIR}" ]; then
-  if [ -d "${DJANGO_PROJECT_LOG_DIR}" ]; then
-    mv "${DJANGO_PROJECT_LOG_DIR}/*" "${DJANGO_SERVER_LOG_DIR}"
+if [ ! -L "${PROJECT_LOG_DIR}" ]; then
+  if [ -d "${PROJECT_LOG_DIR}" ]; then
+    mv "${PROJECT_LOG_DIR}/*" "${DJANGO_SERVER_LOG_DIR}"
   fi
-  ln -s "${DJANGO_SERVER_LOG_DIR}" "${DJANGO_PROJECT_LOG_DIR}"
+  ln -s "${DJANGO_SERVER_LOG_DIR}" "${PROJECT_LOG_DIR}"
 fi
 
 # Create service user and a dummy home directory for node
