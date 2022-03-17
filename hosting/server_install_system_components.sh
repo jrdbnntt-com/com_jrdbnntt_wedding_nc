@@ -97,6 +97,9 @@ fi
 if [ ! -L "${NGINX_CONFIG_LINK_PATH__ENABLED}" ]; then
   ln -s "${NGINX_CONFIG_LINK_PATH__AVAILABLE}" "${NGINX_CONFIG_LINK_PATH__ENABLED}"
 fi
+if [ ! -d "${NGINX_DEBUG_LOG_DIR}" ]; then
+  mkdirs -p "${NGINX_DEBUG_LOG_DIR}"
+fi
 nginx -s reload
 
 # Install systemd service

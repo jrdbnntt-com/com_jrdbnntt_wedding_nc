@@ -3,6 +3,7 @@ SERVICE_USER='com_jrdbnntt_wedding'
 FILE_OWNERSHIP_GROUP='www-data'
 REQUIRED_REPO_INSTALL_DIR="/var/www/${PROJECT_DIR_NAME}"
 DJANGO_SERVER_LOG_DIR="/var/log/${PROJECT_DIR_NAME}"
+NGINX_DEBUG_LOG_DIR="${DJANGO_SERVER_LOG_DIR}/nginx"
 NGINX_DIR='/etc/nginx'
 SYSTEMD_INSTALL_DIR="/etc/systemd/system"
 SYSTEMD_SERVICE_NAME="com_jrdbnntt_wedding"
