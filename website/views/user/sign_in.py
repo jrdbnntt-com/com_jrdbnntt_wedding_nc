@@ -42,7 +42,7 @@ def reservation(request):
                 recaptcha.validate_recaptcha_token(request, form.cleaned_data['recaptcha_token'], recaptcha_action)
                 reservation_code = form.cleaned_data['reservation_code']
                 try:
-                    res = Reservation.objects.filter(access_code=reservation_code).only('user', 'id').get()
+                    res = Reservation.objects.filter(access_code__iexact=reservation_code).only('user', 'id').get()
                 except Reservation.DoesNotExist:
                     raise ValidationError("Invalid reservation code")
 

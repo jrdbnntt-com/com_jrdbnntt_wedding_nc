@@ -16,11 +16,12 @@ from website.views.decorators.reservation import require_activated_reservation, 
 @require_activated_reservation()
 def index(request: HttpRequest, reservation_id: int):
     reservation = Reservation.objects.filter(id=reservation_id).get()
-    guests = Guest.objects.filter(reservation__id=reservation_id).all()
+    guests = Guest.objects.filter(reservation__id=reservation_id).order_by('created_at').all()
     return render(request, "reservation/index.html", {
         'page_title': 'Reservation Details',
         'reservation': reservation,
-        'guests': guests
+        'guests': guests,
+        'max_guests_reached': not len(guests) < reservation.max_guests,
     })
 
 

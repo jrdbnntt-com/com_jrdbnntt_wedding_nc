@@ -47,6 +47,12 @@
         {% endif %}
     </div>
 
+    <div class="page-section text-lg-center">
+        <p>
+            Your are allowed to have up to {{ max_guests }} guests in your party.
+        </p>
+    </div>
+
     <form action="{% url 'reservation/rsvp' %}" method="post">
         {% csrf_token %}
         {{ formset.management_form }}

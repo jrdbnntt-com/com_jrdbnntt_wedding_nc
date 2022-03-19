@@ -8,12 +8,13 @@ from django.shortcuts import redirect, render
 from website.forms.reservation import EditGuestForm, EditGuestFormSet
 from website.models.guest import Guest
 from website.models.reservation import Reservation
-from website.views.decorators.reservation import require_activated_reservation
+from website.views.decorators.reservation import require_activated_reservation, require_rsvp_deadline_not_passed
 
 logger = logging.getLogger(__name__)
 
 
 @require_activated_reservation
+@require_rsvp_deadline_not_passed
 def quick_answer(request: HttpRequest, reservation_id: int, answer: str):
     if answer == 'yes':
         rsvp_answer = True
@@ -34,6 +35,7 @@ def quick_answer(request: HttpRequest, reservation_id: int, answer: str):
 
 
 @require_activated_reservation
+@require_rsvp_deadline_not_passed
 def index(request: HttpRequest, reservation_id: int):
     res = Reservation.objects.get(id=reservation_id)
     guests = Guest.objects.filter(reservation_id=reservation_id).order_by('created_at').all()
@@ -131,5 +133,6 @@ def index(request: HttpRequest, reservation_id: int):
         'page_title': 'Edit RSVP',
         'formset': formset,
         'deleted_form_indexes': deleted_form_indexes,
-        'invited_to_rehearsal': res.invited_to_rehearsal
+        'invited_to_rehearsal': res.invited_to_rehearsal,
+        'max_guests': res.max_guests
     })
