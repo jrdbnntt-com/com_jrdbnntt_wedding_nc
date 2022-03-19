@@ -3,7 +3,7 @@ from urllib.parse import urljoin
 from django.conf import settings
 
 import website.core.mail.sendgrid
-from website.core.date import format_month_day_year_long
+from website.core.date import format_month_day_long
 
 
 def _build_site_link(path: str) -> str:
@@ -34,5 +34,5 @@ def send_rsvp_updated_email(to_email: str, to_name: str, rsvp_complete: bool, at
         'attending_rehearsal': attending_rehearsal,
         'guest_rsvp_statuses': guest_rsvp_statuses,
         'invited_to_rehearsal': invited_to_rehearsal,
-        'date_rsvp_deadline': format_month_day_year_long(settings.DATE_RSVP_DEADLINE)
+        'date_rsvp_deadline': format_month_day_long(settings.DATE_RSVP_DEADLINE)
     })
