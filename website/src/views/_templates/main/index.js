@@ -15,6 +15,9 @@ $(document).ready(() => {
         refreshDateCountdown();
     }, 1000 * 60);
     initForms();
+
+    setVw();
+    window.addEventListener('resize', setVw);
 })
 
 function refreshDateCountdown() {
@@ -53,4 +56,9 @@ function initForms() {
         };
         $fieldInputs.on('change', onChangeContainer.clearErrorMessage);
     });
+}
+
+function setVw() {
+    let vw = document.documentElement.clientWidth / 100;
+    document.documentElement.style.setProperty('--vw', `${vw}px`);
 }

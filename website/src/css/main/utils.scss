@@ -1,9 +1,9 @@
 @import "website/src/css/bootstrap/variables";
 
 @mixin full-width {
-  width: 100vw;
+  width: calc(var(--vw, 1vw) * 100);
   position: relative;
-  left: calc(-1 * (100vw - 100%) / 2);
+  left: calc(-1 * (calc(var(--vw, 1vw) * 100) - 100%) / 2);
 }
 
 .full-width {
