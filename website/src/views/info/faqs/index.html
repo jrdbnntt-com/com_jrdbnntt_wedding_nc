@@ -8,7 +8,8 @@
         <h3><i>Where can I find my RSVP code?</i></h3>
         <p>
             Your RSVP code is located on the back of your invitation. If you cannot find it or are having any other
-            issues RSVPing, please reach out to Jared at <a href="mailto:jrdbnntt+wedding@gmail.com?subject=Wedding Website Help">jrdbnntt@gmail.com</a>.
+            issues RSVPing, please reach out to Jared at <a
+                href="mailto:jrdbnntt+wedding@gmail.com?subject=Wedding Website Help">jrdbnntt@gmail.com</a>.
         </p>
     </div>
 
@@ -56,6 +57,43 @@
             We are currently planning for a full event, but we reserve the right to downsize, reschedule, or cancel in
             response to the pandemic. Please follow your comfort level and perceptions of risk when choosing to attend.
             Masks will not be required, but encouraged as a personal choice.
+        </p>
+    </div>
+
+    <div class="page-section">
+        <a id="edit-rsvp"></a>
+        <h3><i>Can I change my RSVP?</i></h3>
+        <p>
+            You are able to make changes to RSVP, including adjusting your guests, until the RSVP
+            deadline, {{ rsvp_deadline_date }}. To edit your RSVP, go <a href="{% url 'reservation/rsvp' %}">here</a>.
+        </p>
+    </div>
+
+    <div class="page-section">
+        <a id="rsvp-plus-one"></a>
+        <h3><i>Are plus ones allowed?</i></h3>
+        <p>
+            In most cases, yes. Each invite is allotted a set number of guests. See
+            <a href="#rsvp-edit-guest-list">How do I change the guests in my RSVP?</a>
+            below for instructions on how to modify your guests.
+        </p>
+    </div>
+
+    <div class="page-section">
+        <a id="rsvp-edit-guest-list"></a>
+        <h3><i>How do I change the guests in my RSVP?</i></h3>
+        <p>
+            You can modify your guest list by <a href="{% url 'reservation/rsvp' %}">editing your RSVP</a> until the
+            RSVP deadline, {{ rsvp_deadline_date }}. Once you are done making changes, click the "Save RSVP" button at
+            the bottom of the page.
+            <br><br>
+            To add a guest to your RSVP, click the "Add another guest" button and enter the information for the new
+            guest. If you do not see the "Add another guest" button, you have reached the maximum number of guests that
+            your invite has been allotted.
+            <br><br>
+            To remove a guest from your reservation, click the "Remove Guest X" button underneath the guest that you
+            would like to remove. You cannot remove the first guest in your reservation, but you can modify the name to
+            make it refer someone else if you want to.
         </p>
     </div>
 

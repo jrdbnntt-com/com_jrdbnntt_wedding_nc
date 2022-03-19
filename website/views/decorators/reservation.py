@@ -2,6 +2,7 @@ from functools import wraps
 
 from django.shortcuts import redirect
 
+from website.core.date import is_passed_rsvp_deadline
 from website.core.session import SESSION_KEY_RESERVATION_ID
 from website.models.reservation import Reservation
 from website.views.decorators.auth import require_auth_or_redirect_with_return, require_unauthenticated
@@ -53,6 +54,21 @@ def require_unactivated_reservation(decorated_view_func=None, redirect_view="use
                     del request.session[SESSION_KEY_RESERVATION_ID]
                     request.session.modified = True
             return redirect(redirect_view)
+
+        return _wrapped_view
+
+    if decorated_view_func:
+        return decorator(decorated_view_func)
+    return decorator
+
+
+def require_rsvp_deadline_not_passed(decorated_view_func=None, redirect_view="reservation"):
+    def decorator(view_func):
+        @wraps(view_func)
+        def _wrapped_view(request, *args, **kwargs):
+            if is_passed_rsvp_deadline():
+                return redirect(redirect_view)
+            return view_func(request, *args, **kwargs)
 
         return _wrapped_view
 

@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.urls import reverse
 
-from website.core.date import format_month_day_year_long
+from website.core.date import format_month_day_year_long, is_passed_rsvp_deadline, format_month_day_long
 
 
 def add_global_vars(request):
@@ -13,7 +13,9 @@ def add_global_vars(request):
         'event_date': format_month_day_year_long(settings.EVENT_DATE),
         'js_window_params': [
             ('EVENT_DATE_ISO', '"%s"' % settings.EVENT_DATE.isoformat())
-        ]
+        ],
+        'rsvp_deadline_date': format_month_day_long(settings.DATE_RSVP_DEADLINE),
+        'is_passed_rsvp_deadline': is_passed_rsvp_deadline()
     }
 
 

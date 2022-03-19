@@ -33,7 +33,8 @@
             <div class="page-section text-lg-center col-lg">
                 <h3>Rehearsal Dinner</h3>
                 <p>
-                    You are invited to join Hannah & Jared’s families for dinner and drinks at Agua Verde along Portage Bay!
+                    You are invited to join Hannah & Jared’s families for dinner and drinks at Agua Verde along Portage
+                    Bay!
                     <br><br>
                     <b>
                         Friday, July 8th, 2022<br>
@@ -58,13 +59,34 @@
                 {% endif %}
                 {% guest_rsvp_status_sentence reservation guest %}
             {% endfor %}
+
         </p>
+        {% if not is_passed_rsvp_deadline %}
+            <br><br>
+            <div class="d-flex justify-content-center">
+                <a href="{% url 'reservation/rsvp' %}">
+                    <button type="button" class="btn btn-primary btn-lg">Edit RSVP</button>
+                </a>
+            </div>
+        {% endif %}
         <br><br>
-        <div class="d-flex justify-content-center">
-            <a href="{% url 'reservation/rsvp' %}">
-                <button type="button" class="btn btn-primary btn-lg">Edit RSVP</button>
-            </a>
-        </div>
+        <p class="text-lg-center">
+            {% if is_passed_rsvp_deadline %}
+                The RSVP deadline, {{ rsvp_deadline_date }}, has passed. If you still need to edit your RSVP please
+                email Jared at
+                <a target="_blank"
+                   href="mailto:jrdbnntt+wedding@gmail.com?subject=Late RSVP Change Request for {{ reservation.name }}">
+                    jrdbnntt+wedding@gmail.com
+                </a>
+                .
+            {% else %}
+                {% if max_guests_reached %}
+                    You are able to edit your RSVP until {{ rsvp_deadline_date }}.
+                {% else %}
+                    You are able to add another guest by editing your RSVP until <b>{{ rsvp_deadline_date }}</b>.
+                {% endif %}
+            {% endif %}
+        </p>
     </div>
 
 
