@@ -1,4 +1,5 @@
 {% extends "_templates/main/index.html" %}
+{% load static %}
 {% block content %}
 
     <h1 class="page-title">About the Venue</h1>
@@ -47,6 +48,16 @@
             The Turski's have graciously opened up their garden to host the wedding. Hannah and Jared hope you enjoy it
             as much as they do!
         </p>
+        <div class="full-width">
+            <div class="img-carousel">
+                <img class="photo" loading="lazy" alt="Turski Residence" src="{% static "img/places/venue/DSC_191622.jpg" %}"/>
+                <img class="photo" loading="lazy" alt="Turski Residence" src="{% static "img/places/venue/DSC_1625.jpg" %}"/>
+                <img class="photo" loading="lazy" alt="Turski Residence" src="{% static "img/places/venue/DSC_1903.jpg" %}"/>
+                <img class="photo" loading="lazy" alt="Turski Residence" src="{% static "img/places/venue/IMGP0057.jpg" %}"/>
+                <img class="photo" loading="lazy" alt="Turski Residence" src="{% static "img/places/venue/DSC_0641.jpg" %}"/>
+                <img class="photo" loading="lazy" alt="Turski Residence" src="{% static "img/places/venue/IMGP0868.jpg" %}"/>
+            </div>
+        </div>
     </div>
 
 {% endblock %}
