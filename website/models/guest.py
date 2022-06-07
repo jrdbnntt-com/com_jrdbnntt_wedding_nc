@@ -22,6 +22,7 @@ class Guest(models.Model):
     assigned_table_seat = models.IntegerField(null=True, blank=True)
     created_at = models.DateTimeField(default=timezone.now, editable=False)
     updated_at = models.DateTimeField(default=timezone.now, editable=False)
+    attending_ceremony_rehearsal = models.BooleanField(default=False)
 
     def __str__(self) -> str:
         return self.full_name()
@@ -39,6 +40,9 @@ class Guest(models.Model):
         if self.reservation.invited_to_rehearsal:
             return self._answer_display(self.rehearsal_rsvp_answer)
         return '(not invited)'
+
+    def attending_ceremony_rehearsal_display(self) -> str:
+        return self._answer_display(self.attending_ceremony_rehearsal)
 
     @staticmethod
     def _answer_display(answer: bool) -> str:
