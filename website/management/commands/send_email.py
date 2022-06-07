@@ -10,31 +10,31 @@ class Command(BaseCommand):
 
     def add_arguments(self, parser):
         parser.add_argument('email_name', nargs=1, type=str)
-        parser.add_argument('reservation_ids', nargs='+', type=int)
+        parser.add_argument('--ids', nargs='+', type=int, default=[])
 
     def handle(self, *args, **options):
         email_name = options['email_name'][0]
-        reservation_ids = options['reservation_ids']
+        reservation_ids = options['ids']
         if email_name == 'rsvp_june_reminder':
-            self.email_rsvp_june_reminder()
+            self.email_rsvp_june_reminder(reservation_ids)
         else:
             raise CommandError("Invalid email_name '%s'" % email_name)
 
     def email_rsvp_june_reminder(self, reservation_ids: list[str] = None):
         email_name = 'rsvp_june_reminder'
-        self.stdout.write("Collecting Reservation objects..." % count)
-        if reservation_ids is not None and len(reservation_ids) > 1:
-            reservations = Reservation.objects.all().filter(id__in=reservation_ids).order_by('id', 'asc')
+        self.stdout.write("Collecting Reservation objects...")
+        if reservation_ids is not None and len(reservation_ids) > 0:
+            reservations = Reservation.objects.filter(id__in=reservation_ids).order_by('id')
         else:
-            reservations = Reservation.objects.all().order_by('id', 'asc')
+            reservations = Reservation.objects.all().order_by('id')
 
         self.stdout.write("Found %d Reservation objects" % len(reservations))
-        answer = prompt("Send '%s' email to %d Reservations (y/N)?" % (email_name, len(reservations)))
+        answer = input("Send '%s' email to %d Reservations (y/N)?" % (email_name, len(reservations)))
         if answer != "y":
             raise CommandError("Aborted")
 
         self.stdout.write("Sending emails...")
-        for i in range(reservations):
+        for i in range(len(reservations)):
             res = reservations[i]
             try:
                 self.stdout.write("Preparing '%s' email for reservation with id %d...", email_name, res.id)
@@ -78,6 +78,8 @@ class Command(BaseCommand):
 
                 if not attending_rehearsal and not attending_rehearsal_dinner and not attending_wedding:
                     self.stdout.write("Skipping '%s' email for reservation with id %d, not attending anything" % (email_name, res.id))
+                elif res.user is None:
+                    self.stdout.write("Skipping '%s' email for reservation with id %d, no user" % (email_name, res.id))
                 else:
                     self.stdout.write("Sending '%s' email for reservation with id %d...", email_name, res.id)
                     mail.send_rsvp_june_reminder_email(
