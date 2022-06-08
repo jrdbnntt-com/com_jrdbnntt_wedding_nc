@@ -68,10 +68,12 @@ class GuestAdmin(admin.ModelAdmin):
         'food_vegan_option',
         'assigned_table',
         'assigned_table_seat',
+        'attending_ceremony_rehearsal'
     )
     list_filter = (
         'rsvp_answer',
-        'rehearsal_rsvp_answer'
+        'rehearsal_rsvp_answer',
+        'attending_ceremony_rehearsal'
     )
 
     @staticmethod
