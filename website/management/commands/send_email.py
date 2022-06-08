@@ -5,6 +5,7 @@ from website.models.guest import Guest
 from website.models.reservation import Reservation
 from website.models.reservation.admin import reservation_has_guests_attending_wedding_event
 
+
 class Command(BaseCommand):
     help = "Usage: 'send_email <email_name> [...<reservation_id>]'"
 
@@ -45,10 +46,10 @@ class Command(BaseCommand):
         self.confirm_send(email_name, len(reservations_with_attendees))
         self.stdout.write("Sending %s emails..." % email_name)
         for i in range(len(reservations_with_attendees)):
-            res = reservations[i]
+            res = reservations_with_attendees[i]
             try:
-                self.stdout.write("Preparing '%s' email for reservation with id %d...", email_name, res.id)
-                guests = Guest.objects.filter(reservation_id=reservation_id).order_by('created_at').all()
+                self.stdout.write("Preparing '%s' email for reservation with id %d..." % (email_name, res.id))
+                guests = Guest.objects.filter(reservation__id=res.id).order_by('created_at').all()
                 attending_rehearsal = False
                 attending_rehearsal_dinner = False
                 attending_wedding = False
@@ -91,7 +92,7 @@ class Command(BaseCommand):
                 elif res.user is None:
                     self.stdout.write("Skipping '%s' email for reservation with id %d, no user" % (email_name, res.id))
                 else:
-                    self.stdout.write("Sending '%s' email for reservation with id %d...", email_name, res.id)
+                    self.stdout.write("Sending '%s' email for reservation with id %d..." % (email_name, res.id))
                     mail.send_rsvp_june_reminder_email(
                         to_email=res.user.email,
                         to_name=res.name,
@@ -104,12 +105,12 @@ class Command(BaseCommand):
                 raise CommandError("Failed to send '%s' email to reservation with id %d. Remaining ids: %s" % (
                     email_name,
                     res.id,
-                    " ".join(self.collect_ids(reservations[i:]))
+                    " ".join(self.collect_ids(reservations_with_attendees[i:]))
                 )) from e
-            self.stdout.write("Sent '%s' email for reservation with id %d.", email_name, res.id)
+            self.stdout.write("Sent '%s' email for reservation with id %d." % (email_name, res.id))
         self.stdout.write("Successfully sent '%s' to reservations with ids: %s" % (
             email_name,
-            " ".join(self.collect_ids(reservations))
+            " ".join(self.collect_ids(reservations_with_attendees))
         ))
 
     def email_covid_update(self, reservation_ids: list[str] = None):
@@ -118,9 +119,9 @@ class Command(BaseCommand):
         self.confirm_send(email_name, len(reservations_with_attendees))
         self.stdout.write("Sending %s emails..." % email_name)
         for i in range(len(reservations_with_attendees)):
-            res = reservations[i]
+            res = reservations_with_attendees[i]
             try:
-                self.stdout.write("Sending '%s' email for reservation with id %d...", email_name, res.id)
+                self.stdout.write("Sending '%s' email for reservation with id %d..." % (email_name, res.id))
                 mail.send_covid_update_email(
                     to_email=res.user.email,
                     to_name=res.name
@@ -129,12 +130,12 @@ class Command(BaseCommand):
                 raise CommandError("Failed to send '%s' email to reservation with id %d. Remaining ids: %s" % (
                     email_name,
                     res.id,
-                    " ".join(self.collect_ids(reservations[i:]))
+                    " ".join(self.collect_ids(reservations_with_attendees[i:]))
                 )) from e
-            self.stdout.write("Sent '%s' email for reservation with id %d.", email_name, res.id)
+            self.stdout.write("Sent '%s' email for reservation with id %d." % (email_name, res.id))
         self.stdout.write("Successfully sent '%s' to reservations with ids: %s" % (
             email_name,
-            " ".join(self.collect_ids(reservations))
+            " ".join(self.collect_ids(reservations_with_attendees))
         ))
 
     @staticmethod
