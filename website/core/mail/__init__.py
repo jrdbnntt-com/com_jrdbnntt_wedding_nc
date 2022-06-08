@@ -36,3 +36,23 @@ def send_rsvp_updated_email(to_email: str, to_name: str, rsvp_complete: bool, at
         'invited_to_rehearsal': invited_to_rehearsal,
         'date_rsvp_deadline': format_month_day_long(settings.DATE_RSVP_DEADLINE)
     })
+
+
+def send_rsvp_june_reminder_email(to_email: str, to_name: str, attending_rehearsal_dinner: bool,
+                                  attending_rehearsal: bool, attending_wedding: bool, guest_rsvp_statuses: list[str]):
+    sendgrid.send_dynamic_template_email('hj_rsvp_june_reminder', to_email, {
+        'link_home': settings.EMAIL_LINK_BASE_URL,
+        'to_name': to_name,
+        'link_faqs': _build_site_link('/info/faqs'),
+        'guest_rsvp_statuses': guest_rsvp_statuses,
+        'attending_wedding': attending_wedding,
+        'attending_rehearsal': attending_rehearsal,
+        'attending_rehearsal_dinner': attending_rehearsal_dinner,
+    })
+
+
+def send_covid_update_email(to_email: str, to_name: str):
+    sendgrid.send_dynamic_template_email('hj_covid_update', to_email, {
+        'link_home': settings.EMAIL_LINK_BASE_URL,
+        'to_name': to_name
+    })

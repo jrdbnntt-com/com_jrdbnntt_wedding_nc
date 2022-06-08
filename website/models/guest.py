@@ -22,6 +22,7 @@ class Guest(models.Model):
     assigned_table_seat = models.IntegerField(null=True, blank=True)
     created_at = models.DateTimeField(default=timezone.now, editable=False)
     updated_at = models.DateTimeField(default=timezone.now, editable=False)
+    attending_ceremony_rehearsal = models.BooleanField(default=False)
 
     def __str__(self) -> str:
         return self.full_name()
@@ -40,6 +41,9 @@ class Guest(models.Model):
             return self._answer_display(self.rehearsal_rsvp_answer)
         return '(not invited)'
 
+    def attending_ceremony_rehearsal_display(self) -> str:
+        return self._answer_display(self.attending_ceremony_rehearsal)
+
     @staticmethod
     def _answer_display(answer: bool) -> str:
         if answer is None:
@@ -53,6 +57,7 @@ class Guest(models.Model):
 class GuestAdmin(admin.ModelAdmin):
     ordering = ('last_name', 'first_name')
     list_display = (
+        'reservation__id',
         'reservation__access_code',
         'reservation__name',
         'first_name',
@@ -68,6 +73,10 @@ class GuestAdmin(admin.ModelAdmin):
         'rsvp_answer',
         'rehearsal_rsvp_answer'
     )
+
+    @staticmethod
+    def reservation__id(obj: Guest):
+        return obj.reservation.id
 
     @staticmethod
     def reservation__access_code(obj: Guest):

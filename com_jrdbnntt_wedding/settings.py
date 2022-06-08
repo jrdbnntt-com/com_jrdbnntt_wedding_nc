@@ -168,6 +168,7 @@ RECAPTCHA_SITE_KEY = active_config.get(config.SECTION_RECAPTCHA, 'SITE_KEY')
 config.assert_defined(config.SECTION_RECAPTCHA, 'SITE_KEY', RECAPTCHA_SITE_KEY)
 RECAPTCHA_SECRET_KEY = active_config.get(config.SECTION_RECAPTCHA, 'SECRET_KEY')
 config.assert_defined(config.SECTION_RECAPTCHA, 'SECRET_KEY', RECAPTCHA_SECRET_KEY)
+RECAPTCHA_ENABLED = active_config.getboolean(config.SECTION_RECAPTCHA, 'ENABLED')
 
 # Email configuration (SendGrid)
 EMAIL_BACKEND = 'sendgrid_backend.SendgridBackend'

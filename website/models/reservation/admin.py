@@ -13,6 +13,7 @@ def init():
 class ReservationAdmin(admin.ModelAdmin):
     ordering = ("name",)
     list_display = (
+        "id",
         "access_code",
         "name",
         "user",
@@ -40,3 +41,10 @@ class ReservationAdmin(admin.ModelAdmin):
     @staticmethod
     def get_simple_guests(obj):
         return Guest.objects.filter(reservation=obj).only("first_name", "last_name").order_by('first_name')
+
+
+def reservation_has_guests_attending_wedding_event(res: Reservation) -> bool:
+    for guest in Guest.objects.filter(reservation=res):
+        if guest.attending_ceremony_rehearsal or guest.rsvp_answer is True or guest.rehearsal_rsvp_answer is True:
+            return True
+    return False

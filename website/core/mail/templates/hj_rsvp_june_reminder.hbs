@@ -1,0 +1,106 @@
+<p>Hi {{to_name}},</p>
+<br><br>
+<p>
+    Our wedding is almost here!!! We are so excited to celebrate with you! This is a friendly reminder that you've RSVP'd as:
+</p>
+<br>
+<p>
+    {{#each guest_rsvp_statuses}}
+        {{{this}}}<br>
+        <br>
+    {{/each}}
+</p>
+<p>
+    We are COVID-19 testing everyone at the first wedding event that they attend. <i>Please account for 15 minutes to wait on your test result when planning your arrival.</i>
+</p>
+<br>
+<p>
+    Below are the event details:
+</p>
+
+{{# attending_rehearsal }}
+    <br>
+    <h2>Ceremony Rehearsal</h2>
+    <p>
+        <b>
+            Friday, July 8th, 2022<br>
+            1pm to ~3pm
+        </b><br>
+        <br>
+        Turski Residence<br>
+        <a target="_blank" href="https://goo.gl/maps/Js57jBEFmN2gPnM36">
+            5708 223rd Ave NE<br>
+            Redmond, WA 98053
+        </a>
+        <br><br>
+        <i>Plus ones are not required to attend but are welcome at the venue while we rehearse. Some light food and refreshments will be available.</i>
+    </p>
+{{/attending_rehearsal}}
+
+{{#if attending_rehearsal_dinner}}
+    <br>
+    <h2>Rehearsal Dinner</h2>
+    <p>
+        <b>
+            Friday, July 8th, 2022<br>
+            Dinner is from 6pm to 9pm
+        </b><br>
+        <br>
+        Agua Verde Cafe<br>
+        <a target="_blank" href="https://g.page/aguaverdecafeseattle?share">
+            1303 NE Boat St<br>
+            Seattle, WA 98105
+        </a>
+    </p>
+{{/if}}
+
+{{#if attending_wedding}}
+    <br>
+    <h2>Wedding Ceremony</h2>
+    <p>
+        <b>
+            Saturday, July 9th, 2022<br>
+            Venue opens for guests at 3:45pm<br>
+            Ceremony starts at 4:30pm, then we party til we drop!
+        </b><br>
+        <br>
+        Turski Residence<br>
+        <a target="_blank" href="https://goo.gl/maps/Js57jBEFmN2gPnM36">
+            5708 223rd Ave NE<br>
+            Redmond, WA 98053
+        </a>
+    </p>
+{{/if}}
+
+{{#if attending_rehearsal_dinner }}
+    <br>
+    <h2>Farewell Brunch (optional)</h2>
+    <p>
+        <i>The family of the bride is hosting a farewell brunch for family and the wedding party to close out the wedding weekend. RSVP is not required.</i><br>
+        <br>
+        <b>
+            Sunday, July 10th, 2022<br>
+            10am to 12pm
+        </b><br>
+        <br>
+        Lessing Family's AirBnb<br>
+        <a target="_blank" href="https://goo.gl/maps/LHjLtihQJzKxKUUh8">
+            11716 NE 67th Place<br>
+            Kirkland WA 98033
+        </a>
+    </p>
+{{/if}}
+<br><br>
+<p>
+    If you have any questions, please check out our
+    <a target="_blank" href="{{link_faqs}}">Frequently Asked Questions page</a>.
+    Also, feel free to reach out to
+    <a href="mailto:jrdbnntt+wedding@gmail.com">Jared</a> and/or
+    <a href="mailto:hklessing+wedding@gmail.com">Hannah</a>.
+</p>
+<br><br>
+<p>
+    Thanks,<br>
+    Hannah & Jared<br>
+    {{link_home}}
+</p>
