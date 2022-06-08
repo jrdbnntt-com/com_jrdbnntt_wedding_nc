@@ -64,7 +64,7 @@ class Command(BaseCommand):
                 for guest in guests:
                     if guest.attending_ceremony_rehearsal:
                         guest_rsvp_statuses.append(
-                            "%s is going to the ceremony rehearsal, is %s to the rehearsal dinner, and is %s to the wedding." % (
+                            "<b>%s</b> is <b>going</b> to the ceremony rehearsal, is <b>%s</b> to the rehearsal dinner, and is <b>%s</b> to the wedding." % (
                                 guest.first_name,
                                 guest.rehearsal_rsvp_answer_display().lower(),
                                 guest.rsvp_answer_display().lower()
@@ -72,7 +72,7 @@ class Command(BaseCommand):
                         )
                     elif attending_rehearsal_dinner:
                         guest_rsvp_statuses.append(
-                            "%s is %s to the rehearsal dinner and is %s to the wedding." % (
+                            "<b>%s</b> is <b>%s</b> to the rehearsal dinner and is <b>%s</b> to the wedding." % (
                                 guest.first_name,
                                 guest.rehearsal_rsvp_answer_display().lower(),
                                 guest.rsvp_answer_display().lower()
@@ -80,7 +80,7 @@ class Command(BaseCommand):
                         )
                     else:
                         guest_rsvp_statuses.append(
-                            "%s is %s to the wedding." % (
+                            "<b>%s</b> is <b>%s</b> to the wedding." % (
                                 guest.first_name,
                                 guest.rsvp_answer_display().lower()
                             )
