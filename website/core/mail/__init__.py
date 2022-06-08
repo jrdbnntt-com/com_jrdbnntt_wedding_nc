@@ -52,7 +52,7 @@ def send_rsvp_june_reminder_email(to_email: str, to_name: str, attending_rehears
 
 
 def send_covid_update_email(to_email: str, to_name: str):
-    sendgrid.send_dynamic_template_email('hj_rsvp_june_reminder', to_email, {
+    sendgrid.send_dynamic_template_email('hj_covid_update', to_email, {
         'link_home': settings.EMAIL_LINK_BASE_URL,
         'to_name': to_name
     })

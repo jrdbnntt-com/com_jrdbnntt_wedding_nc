@@ -20,6 +20,8 @@ class Command(BaseCommand):
         reservation_ids = options['ids']
         if email_name == 'rsvp_june_reminder':
             self.email_rsvp_june_reminder(reservation_ids)
+        if email_name == 'covid_update':
+            self.email_covid_update(reservation_ids)
         else:
             raise CommandError("Invalid email_name '%s'" % email_name)
 
@@ -126,7 +128,7 @@ class Command(BaseCommand):
                     res,
                     " ".join(self.collect_ids(reservations[i:]))
                 )) from e
-            self.stdout.write("Sent '%s' email for reservation with id %d." % (email_name, res.id))
+            self.stdout.write("Sent '%s' email to %s." % (email_name, res))
         self.stdout.write("Successfully sent '%s' to reservations with ids: %s" % (
             email_name,
             " ".join(self.collect_ids(reservations))
