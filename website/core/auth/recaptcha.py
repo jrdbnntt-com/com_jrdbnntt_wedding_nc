@@ -23,19 +23,26 @@ class RecaptchaCheckResponse:
     def __init__(self, json):
         json = dict(json)
         self.success = bool(json['success'])
-        self.score = float(json['score'])
-        self.action = str(json['action'])
-        self.hostname = str(json['hostname'])
         if 'error-codes' in json:
             self.error_codes = list(json['error-codes'])
+            self.score = None
+            self.action = None
+            self.hostname = None
         else:
             self.error_codes = []
+            self.score = float(json['score'])
+            self.action = str(json['action'])
+            self.hostname = str(json['hostname'])
 
 
 def validate_recaptcha_token(request: HttpRequest, token: str, action: str):
     if action is None or action == "":
         raise ValueError("action required")
     try:
+        if not settings.RECAPTCHA_ENABLED:
+            logger.warning("Skipping reCAPTCHA check, RECAPTCHA_ENABLED config setting is False")
+            return
+
         if token is None or token == "":
             raise ValidationError("token missing")
 
