@@ -48,7 +48,7 @@ class Command(BaseCommand):
         for i in range(len(reservations_with_attendees)):
             res = reservations_with_attendees[i]
             try:
-                self.stdout.write("Preparing '%s' email for reservation with id %d..." % (email_name, res.id))
+                self.stdout.write("Preparing '%s' email for %s..." % (email_name, res))
                 guests = Guest.objects.filter(reservation__id=res.id).order_by('created_at').all()
                 attending_rehearsal = False
                 attending_rehearsal_dinner = False
@@ -88,11 +88,11 @@ class Command(BaseCommand):
 
                 if not attending_rehearsal and not attending_rehearsal_dinner and not attending_wedding:
                     self.stdout.write(
-                        "Skipping '%s' email for reservation with id %d, not attending anything" % (email_name, res.id))
+                        "Skipping '%s' email for %s, not attending anything" % (email_name, res))
                 elif res.user is None:
-                    self.stdout.write("Skipping '%s' email for reservation with id %d, no user" % (email_name, res.id))
+                    self.stdout.write("Skipping '%s' email for %s, no user" % (email_name, res))
                 else:
-                    self.stdout.write("Sending '%s' email for reservation with id %d..." % (email_name, res.id))
+                    self.stdout.write("Sending '%s' email for %s..." % (email_name, res))
                     mail.send_rsvp_june_reminder_email(
                         to_email=res.user.email,
                         to_name=res.name,
@@ -102,12 +102,12 @@ class Command(BaseCommand):
                         guest_rsvp_statuses=guest_rsvp_statuses
                     )
             except Exception as e:
-                raise CommandError("Failed to send '%s' email to reservation with id %d. Remaining ids: %s" % (
+                raise CommandError("Failed to send '%s' email to %s. Remaining ids: %s" % (
                     email_name,
-                    res.id,
+                    res,
                     " ".join(self.collect_ids(reservations_with_attendees[i:]))
                 )) from e
-            self.stdout.write("Sent '%s' email for reservation with id %d." % (email_name, res.id))
+            self.stdout.write("Sent '%s' email to %s" % (email_name, res))
         self.stdout.write("Successfully sent '%s' to reservations with ids: %s" % (
             email_name,
             " ".join(self.collect_ids(reservations_with_attendees))

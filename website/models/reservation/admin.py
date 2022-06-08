@@ -13,6 +13,7 @@ def init():
 class ReservationAdmin(admin.ModelAdmin):
     ordering = ("name",)
     list_display = (
+        "id",
         "access_code",
         "name",
         "user",

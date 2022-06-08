@@ -57,6 +57,7 @@ class Guest(models.Model):
 class GuestAdmin(admin.ModelAdmin):
     ordering = ('last_name', 'first_name')
     list_display = (
+        'reservation__id',
         'reservation__access_code',
         'reservation__name',
         'first_name',
@@ -72,6 +73,10 @@ class GuestAdmin(admin.ModelAdmin):
         'rsvp_answer',
         'rehearsal_rsvp_answer'
     )
+
+    @staticmethod
+    def reservation__id(obj: Guest):
+        return obj.reservation.id
 
     @staticmethod
     def reservation__access_code(obj: Guest):

@@ -34,9 +34,9 @@ class Reservation(models.Model):
 
     def __str__(self):
         if self.user is not None:
-            return "Reservation (id={}, user.username='{}')".format(self.id, self.user.username)
+            return "Reservation(id={},name='{}',user.username='{}')".format(self.id, self.name, self.user.username)
         else:
-            return "Reservation (id={}, inactive)".format(self.id)
+            return "Reservation(id={},name='{}',inactive)".format(self.id, self.name)
 
 
 def activate_reservation(reservation_id: int, email: str):
