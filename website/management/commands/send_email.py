@@ -1,3 +1,5 @@
+import typing
+
 from django.core.management.base import BaseCommand, CommandError
 
 from website.core import mail
@@ -43,99 +45,91 @@ class Command(BaseCommand):
     def email_rsvp_june_reminder(self, reservation_ids: list[str] = None):
         email_name = 'rsvp_june_reminder'
         reservations_with_attendees = self.collect_reservations_with_attendees(reservation_ids)
-        self.confirm_send(email_name, len(reservations_with_attendees))
-        self.stdout.write("Sending %s emails..." % email_name)
-        for i in range(len(reservations_with_attendees)):
-            res = reservations_with_attendees[i]
-            try:
-                self.stdout.write("Preparing '%s' email for %s..." % (email_name, res))
-                guests = Guest.objects.filter(reservation__id=res.id).order_by('created_at').all()
-                attending_rehearsal = False
-                attending_rehearsal_dinner = False
-                attending_wedding = False
-                for guest in guests:
-                    if guest.rsvp_answer is True:
-                        attending_wedding = True
-                    if guest.rehearsal_rsvp_answer is True:
-                        attending_rehearsal_dinner = True
-                    if guest.attending_ceremony_rehearsal is True:
-                        attending_rehearsal = True
-                guest_rsvp_statuses = []
-                for guest in guests:
-                    if guest.attending_ceremony_rehearsal:
-                        guest_rsvp_statuses.append(
-                            "<b>%s</b> is <b>going</b> to the ceremony rehearsal, is <b>%s</b> to the rehearsal dinner, and is <b>%s</b> to the wedding." % (
-                                guest.first_name,
-                                guest.rehearsal_rsvp_answer_display().lower(),
-                                guest.rsvp_answer_display().lower()
-                            )
-                        )
-                    elif attending_rehearsal_dinner:
-                        guest_rsvp_statuses.append(
-                            "<b>%s</b> is <b>%s</b> to the rehearsal dinner and is <b>%s</b> to the wedding." % (
-                                guest.first_name,
-                                guest.rehearsal_rsvp_answer_display().lower(),
-                                guest.rsvp_answer_display().lower()
-                            )
-                        )
-                    else:
-                        guest_rsvp_statuses.append(
-                            "<b>%s</b> is <b>%s</b> to the wedding." % (
-                                guest.first_name,
-                                guest.rsvp_answer_display().lower()
-                            )
-                        )
 
-                if not attending_rehearsal and not attending_rehearsal_dinner and not attending_wedding:
-                    self.stdout.write(
-                        "Skipping '%s' email for %s, not attending anything" % (email_name, res))
-                elif res.user is None:
-                    self.stdout.write("Skipping '%s' email for %s, no user" % (email_name, res))
-                else:
-                    self.stdout.write("Sending '%s' email for %s..." % (email_name, res))
-                    mail.send_rsvp_june_reminder_email(
-                        to_email=res.user.email,
-                        to_name=res.name,
-                        attending_rehearsal=attending_rehearsal,
-                        attending_rehearsal_dinner=attending_rehearsal_dinner,
-                        attending_wedding=attending_wedding,
-                        guest_rsvp_statuses=guest_rsvp_statuses
+        def send(res: Reservation):
+            guests = Guest.objects.filter(reservation__id=res.id).order_by('created_at').all()
+            attending_rehearsal = False
+            attending_rehearsal_dinner = False
+            attending_wedding = False
+            for guest in guests:
+                if guest.rsvp_answer is True:
+                    attending_wedding = True
+                if guest.rehearsal_rsvp_answer is True:
+                    attending_rehearsal_dinner = True
+                if guest.attending_ceremony_rehearsal is True:
+                    attending_rehearsal = True
+            guest_rsvp_statuses = []
+            for guest in guests:
+                if guest.attending_ceremony_rehearsal:
+                    guest_rsvp_statuses.append(
+                        "<b>%s</b> is <b>going</b> to the ceremony rehearsal, is <b>%s</b> to the rehearsal dinner, and is <b>%s</b> to the wedding." % (
+                            guest.first_name,
+                            guest.rehearsal_rsvp_answer_display().lower(),
+                            guest.rsvp_answer_display().lower()
+                        )
                     )
-            except Exception as e:
-                raise CommandError("Failed to send '%s' email to %s. Remaining ids: %s" % (
-                    email_name,
-                    res,
-                    " ".join(self.collect_ids(reservations_with_attendees[i:]))
-                )) from e
-            self.stdout.write("Sent '%s' email to %s" % (email_name, res))
-        self.stdout.write("Successfully sent '%s' to reservations with ids: %s" % (
-            email_name,
-            " ".join(self.collect_ids(reservations_with_attendees))
-        ))
+                elif attending_rehearsal_dinner:
+                    guest_rsvp_statuses.append(
+                        "<b>%s</b> is <b>%s</b> to the rehearsal dinner and is <b>%s</b> to the wedding." % (
+                            guest.first_name,
+                            guest.rehearsal_rsvp_answer_display().lower(),
+                            guest.rsvp_answer_display().lower()
+                        )
+                    )
+                else:
+                    guest_rsvp_statuses.append(
+                        "<b>%s</b> is <b>%s</b> to the wedding." % (
+                            guest.first_name,
+                            guest.rsvp_answer_display().lower()
+                        )
+                    )
+            if not attending_rehearsal and not attending_rehearsal_dinner and not attending_wedding:
+                self.stdout.write(
+                    "Skipping '%s' email for %s, not attending anything" % (email_name, res))
+            elif res.user is None:
+                self.stdout.write("Skipping '%s' email for %s, no user" % (email_name, res))
+            else:
+                mail.send_rsvp_june_reminder_email(
+                    to_email=res.user.email,
+                    to_name=res.name,
+                    attending_rehearsal=attending_rehearsal,
+                    attending_rehearsal_dinner=attending_rehearsal_dinner,
+                    attending_wedding=attending_wedding,
+                    guest_rsvp_statuses=guest_rsvp_statuses
+                )
+
+        self.send_email_to_reservations(email_name, reservations_with_attendees, send)
 
     def email_covid_update(self, reservation_ids: list[str] = None):
         email_name = 'covid_update'
         reservations_with_attendees = self.collect_reservations_with_attendees(reservation_ids)
-        self.confirm_send(email_name, len(reservations_with_attendees))
+
+        def send(res: Reservation):
+            mail.send_covid_update_email(
+                to_email=res.user.email,
+                to_name=res.name
+            )
+
+        self.send_email_to_reservations(email_name, reservations_with_attendees, send)
+
+    def send_email_to_reservations(self, email_name: str, reservations: list[Reservation], send: typing.Callable[[Reservation], None]):
+        self.confirm_send(email_name, len(reservations))
         self.stdout.write("Sending %s emails..." % email_name)
-        for i in range(len(reservations_with_attendees)):
-            res = reservations_with_attendees[i]
+        for i in range(len(reservations)):
+            res = reservations[i]
             try:
-                self.stdout.write("Sending '%s' email for reservation with id %d..." % (email_name, res.id))
-                mail.send_covid_update_email(
-                    to_email=res.user.email,
-                    to_name=res.name
-                )
+                self.stdout.write("Sending '%s' email to %s..." % (email_name, res))
+                send(res)
             except Exception as e:
-                raise CommandError("Failed to send '%s' email to reservation with id %d. Remaining ids: %s" % (
+                raise CommandError("Failed to send '%s' email to %s. Remaining ids: %s" % (
                     email_name,
-                    res.id,
-                    " ".join(self.collect_ids(reservations_with_attendees[i:]))
+                    res,
+                    " ".join(self.collect_ids(reservations[i:]))
                 )) from e
             self.stdout.write("Sent '%s' email for reservation with id %d." % (email_name, res.id))
         self.stdout.write("Successfully sent '%s' to reservations with ids: %s" % (
             email_name,
-            " ".join(self.collect_ids(reservations_with_attendees))
+            " ".join(self.collect_ids(reservations))
         ))
 
     @staticmethod
