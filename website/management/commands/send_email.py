@@ -20,7 +20,7 @@ class Command(BaseCommand):
         reservation_ids = options['ids']
         if email_name == 'rsvp_june_reminder':
             self.email_rsvp_june_reminder(reservation_ids)
-        if email_name == 'covid_update':
+        elif email_name == 'covid_update':
             self.email_covid_update(reservation_ids)
         else:
             raise CommandError("Invalid email_name '%s'" % email_name)
