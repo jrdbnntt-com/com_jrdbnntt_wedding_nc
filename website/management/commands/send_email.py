@@ -22,6 +22,8 @@ class Command(BaseCommand):
             self.email_rsvp_june_reminder(reservation_ids)
         elif email_name == 'covid_update':
             self.email_covid_update(reservation_ids)
+        elif email_name == 'print_attendee_emails':
+            self.print_attendee_emails()
         else:
             raise CommandError("Invalid email_name '%s'" % email_name)
 
@@ -133,6 +135,12 @@ class Command(BaseCommand):
             email_name,
             " ".join(self.collect_ids(reservations))
         ))
+
+    def print_attendee_emails(self, reservation_ids=None):
+        reservations_with_attendees = self.collect_reservations_with_attendees(reservation_ids)
+        for res in reservations_with_attendees:
+            if res.user is not None:
+                self.stdout.write(res.user.email)
 
     @staticmethod
     def collect_ids(objs: list[Reservation]) -> list[str]:
