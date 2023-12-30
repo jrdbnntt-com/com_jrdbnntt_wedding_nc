@@ -22,8 +22,14 @@ class Command(BaseCommand):
             self.email_rsvp_june_reminder(reservation_ids)
         elif email_name == 'covid_update':
             self.email_covid_update(reservation_ids)
-        elif email_name == 'print_attendee_emails':
-            self.print_attendee_emails()
+        elif email_name == 'print_emails_attending_wedding':
+            self.print_emails_attending_wedding(reservation_ids)
+        elif email_name == 'print_emails_attending_only_wedding':
+            self.print_emails_attending_only_wedding(reservation_ids)
+        elif email_name == 'print_emails_attending_rehearsal':
+            self.print_emails_attending_rehearsal(reservation_ids)
+        elif email_name == 'print_emails_not_attending':
+            self.print_not_attending_emails(reservation_ids)
         else:
             raise CommandError("Invalid email_name '%s'" % email_name)
 
@@ -35,10 +41,24 @@ class Command(BaseCommand):
             reservations = Reservation.objects.all().order_by('id')
         reservations_with_attendees = []
         for res in reservations:
-            if reservation_has_guests_attending_wedding_event(res):
+            if reservation_has_guests_attending_wedding_event(res) and res.user is not None:
                 reservations_with_attendees.append(res)
         self.stdout.write("Found %d Reservation objects with attendees" % len(reservations_with_attendees))
         return reservations_with_attendees
+
+    def collect_reservations_with_no_attendees(self, reservation_ids: list[str] = None) -> list[Reservation]:
+        self.stdout.write("Collecting Reservation objects...")
+        if reservation_ids is not None and len(reservation_ids) > 0:
+            reservations = Reservation.objects.filter(id__in=reservation_ids).order_by('id')
+        else:
+            reservations = Reservation.objects.all().order_by('id')
+        reservations_with_no_attendees = []
+        for res in reservations:
+            if not reservation_has_guests_attending_wedding_event(res) and res.user is not None:
+                reservations_with_no_attendees.append(res)
+        self.stdout.write("Found %d Reservation objects with no attendees" % len(reservations_with_no_attendees))
+        return reservations_with_no_attendees
+
 
     @staticmethod
     def confirm_send(email_name: str, reservation_count: int):
@@ -136,11 +156,27 @@ class Command(BaseCommand):
             " ".join(self.collect_ids(reservations))
         ))
 
-    def print_attendee_emails(self, reservation_ids=None):
+    def print_emails_attending_wedding(self, reservation_ids=None):
         reservations_with_attendees = self.collect_reservations_with_attendees(reservation_ids)
         for res in reservations_with_attendees:
-            if res.user is not None:
+            self.stdout.write(res.user.email)
+
+    def print_emails_attending_only_wedding(self, reservation_ids=None):
+        reservations_with_attendees = self.collect_reservations_with_attendees(reservation_ids)
+        for res in reservations_with_attendees:
+            if not res.invited_to_rehearsal:
                 self.stdout.write(res.user.email)
+
+    def print_emails_attending_rehearsal(self, reservation_ids=None):
+        reservations_with_attendees = self.collect_reservations_with_attendees(reservation_ids)
+        for res in reservations_with_attendees:
+            if res.invited_to_rehearsal:
+                self.stdout.write(res.user.email)
+
+    def print_not_attending_emails(self, reservation_ids=None):
+        reservations_with_no_attendees = self.collect_reservations_with_no_attendees(reservation_ids)
+        for res in reservations_with_no_attendees:
+            self.stdout.write(res.user.email)
 
     @staticmethod
     def collect_ids(objs: list[Reservation]) -> list[str]:
