@@ -10,6 +10,7 @@ SYSTEMD_SERVICE_NAME="com_jrdbnntt_wedding_nc"
 PROJECT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )/.." &> /dev/null && pwd )
 PROJECT_LOG_DIR="${PROJECT_DIR}/logs"
 PROJECT_NGINX_CONFIG_PATH="${PROJECT_DIR}/hosting/nginx.conf"
+PROJECT_NGINX_TEST_CONFIG_PATH="${PROJECT_DIR}/hosting/nginx_test.conf"
 PROJECT_SYSTEMD_SERVICE_PATH="${PROJECT_DIR}/hosting/com_jrdbnntt_wedding_nc.service"
 PROJECT_STATIC_CLOUD_DIR="${PROJECT_DIR}/website/static/cloud"
 PROJECT_STATIC_ROOT="${PROJECT_DIR}/static"
@@ -18,7 +19,7 @@ DAPHNE_SERVER_PORT=5001
 
 function test_nginx_config {
   echo "Testing nginx config..."
-  if nginx -t -c "${PROJECT_NGINX_CONFIG_PATH}"; then
+  if nginx -t -c "${PROJECT_NGINX_TEST_CONFIG_PATH}"; then
     echo "nginx config passed test"
   else
     echo "nginx config error"
