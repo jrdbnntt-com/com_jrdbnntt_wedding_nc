@@ -1,6 +1,6 @@
-com_jrdbnntt_wedding
+com_jrdbnntt_wedding_nc
 ====================
-Wedding website for Jared & Hannah!
+Wedding website for Natalia & Cosma!
 
 
 ## Project setup

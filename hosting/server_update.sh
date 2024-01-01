@@ -13,7 +13,7 @@
 ########################################################################################################################
 set -e # Stop script if any command fails
 
-SERVICE_USER='com_jrdbnntt_wedding'
+SERVICE_USER='com_jrdbnntt_wedding_nc'
 
 ORIGINAL_WORKING_DIR="$(pwd)"
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )

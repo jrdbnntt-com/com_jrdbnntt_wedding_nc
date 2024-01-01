@@ -6,7 +6,7 @@ from website.core.date import format_month_day_year_long, is_passed_rsvp_deadlin
 
 def add_global_vars(request):
     return {
-        'base_site_domain': 'https://hannahjaredwedding.com',
+        'base_site_domain': 'https://nataliacosmawedding.com',
         'page_title_prefix': 'Hannah & Jared Wedding',
         'recaptcha_site_key': settings.RECAPTCHA_SITE_KEY,
         'event_location': settings.EVENT_PUBLIC_LOCATION,

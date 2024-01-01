@@ -1,7 +1,7 @@
 ### Custom
-com_jrdbnntt_wedding/config/development.cfg
-com_jrdbnntt_wedding/config/production.cfg
-com_jrdbnntt_wedding/config/test.cfg
+com_jrdbnntt_wedding_nc/config/development.cfg
+com_jrdbnntt_wedding_nc/config/production.cfg
+com_jrdbnntt_wedding_nc/config/test.cfg
 webpack-stats.json
 /website/static/cloud
 /.idea

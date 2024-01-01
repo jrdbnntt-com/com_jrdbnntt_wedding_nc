@@ -5,7 +5,7 @@ from pathlib import Path
 os.environ.setdefault('RUNTIME_ENVIRONMENT', 'DEVELOPMENT')
 RUNTIME_ENVIRONMENT = os.environ.get('RUNTIME_ENVIRONMENT')
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
-CONFIG_FILE_DIR = Path(BASE_DIR, 'com_jrdbnntt_wedding/config')
+CONFIG_FILE_DIR = Path(BASE_DIR, 'com_jrdbnntt_wedding_nc/config')
 CONFIG_FILES = {
     'base': Path(CONFIG_FILE_DIR, 'base.cfg'),
     'PRODUCTION': Path(CONFIG_FILE_DIR, 'production.cfg'),

@@ -59,7 +59,7 @@ module.exports = (env, argv) => {
                         priority: -10,
                         reuseExistingChunk: true,
                         name(module, chunks, cacheGroupKey) {
-                            const localNodeModulesDir = 'com_jrdbnntt_wedding/node_modules/'
+                            const localNodeModulesDir = 'com_jrdbnntt_wedding_nc/node_modules/'
                             const moduleFilePath = module.identifier();
                             let localNodePath = moduleFilePath.substring(moduleFilePath.lastIndexOf(localNodeModulesDir) + localNodeModulesDir.length);
                             if (localNodePath.includes('|')) {

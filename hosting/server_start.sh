@@ -6,7 +6,7 @@
 #
 # Ensure process working directory is the directory of this file.
 #
-# CLI arguments are passed to the python application for parsing there. See com_jrdbnntt_wedding.asgi for details.
+# CLI arguments are passed to the python application for parsing there. See com_jrdbnntt_wedding_nc.asgi for details.
 ########################################################################################################################
 ORIGINAL_WORKING_DIR="$(pwd)"
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
@@ -68,6 +68,6 @@ print_action "Refreshing SendGrid EmailTemplates..."
 python3 manage.py refresh_email_templates
 
 print_action "Starting Django ASGI application with Daphne..."
-python3 -m daphne -b 0.0.0.0 -p "${DAPHNE_SERVER_PORT}" com_jrdbnntt_wedding.asgi:application "$@"
+python3 -m daphne -b 0.0.0.0 -p "${DAPHNE_SERVER_PORT}" com_jrdbnntt_wedding_nc.asgi:application "$@"
 
 cd "${ORIGINAL_WORKING_DIR}" || exit 1

@@ -4,15 +4,15 @@
 # Run this script to as sudo to create at service user, install the environment as the service user, install the systemd
 # service to run the http server with said service user, and configure ngnix.
 #
-# This expects the repository to be cloned to /var/www/com_jrdbnntt_wedding and will error out if that is not the case.
+# This expects the repository to be cloned to /var/www/com_jrdbnntt_wedding_nc and will error out if that is not the case.
 #
 # Dependencies:
 # - nginx
 # - systemd
 # - user group 'www-data'
 # - systemd-analyze
-# - ssl cert at '/etc/nginx/certs/com_jrdbnntt_wedding/cert.crt' (should be the Cloudflare origin cert)
-# - ssl cert key at '/etc/nginx/certs/com_jrdbnntt_wedding/cert.key' (should be the Cloudflare origin cert key)
+# - ssl cert at '/etc/nginx/certs/com_jrdbnntt_wedding_nc/cert.crt' (should be the Cloudflare origin cert)
+# - ssl cert key at '/etc/nginx/certs/com_jrdbnntt_wedding_nc/cert.key' (should be the Cloudflare origin cert key)
 #  - cloudflare origin pull cert key at '/etc/nginx/certs/cloudflare/authenticated_origin_pull_ca.pem' (https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/#certificate-value)
 # - nvm installed at /usr/local/nvm
 ########################################################################################################################
