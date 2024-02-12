@@ -23,14 +23,9 @@ class Reservation(models.Model):
     activated_at = models.DateTimeField(null=True, blank=True)
     max_guests = models.IntegerField(default=2)
     rsvp_updated_at = models.DateTimeField(null=True, blank=True)
-    mailing_address_line_1 = models.CharField(max_length=200, blank=True)
-    mailing_address_line_2 = models.CharField(max_length=200, blank=True)
-    mailing_address_city = models.CharField(max_length=200, blank=True)
-    mailing_address_state = models.CharField(max_length=5, blank=True)
-    mailing_address_zip = models.CharField(max_length=10, blank=True)
+
     created_at = models.DateTimeField(default=timezone.now, editable=False)
     updated_at = models.DateTimeField(default=timezone.now, editable=False)
-    invited_to_rehearsal = models.BooleanField(default=False)
 
     def __str__(self):
         if self.user is not None:
@@ -40,7 +35,7 @@ class Reservation(models.Model):
 
 
 def activate_reservation(reservation_id: int, email: str):
-    res = Reservation.objects.filter(id=reservation_id).only("id", "access_code", "name", "invited_to_rehearsal").get()
+    res = Reservation.objects.filter(id=reservation_id).only("id", "access_code", "name").get()
     usr = User.objects.create_user(email, email, res.access_code)
     res.user = usr
     res.activated = True
@@ -50,9 +45,5 @@ def activate_reservation(reservation_id: int, email: str):
     wedding_guests_group = Group.objects.filter(name=groups.WEDDING_GUESTS).get()
     wedding_guests_group.user_set.add(usr)
     wedding_guests_group.save()
-    if res.invited_to_rehearsal:
-        rehearsal_guests_group = Group.objects.filter(name=groups.REHEARSAL_GUESTS).get()
-        rehearsal_guests_group.user_set.add(usr)
-        rehearsal_guests_group.save()
 
     return res, usr

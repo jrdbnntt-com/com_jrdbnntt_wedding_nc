@@ -72,67 +72,29 @@ class Command(BaseCommand):
 
         def send(res: Reservation):
             guests = Guest.objects.filter(reservation__id=res.id).order_by('created_at').all()
-            attending_rehearsal = False
-            attending_rehearsal_dinner = False
             attending_wedding = False
             for guest in guests:
                 if guest.rsvp_answer is True:
                     attending_wedding = True
-                if guest.rehearsal_rsvp_answer is True:
-                    attending_rehearsal_dinner = True
-                if guest.attending_ceremony_rehearsal is True:
-                    attending_rehearsal = True
             guest_rsvp_statuses = []
             for guest in guests:
-                if guest.attending_ceremony_rehearsal:
-                    guest_rsvp_statuses.append(
-                        "<b>%s</b> is <b>going</b> to the ceremony rehearsal, is <b>%s</b> to the rehearsal dinner, and is <b>%s</b> to the wedding." % (
-                            guest.first_name,
-                            guest.rehearsal_rsvp_answer_display().lower(),
-                            guest.rsvp_answer_display().lower()
-                        )
+                guest_rsvp_statuses.append(
+                    "<b>%s</b> is <b>%s</b> to the wedding." % (
+                        guest.first_name,
+                        guest.rsvp_answer_display().lower()
                     )
-                elif attending_rehearsal_dinner:
-                    guest_rsvp_statuses.append(
-                        "<b>%s</b> is <b>%s</b> to the rehearsal dinner and is <b>%s</b> to the wedding." % (
-                            guest.first_name,
-                            guest.rehearsal_rsvp_answer_display().lower(),
-                            guest.rsvp_answer_display().lower()
-                        )
-                    )
-                else:
-                    guest_rsvp_statuses.append(
-                        "<b>%s</b> is <b>%s</b> to the wedding." % (
-                            guest.first_name,
-                            guest.rsvp_answer_display().lower()
-                        )
-                    )
-            if not attending_rehearsal and not attending_rehearsal_dinner and not attending_wedding:
+                )
+            if not attending_wedding:
                 self.stdout.write(
-                    "Skipping '%s' email for %s, not attending anything" % (email_name, res))
+                    "Skipping '%s' email for %s, not attending the wedding" % (email_name, res))
             elif res.user is None:
                 self.stdout.write("Skipping '%s' email for %s, no user" % (email_name, res))
             else:
                 mail.send_rsvp_june_reminder_email(
                     to_email=res.user.email,
                     to_name=res.name,
-                    attending_rehearsal=attending_rehearsal,
-                    attending_rehearsal_dinner=attending_rehearsal_dinner,
-                    attending_wedding=attending_wedding,
                     guest_rsvp_statuses=guest_rsvp_statuses
                 )
-
-        self.send_email_to_reservations(email_name, reservations_with_attendees, send)
-
-    def email_covid_update(self, reservation_ids: list[str] = None):
-        email_name = 'covid_update'
-        reservations_with_attendees = self.collect_reservations_with_attendees(reservation_ids)
-
-        def send(res: Reservation):
-            mail.send_covid_update_email(
-                to_email=res.user.email,
-                to_name=res.name
-            )
 
         self.send_email_to_reservations(email_name, reservations_with_attendees, send)
 
@@ -160,18 +122,6 @@ class Command(BaseCommand):
         reservations_with_attendees = self.collect_reservations_with_attendees(reservation_ids)
         for res in reservations_with_attendees:
             self.stdout.write(res.user.email)
-
-    def print_emails_attending_only_wedding(self, reservation_ids=None):
-        reservations_with_attendees = self.collect_reservations_with_attendees(reservation_ids)
-        for res in reservations_with_attendees:
-            if not res.invited_to_rehearsal:
-                self.stdout.write(res.user.email)
-
-    def print_emails_attending_rehearsal(self, reservation_ids=None):
-        reservations_with_attendees = self.collect_reservations_with_attendees(reservation_ids)
-        for res in reservations_with_attendees:
-            if res.invited_to_rehearsal:
-                self.stdout.write(res.user.email)
 
     def print_not_attending_emails(self, reservation_ids=None):
         reservations_with_no_attendees = self.collect_reservations_with_no_attendees(reservation_ids)

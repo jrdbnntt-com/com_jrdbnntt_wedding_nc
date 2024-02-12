@@ -29,22 +29,17 @@ class EditGuestForm(StandardForm):
     food_vegan_option = forms.NullBooleanField(label="Do you need a vegan food option?",
                                                widget=widgets.YesNoNullSelect())
 
-    def __init__(self, invited_to_rehearsal: bool, allowed_guest_ids: list[int], *args, **kwargs):
+    def __init__(self, allowed_guest_ids: list[int], *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.allowed_guest_ids = allowed_guest_ids
-        self.invited_to_rehearsal = invited_to_rehearsal
-        if invited_to_rehearsal:
-            self.fields['rehearsal_rsvp_answer'] = forms.NullBooleanField(label="Rehearsal Dinner RSVP",
-                                                                          widget=widgets.RsvpAnswerSelect())
-            self.order_fields([
-                'guest_id',
-                'active',
-                'first_name',
-                'last_name',
-                'rsvp_answer',
-                'rehearsal_rsvp_answer',
-                'food_vegan_option'
-            ])
+        self.order_fields([
+            'guest_id',
+            'active',
+            'first_name',
+            'last_name',
+            'rsvp_answer',
+            'food_vegan_option'
+        ])
 
     def clean(self):
         super().clean()

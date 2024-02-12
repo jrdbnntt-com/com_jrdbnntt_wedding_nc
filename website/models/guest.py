@@ -16,13 +16,9 @@ class Guest(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     rsvp_answer = models.BooleanField(default=None, blank=True, null=True)
-    rehearsal_rsvp_answer = models.BooleanField(default=None, blank=True, null=True)
     food_vegan_option = models.BooleanField(default=False, blank=True, null=True)
-    assigned_table = models.IntegerField(null=True, blank=True)
-    assigned_table_seat = models.IntegerField(null=True, blank=True)
     created_at = models.DateTimeField(default=timezone.now, editable=False)
     updated_at = models.DateTimeField(default=timezone.now, editable=False)
-    attending_ceremony_rehearsal = models.BooleanField(default=False)
 
     def __str__(self) -> str:
         return self.full_name()
@@ -35,14 +31,6 @@ class Guest(models.Model):
 
     def rsvp_answer_display(self) -> str:
         return self._answer_display(self.rsvp_answer)
-
-    def rehearsal_rsvp_answer_display(self) -> str:
-        if self.reservation.invited_to_rehearsal:
-            return self._answer_display(self.rehearsal_rsvp_answer)
-        return '(not invited)'
-
-    def attending_ceremony_rehearsal_display(self) -> str:
-        return self._answer_display(self.attending_ceremony_rehearsal)
 
     @staticmethod
     def _answer_display(answer: bool) -> str:
@@ -64,16 +52,11 @@ class GuestAdmin(admin.ModelAdmin):
         'last_name',
         'updated_at',
         'rsvp_answer_display',
-        'rehearsal_rsvp_answer_display',
         'food_vegan_option',
-        'assigned_table',
-        'assigned_table_seat',
-        'attending_ceremony_rehearsal'
     )
     list_filter = (
         'rsvp_answer',
-        'rehearsal_rsvp_answer',
-        'attending_ceremony_rehearsal'
+        'food_vegan_option',
     )
 
     @staticmethod

@@ -19,8 +19,7 @@ optional_csv_columns = [
     'mailing_address_line_2',
     'mailing_address_city',
     'mailing_address_state',
-    'mailing_address_zip',
-    'invited_to_rehearsal'
+    'mailing_address_zip'
 ]
 
 
@@ -102,36 +101,6 @@ class Command(BaseCommand):
                 max_guests = int(row['max_guests'])
             if res.max_guests != max_guests:
                 res.max_guests = max_guests
-                updated = True
-        if 'mailing_address_line_1' in row:
-            mailing_address_line_1 = str(row['mailing_address_line_1'])
-            if res.mailing_address_line_1 != mailing_address_line_1:
-                res.mailing_address_line_1 = mailing_address_line_1
-                updated = True
-        if 'mailing_address_line_2' in row:
-            mailing_address_line_2 = str(row['mailing_address_line_2'])
-            if res.mailing_address_line_2 != mailing_address_line_2:
-                res.mailing_address_line_2 = mailing_address_line_2
-                updated = True
-        if 'mailing_address_city' in row:
-            mailing_address_city = str(row['mailing_address_city'])
-            if res.mailing_address_city != mailing_address_city:
-                res.mailing_address_city = mailing_address_city
-                updated = True
-        if 'mailing_address_state' in row:
-            mailing_address_state = str(row['mailing_address_state'])
-            if res.mailing_address_state != mailing_address_state:
-                res.mailing_address_state = mailing_address_state
-                updated = True
-        if 'mailing_address_zip' in row:
-            mailing_address_zip = str(row['mailing_address_zip'])
-            if res.mailing_address_zip != mailing_address_zip:
-                res.mailing_address_zip = mailing_address_zip
-                updated = True
-        if 'invited_to_rehearsal' in row:
-            invited_to_rehearsal = strtobool(row['invited_to_rehearsal'])
-            if res.invited_to_rehearsal != invited_to_rehearsal:
-                res.invited_to_rehearsal = invited_to_rehearsal
                 updated = True
         if updated:
             try:

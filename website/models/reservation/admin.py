@@ -20,7 +20,6 @@ class ReservationAdmin(admin.ModelAdmin):
         "activated",
         "guests_all",
         "guests_rsvp",
-        "guests_rehearsal_rsvp"
     )
     list_filter = ('activated',)
 
@@ -32,12 +31,6 @@ class ReservationAdmin(admin.ModelAdmin):
     def guests_rsvp(self, obj: Reservation) -> str:
         return ', '.join(map(lambda x: x.__str__(), self.get_simple_guests(obj).filter(rsvp_answer=True)))
 
-    @admin.display(description="Guests (R_RSVP=Going)")
-    def guests_rehearsal_rsvp(self, obj: Reservation) -> str:
-        if obj.invited_to_rehearsal:
-            return ', '.join(map(lambda x: x.__str__(), self.get_simple_guests(obj).filter(rehearsal_rsvp_answer=True)))
-        return '(not invited)'
-
     @staticmethod
     def get_simple_guests(obj):
         return Guest.objects.filter(reservation=obj).only("first_name", "last_name").order_by('first_name')
@@ -45,6 +38,6 @@ class ReservationAdmin(admin.ModelAdmin):
 
 def reservation_has_guests_attending_wedding_event(res: Reservation) -> bool:
     for guest in Guest.objects.filter(reservation=res):
-        if guest.attending_ceremony_rehearsal or guest.rsvp_answer is True or guest.rehearsal_rsvp_answer is True:
+        if guest.rsvp_answer is True:
             return True
     return False

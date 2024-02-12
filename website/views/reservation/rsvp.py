@@ -26,11 +26,7 @@ def quick_answer(request: HttpRequest, reservation_id: int, answer: str):
     for guest in Guest.objects.filter(reservation_id=reservation_id).all():
         updated_fields = ['rsvp_answer']
         guest.rsvp_answer = rsvp_answer
-        if res.invited_to_rehearsal:
-            updated_fields.append('rehearsal_rsvp_answer')
-            guest.rehearsal_rsvp_answer = rsvp_answer
         guest.save(update_fields=updated_fields)
-
     return redirect('reservation')
 
 
@@ -57,7 +53,6 @@ def index(request: HttpRequest, reservation_id: int):
         allowed_guest_ids.append(guest.id)
 
     form_kwargs = {
-        'invited_to_rehearsal': res.invited_to_rehearsal,
         'allowed_guest_ids': allowed_guest_ids
     }
 
@@ -75,8 +70,6 @@ def index(request: HttpRequest, reservation_id: int):
                     'last_name': form.cleaned_data['last_name'],
                     'rsvp_answer': form.cleaned_data['rsvp_answer'],
                     'food_vegan_option': form.cleaned_data['food_vegan_option'],
-                    'rehearsal_rsvp_answer': form.cleaned_data[
-                        'rehearsal_rsvp_answer'] if res.invited_to_rehearsal else None,
                 }
                 if guest_id and guest_id != -1:
                     guest = Guest.objects.get(id=guest_id)
@@ -120,8 +113,6 @@ def index(request: HttpRequest, reservation_id: int):
                 (form_prefix + 'rsvp_answer'): guest.rsvp_answer,
                 (form_prefix + 'food_vegan_option'): guest.food_vegan_option
             })
-            if res.invited_to_rehearsal:
-                initial_data[form_prefix + 'rehearsal_rsvp_answer'] = guest.rehearsal_rsvp_answer
         formset = formset_class(data=initial_data, form_kwargs=form_kwargs)
 
     deleted_form_indexes = []
@@ -133,6 +124,5 @@ def index(request: HttpRequest, reservation_id: int):
         'page_title': 'Edit RSVP',
         'formset': formset,
         'deleted_form_indexes': deleted_form_indexes,
-        'invited_to_rehearsal': res.invited_to_rehearsal,
         'max_guests': res.max_guests
     })

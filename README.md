@@ -40,3 +40,18 @@ or
 $ export RUNTIME_ENVIRONMENT=PRODUCTION; ./server_start.sh
 ```
 Note: The process working directory *must* be the repository directory.
+
+### Running django commands
+```
+$ python3 manage.py <command>
+```
+Example:
+```
+$ python3 manage.py refresh_email_templates
+Retrieving SendGrid templates...
+Got 7 SendGrid templates
+Successfully added 7 new and refreshed 0 existing EmailTemplates
+Retrieving SendGrid subscription groups...
+Got 3 SendGrid subscription groups
+Successfully added 3 new and refreshed 0 existing EmailSubscriptionGroups
+```
