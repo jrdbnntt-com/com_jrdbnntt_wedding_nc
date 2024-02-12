@@ -12,14 +12,9 @@ required_csv_columns = [
     'name',
 ]
 optional_csv_columns = [
-    'initial_guests',
+    'guests',
     'access_code',
     'max_guests',
-    'mailing_address_line_1',
-    'mailing_address_line_2',
-    'mailing_address_city',
-    'mailing_address_state',
-    'mailing_address_zip'
 ]
 
 
@@ -72,21 +67,24 @@ class Command(BaseCommand):
         except ObjectDoesNotExist:
             res = Reservation.objects.create(name=name)
             new = True
-
         max_guests = None
-        if 'initial_guests' in row and new:
+        if 'guests' in row and new:
             guest_count = 0
-            for guest_full_name in str(row['initial_guests']).split(','):
+            for guest_full_name in str(row['guests']).split(','):
                 if len(guest_full_name.strip()) == 0:
                     continue
-                name_parts = guest_full_name.split(' ')
-                if len(name_parts) < 2:
+                name_parts = guest_full_name.strip().split(' ')
+                first_name = name_parts[0].strip()
+                last_name = ""
+                if len(name_parts) == 2:
+                    last_name = name_parts[1].strip()
+                elif len(name_parts) > 2:
                     raise ValueError(
                         "initial_guests must by a list of guest first and last names, but got guest '%s'" % guest_full_name)
                 Guest.objects.create(
                     reservation=res,
-                    first_name=" ".join(name_parts[0:-1]),
-                    last_name=name_parts[-1]
+                    first_name=first_name,
+                    last_name=last_name
                 )
                 guest_count += 1
             max_guests = max(guest_count, 2)

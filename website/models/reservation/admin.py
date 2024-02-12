@@ -16,6 +16,7 @@ class ReservationAdmin(admin.ModelAdmin):
         "id",
         "access_code",
         "name",
+        "max_guests",
         "user",
         "activated",
         "guests_all",
